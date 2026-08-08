@@ -2,24 +2,24 @@
   "id": "./",
   "name": "Ariana's Purple Study Hub",
   "short_name": "Ariana Hub",
-  "description": "Ariana's Grade 8 Jamaican curriculum study hub with Mimi tutor, lessons, practice, media, progress and study tools.",
+  "description": "Simple Grade 8 Jamaica study hub with Mimi tutor",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "background_color": "#f7f5ff",
   "theme_color": "#6c3cf0",
-  "orientation": "any",
-  "categories": ["education"],
-  "lang": "en-JM",
   "icons": [
-    {"src":"icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
-    {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
-    {"src":"icons/icon-maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
-  ],
-  "shortcuts": [
-    {"name":"Open Subjects","short_name":"Subjects","url":"./index.html#subjects","icons":[{"src":"icons/icon-192.png","sizes":"192x192","type":"image/png"}]},
-    {"name":"Ask Mimi","short_name":"Mimi","url":"./index.html#mimi","icons":[{"src":"icons/icon-192.png","sizes":"192x192","type":"image/png"}]},
-    {"name":"Study Centre","short_name":"Study","url":"./index.html#study","icons":[{"src":"icons/icon-192.png","sizes":"192x192","type":"image/png"}]}
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }

@@ -1,15 +1,12 @@
-# Ariana's Purple Study Hub — v8
+# Ariana's Purple Study Hub — Simple v12
 
-This version fixes the Version 7 startup/runtime error that prevented buttons from working.
+Upload every file/folder in this package to the same GitHub Pages folder.
 
 ## Main navigation
-- Home
-- Subjects
-- Study
-- Mimi
+- Learn
+- Ask Mimi
+- My Progress
 
-## Important fix
-The app state is now initialized before any UI logic runs. Version 8 was tested in Chromium by clicking through the main navigation, opening a subject, opening Teach Me, opening Mimi, and opening Settings.
+The complete v11 curriculum knowledge base is preserved: 18 subjects, 330 tutor lessons and 719 practice questions. The simplified interface shows one subject, one unit and one lesson at a time.
 
-## Install
-Host this folder over HTTPS for full PWA install/service-worker features. The installed name is **Ariana's Purple Study Hub**.
+PWA installation/service-worker caching requires GitHub Pages/HTTPS or localhost. Core lessons and SVG diagrams are embedded and work offline. Photo OCR needs internet the first time Tesseract.js loads.
