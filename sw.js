@@ -1,5 +1,7 @@
-const CACHE = 'ariana-study-hub-v8-20260808';
-const APP_SHELL = [
+const VERSION = 'ariana-study-hub-v11-20260808';
+const CORE_CACHE = `${VERSION}-core`;
+const MEDIA_CACHE = `${VERSION}-media`;
+const CORE = [
   './',
   './index.html',
   './manifest.webmanifest',
@@ -7,115 +9,88 @@ const APP_SHELL = [
   './icons/icon-512.png',
   './icons/icon-maskable-512.png'
 ];
+const OPTIONAL_EXTERNAL = [
+  'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'
+];
 
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(APP_SHELL)));
+  event.waitUntil((async () => {
+    const core = await caches.open(CORE_CACHE);
+    await core.addAll(CORE);
+    const media = await caches.open(MEDIA_CACHE);
+    await Promise.all(OPTIONAL_EXTERNAL.map(async url => {
+      try {
+        const req = new Request(url, { mode: 'no-cors' });
+        const res = await fetch(req);
+        if (res) await media.put(req, res);
+      } catch (_) {}
+    }));
+  })());
   self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
-  );
-  self.clients.claim();
+  event.waitUntil((async () => {
+    const keep = new Set([CORE_CACHE, MEDIA_CACHE]);
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(k => !keep.has(k)).map(k => caches.delete(k)));
+    await self.clients.claim();
+  })());
 });
 
 self.addEventListener('fetch', event => {
   const req = event.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
-  if (url.origin !== self.location.origin) return;
-  event.respondWith(
-    caches.match(req).then(hit => hit || fetch(req).then(resp => {
-      const copy = resp.clone();
-      caches.open(CACHE).then(cache => cache.put(req, copy));
-      return resp;
-    }).catch(() => caches.match('./index.html')))
-  );
-});
 
-// Small IndexedDB helper so reminder settings are available to the service worker.
-const DB_NAME = 'ariana-pwa-db';
-const STORE = 'settings';
-function dbOpen(){
-  return new Promise((resolve,reject)=>{
-    const r=indexedDB.open(DB_NAME,1);
-    r.onupgradeneeded=()=>r.result.createObjectStore(STORE);
-    r.onsuccess=()=>resolve(r.result);
-    r.onerror=()=>reject(r.error);
-  });
-}
-async function dbSet(key,value){
-  const db=await dbOpen();
-  return new Promise((resolve,reject)=>{
-    const tx=db.transaction(STORE,'readwrite');
-    tx.objectStore(STORE).put(value,key);
-    tx.oncomplete=()=>resolve();
-    tx.onerror=()=>reject(tx.error);
-  });
-}
-async function dbGet(key){
-  const db=await dbOpen();
-  return new Promise((resolve,reject)=>{
-    const tx=db.transaction(STORE,'readonly');
-    const r=tx.objectStore(STORE).get(key);
-    r.onsuccess=()=>resolve(r.result);
-    r.onerror=()=>reject(r.error);
-  });
-}
+  // YouTube embeds need the network and are deliberately not cached.
+  if (url.hostname.includes('youtube.com') || url.hostname.includes('youtube-nocookie.com') || url.hostname.includes('googlevideo.com')) return;
 
-self.addEventListener('message', event => {
-  const msg=event.data||{};
-  if(msg.type==='SAVE_REMINDER'){
-    event.waitUntil(dbSet('reminder',msg.payload));
+  // Same-origin application files: cache first, then network, then index fallback.
+  if (url.origin === self.location.origin) {
+    event.respondWith((async () => {
+      const cached = await caches.match(req);
+      if (cached) return cached;
+      try {
+        const res = await fetch(req);
+        if (res && res.ok) {
+          const cache = await caches.open(CORE_CACHE);
+          cache.put(req, res.clone()).catch(() => {});
+        }
+        return res;
+      } catch (_) {
+        return (await caches.match('./index.html')) || Response.error();
+      }
+    })());
+    return;
   }
-  if(msg.type==='CHECK_REMINDER'){
-    event.waitUntil(maybeNotify(true));
-  }
-});
 
-function localDateKey(d){
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-}
-
-async function maybeNotify(force=false){
-  const s=await dbGet('reminder');
-  if(!s || !s.enabled) return;
-  const now=new Date();
-  const [hh,mm]=(s.time||'18:00').split(':').map(Number);
-  const nowMin=now.getHours()*60+now.getMinutes();
-  const target=hh*60+mm;
-  const today=localDateKey(now);
-  if(!force && nowMin < target) return;
-  if(s.lastNotified===today) return;
-
-  await self.registration.showNotification(`Ariana, it’s study time 💜`,{
-    body:'A short 20-minute study session is enough. Open your Study Hub when you’re ready.',
-    icon:'./icons/icon-192.png',
-    badge:'./icons/icon-192.png',
-    tag:'ariana-daily-study',
-    renotify:false,
-    data:{url:'./index.html#study'}
-  });
-  s.lastNotified=today;
-  await dbSet('reminder',s);
-}
-
-self.addEventListener('periodicsync', event => {
-  if(event.tag==='ariana-daily-study'){
-    event.waitUntil(maybeNotify(false));
+  // Wikimedia and jsDelivr enrichment: runtime cache where browser/CORS permits.
+  if (url.hostname.includes('wikimedia.org') || url.hostname.includes('jsdelivr.net')) {
+    event.respondWith((async () => {
+      const cached = await caches.match(req);
+      if (cached) return cached;
+      try {
+        const res = await fetch(req);
+        const cache = await caches.open(MEDIA_CACHE);
+        cache.put(req, res.clone()).catch(() => {});
+        return res;
+      } catch (_) {
+        return cached || Response.error();
+      }
+    })());
   }
 });
 
 self.addEventListener('notificationclick', event => {
   event.notification.close();
-  const target = new URL(event.notification.data?.url || './index.html#study', self.location.origin).href;
-  event.waitUntil(
-    clients.matchAll({type:'window',includeUncontrolled:true}).then(list=>{
-      for(const c of list){
-        if('focus' in c){ c.navigate(target); return c.focus(); }
-      }
-      return clients.openWindow(target);
-    })
-  );
+  event.waitUntil((async () => {
+    const target = new URL('./index.html#study', self.location.origin).href;
+    const windows = await clients.matchAll({ type: 'window', includeUncontrolled: true });
+    for (const client of windows) {
+      if ('navigate' in client) await client.navigate(target);
+      if ('focus' in client) return client.focus();
+    }
+    if (clients.openWindow) return clients.openWindow(target);
+  })());
 });
