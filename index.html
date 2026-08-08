@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#6c3cf0">
-<meta name="description" content="Ariana's Purple Study Buddy — smart Grade 8 Jamaica tutor">
+<meta name="description" content="Ariana's Purple Study Hub — smart Grade 8 Jamaica tutor">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
-<title>Ariana's Purple Study Buddy</title>
+<title>Ariana's Purple Study Hub</title>
 <style>
 :root{
  --purple:#6c3cf0;--purple2:#8d68ff;--lav:#f3efff;--lav2:#faf8ff;--gold:#ffd76c;
@@ -112,7 +112,7 @@ body[data-device="laptop"] .wrap{width:min(1160px,calc(100% - 28px))}
 <body data-device="auto">
 <header class="topbar">
  <div class="wrap topin">
-  <div class="brand"><img src="icons/icon-192.png" alt=""><span class="brandtxt">Ariana's Study Buddy<small>Smart Grade 8 tutor • purple edition</small></span></div>
+  <div class="brand"><img src="icons/icon-192.png" alt=""><span class="brandtxt">Ariana's Study Hub<small>Smart Grade 8 tutor • purple edition</small></span></div>
   <nav class="desktop-nav">
    <button data-go="home" class="active">Home</button><button data-go="subjects">Subjects</button><button data-go="study">Study</button><button data-go="mimi">Mimi</button>
   </nav>
@@ -221,7 +221,15 @@ body[data-device="laptop"] .wrap{width:min(1160px,calc(100% - 28px))}
 
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const STORE='ariana-study-v7';
+const STORE='ariana-study-hub-v8';
+const memoryStore=new Map();
+const safeStorage={
+ getItem(k){try{return window.localStorage.getItem(k)}catch(e){return memoryStore.get(k)||null}},
+ setItem(k,v){try{window.localStorage.setItem(k,v)}catch(e){memoryStore.set(k,String(v))}},
+ removeItem(k){try{window.localStorage.removeItem(k)}catch(e){memoryStore.delete(k)}}
+};
+let state={};
+try{state=JSON.parse(safeStorage.getItem(STORE)||'{}')}catch(e){state={}};
 const subjects={
  math:{name:'Mathematics',icon:'➗',summary:'Numbers, algebra, geometry, data, measurement and graphs.',status:'official'},
  english:{name:'English Language & Literature',icon:'📚',summary:'Speaking, listening, reading, writing, language structure, literature and research.',status:'official'},
@@ -650,7 +658,7 @@ state.done=state.done||{};state.tasks=state.tasks||{};state.quizHistory=state.qu
 state.reminder=state.reminder||{enabled:false,time:'18:00',lastLocal:''};state.lastSubject=state.lastSubject||'math';state.lastLearn=state.lastLearn||'';
 let activeSubject=state.lastSubject, subjectTab='overview', tutorMode='explain', help={s:'math',q:'',ans:''};
 
-function save(){localStorage.setItem(STORE,JSON.stringify(state));renderHomeStats()}
+function save(){safeStorage.setItem(STORE,JSON.stringify(state));renderHomeStats()}
 function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
 function go(id){
@@ -766,7 +774,7 @@ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPro
 async function initSW(){if('serviceWorker' in navigator&&location.protocol.startsWith('http')){try{swReg=await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready}catch(e){}}updateReminderStatus()}
 function updateReminderStatus(){const a=[];if(location.protocol==='file:')a.push('Install and closed-app reminders need HTTPS hosting.');if('Notification' in window)a.push(`Notifications: ${Notification.permission}.`);else a.push('Notifications are not supported here.');a.push('For an exact daily time, use the calendar backup.');$('#reminderStatus').textContent=a.join(' ')}
 $('#saveReminder').onclick=async()=>{state.reminder.enabled=$('#reminderEnabled').checked;state.reminder.time=$('#reminderTime').value||'18:00';if(state.reminder.enabled&&'Notification'in window&&Notification.permission!=='granted')await Notification.requestPermission();save();scheduleReminder();updateReminderStatus();toast('Reminder saved')};
-$('#testReminder').onclick=async()=>{if(!('Notification'in window))return toast('Notifications are not supported here.');if(Notification.permission!=='granted'&&await Notification.requestPermission()!=='granted')return;if(swReg)swReg.showNotification('Ariana’s Study Buddy 💜',{body:'This is a test reminder.',icon:'icons/icon-192.png'});else new Notification('Ariana’s Study Buddy 💜',{body:'This is a test reminder.'})};
+$('#testReminder').onclick=async()=>{if(!('Notification'in window))return toast('Notifications are not supported here.');if(Notification.permission!=='granted'&&await Notification.requestPermission()!=='granted')return;if(swReg)swReg.showNotification('Ariana’s Study Hub 💜',{body:'This is a test reminder.',icon:'icons/icon-192.png'});else new Notification('Ariana’s Study Hub 💜',{body:'This is a test reminder.'})};
 function scheduleReminder(){clearInterval(reminderTimer);reminderTimer=setInterval(checkReminder,30000);checkReminder()}
 function checkReminder(){if(!state.reminder.enabled||!('Notification'in window)||Notification.permission!=='granted')return;const n=new Date(),d=n.toISOString().slice(0,10),[h,m]=state.reminder.time.split(':').map(Number);if(n.getHours()*60+n.getMinutes()>=h*60+m&&state.reminder.lastLocal!==d){new Notification('Ariana, it’s study time 💜',{body:'A short 20-minute session is enough.',icon:'icons/icon-192.png'});state.reminder.lastLocal=d;save()}}
 $('#calendarBackup').onclick=()=>{const [hh,mm]=state.reminder.time.split(':');const n=new Date();n.setDate(n.getDate()+1);const dt=`${n.getFullYear()}${String(n.getMonth()+1).padStart(2,'0')}${String(n.getDate()).padStart(2,'0')}T${hh}${mm}00`;const ics=`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTSTART;TZID=America/Jamaica:${dt}\r\nRRULE:FREQ=DAILY\r\nSUMMARY:Ariana's Daily Study Time 💜\r\nBEGIN:VALARM\r\nTRIGGER:PT0M\r\nACTION:DISPLAY\r\nDESCRIPTION:Time for Ariana's study session.\r\nEND:VALARM\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n`;const b=new Blob([ics],{type:'text/calendar'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Ariana_Daily_Study_Reminder.ics';a.click()};
@@ -870,7 +878,7 @@ $('#sendWA').onclick=openWA;
 
 /* Settings/access/device/install */
 function openSettings(){$('#studentName').value=state.name;$('#contactName').value=state.contactName;$('#contactPhone').value=state.contactPhone;$('#subjectToggles').innerHTML=Object.entries(subjects).map(([k,v])=>`<label class="toggle"><input type="checkbox" data-tog="${k}" ${state.enabled[k]?'checked':''}><span>${v.icon} ${v.name}</span></label>`).join('');$('#settingsModal').classList.add('show')}
-$('#settingsBtn').onclick=openSettings;$('#closeSettings').onclick=()=>$('#settingsModal').classList.remove('show');$('#saveSettings').onclick=()=>{state.name=$('#studentName').value.trim()||'Ariana';state.contactName=$('#contactName').value.trim();state.contactPhone=$('#contactPhone').value.replace(/\D/g,'');$$('[data-tog]').forEach(c=>state.enabled[c.dataset.tog]=c.checked);save();$('#settingsModal').classList.remove('show');syncUI();toast('Settings saved')};$('#resetApp').onclick=()=>{if(confirm('Reset all app progress and settings?')){localStorage.removeItem(STORE);location.reload()}};
+$('#settingsBtn').onclick=openSettings;$('#closeSettings').onclick=()=>$('#settingsModal').classList.remove('show');$('#saveSettings').onclick=()=>{state.name=$('#studentName').value.trim()||'Ariana';state.contactName=$('#contactName').value.trim();state.contactPhone=$('#contactPhone').value.replace(/\D/g,'');$$('[data-tog]').forEach(c=>state.enabled[c.dataset.tog]=c.checked);save();$('#settingsModal').classList.remove('show');syncUI();toast('Settings saved')};$('#resetApp').onclick=()=>{if(confirm('Reset all app progress and settings?')){safeStorage.removeItem(STORE);location.reload()}};
 $('#accessBtn').onclick=()=>$('#accessModal').classList.add('show');$('#closeAccess').onclick=()=>$('#accessModal').classList.remove('show');$('#toggleLarge').onclick=()=>document.body.classList.toggle('large');$('#toggleContrast').onclick=()=>document.body.classList.toggle('highcontrast');$('#readPage').onclick=()=>{if(!('speechSynthesis'in window))return toast('Read aloud is unavailable here.');speechSynthesis.cancel();const u=new SpeechSynthesisUtterance($('.section.active').innerText);u.rate=.94;speechSynthesis.speak(u)};
 $('#deviceMode').value=state.device;document.body.dataset.device=state.device;$('#deviceMode').onchange=e=>{state.device=e.target.value;document.body.dataset.device=state.device;save()};
 
