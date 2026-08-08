@@ -1,0 +1,59 @@
+{
+  "id": "./",
+  "name": "Ariana's Purple Study Buddy",
+  "short_name": "Ariana Study",
+  "description": "A friendly Grade 8 Jamaica study hub for Ariana with curriculum maps, lessons, quizzes, reminders and Mimi help.",
+  "start_url": "./index.html?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f5ff",
+  "theme_color": "#6c3cf0",
+  "orientation": "any",
+  "categories": [
+    "education"
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Start Studying",
+      "short_name": "Study",
+      "url": "./index.html#study",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Open Lessons",
+      "short_name": "Lessons",
+      "url": "./index.html#learn",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
