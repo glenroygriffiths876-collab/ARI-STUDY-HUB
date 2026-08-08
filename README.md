@@ -1,12 +1,19 @@
-# Ariana's Purple Study Hub — Simple v12
+# Ariana's Purple Study Hub — Deep Teaching v13
 
-Upload every file/folder in this package to the same GitHub Pages folder.
+This version keeps the simple three-choice home screen but changes the lesson engine so every curriculum unit is taught interactively.
 
-## Main navigation
-- Learn
-- Ask Mimi
-- My Progress
+## Lesson pattern
+- Hi Ariana + clear unit goal
+- What the unit is really about
+- Key terms with meaningful definitions and examples
+- Offline SVG visual
+- 3 guided teaching steps
+- Ariana answers a question during each step with immediate feedback
+- Why the method works
+- 3 worked/example views
+- Jamaica/Caribbean connection
+- Common mistake
+- 5 practice questions with explanations
+- Mark as done / Ask Mimi
 
-The complete v11 curriculum knowledge base is preserved: 18 subjects, 330 tutor lessons and 719 practice questions. The simplified interface shows one subject, one unit and one lesson at a time.
-
-PWA installation/service-worker caching requires GitHub Pages/HTTPS or localhost. Core lessons and SVG diagrams are embedded and work offline. Photo OCR needs internet the first time Tesseract.js loads.
+The embedded curriculum and question bank from the previous build are preserved. Core learning works offline. OCR and online browser-AI features may require internet/browser support.

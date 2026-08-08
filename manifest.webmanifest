@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Ariana's Purple Study Hub",
   "short_name": "Ariana Hub",
-  "description": "Simple Grade 8 Jamaica study hub with Mimi tutor",
+  "description": "Grade 8 Jamaica study hub with deep interactive tutor-style lessons and Mimi",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
