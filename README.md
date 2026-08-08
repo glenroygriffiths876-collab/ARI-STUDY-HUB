@@ -1,34 +1,46 @@
-# Ariana's Purple Study Buddy — PWA v5
+# Ariana's Purple Study Buddy — v7
 
-## What this package is
-This is a Progressive Web App (PWA), not just one HTML file. That is what allows Chrome to install it with its own icon, open it as an app, cache it for offline use, and support service-worker notification features.
+## Main change
+Version 7 is designed around **four main destinations only**:
+1. Home
+2. Subjects
+3. Study
+4. Mimi
 
-## Files
-- `index.html` — the complete study app
-- `manifest.webmanifest` — app name, icon, theme and install settings
-- `sw.js` — offline caching and best-effort background reminder support
-- `icons/` — 192px, 512px and maskable purple app icons
+On phones/tablets these appear as a fixed bottom navigation bar, so Ariana does not have to swipe horizontally through menus.
 
-## How to test locally
-Opening `index.html` directly will let you preview most of the app, but Chrome cannot install a PWA or register its service worker from `file://`.
+## Subject workflow
+Tap a subject once. Its page contains:
+- What to learn — full curriculum map
+- Teach me — detailed simple lessons and Quick Guides
+- Practise — short subject questions
+- Ask Mimi — opens Mimi with that subject already selected
 
-For a local test, run a small web server in this folder, for example:
-`python -m http.server 8000`
-Then open `http://localhost:8000`.
+## Smart Mimi for every subject
+Mimi now has subject-specific tutoring rules:
+- Mathematics: solve/calculates, show small steps, check the final answer
+- English: instruction word -> evidence -> answer -> explanation
+- Science: idea/data/variables -> cause/effect -> science explanation
+- Social Studies / History / Geography / Civics: Point -> Explain -> Jamaica/Caribbean Example -> Link
+- French / Spanish: meaning -> grammar pattern -> short model sentence -> check agreement/accents
+- Information Technology: identify concept -> Input -> Process -> Output
+- R&T / PE / Music / Drama / Visual Arts / Career / Religious Education / HFLE: key term -> what it means -> what to do -> example/check
 
-## How to install on Ariana's phone/tablet/laptop
-Host the contents of this folder on an HTTPS website such as GitHub Pages.
-Then open the site in Chrome and choose **Install app** / **Add to Home screen**.
-The purple Ariana icon will be used for the installed app.
+On supported desktop Chrome, Smart Mimi uses the browser's built-in Prompt API / Gemini Nano. The system prompt includes these subject-specific tutor rules. On phones and unsupported browsers, Local Mimi uses the curriculum knowledge base and rule engines.
 
-## Daily reminder behavior
-- The app can show the reminder at the selected time while it is open.
-- On Chrome versions/devices that allow Periodic Background Sync for installed PWAs, the service worker registers a once-per-day best-effort background check.
-- Chrome controls the exact time that Periodic Background Sync wakes, so it is not guaranteed to fire at the exact selected minute when the app is closed.
-- Use **Download exact calendar backup** in the Study tab if an exact daily time is important. The generated `.ics` file contains a recurring daily calendar event and display alarm.
+## Curriculum coverage
+The package retains the complete curriculum map built in v6 and adds:
+- Geography as a school-subject lens
+- History as a school-subject lens
 
-## Photo helper
-The photo OCR feature loads Tesseract.js from the internet when needed. The rest of the core app is local/offline after the PWA cache is installed.
+These are explicitly marked as **confirm school sequence** because the Ministry recognizes Geography and History as Social Sciences, but a current public Holy Childhood Grade 8 sequence was not available.
 
-## Important curriculum note
-The app contains a broad Grade 8 curriculum map using Jamaican Ministry sources. French is explicitly listed by the Ministry as a language curriculum area, but a current public Grade 8 French NSC guide was not located during this build. French is therefore marked **Confirm school sequence** rather than falsely claiming an exact Holy Childhood term-by-term sequence.
+## PWA
+This remains an installable PWA:
+- manifest + purple icons
+- offline app shell
+- phone/tablet/laptop layouts
+- daily reminder settings
+- exact `.ics` calendar backup
+
+Host over HTTPS (for example GitHub Pages) for full installation/service-worker behavior.

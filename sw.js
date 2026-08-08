@@ -1,4 +1,4 @@
-const CACHE = 'ariana-study-v5-20260808';
+const CACHE = 'ariana-study-v7-20260808';
 const APP_SHELL = [
   './',
   './index.html',
