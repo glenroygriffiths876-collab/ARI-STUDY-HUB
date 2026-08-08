@@ -4,295 +4,224 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#6c3cf0">
-<meta name="description" content="Ariana's Purple Study Buddy — Grade 8 Jamaica study hub">
+<meta name="description" content="Ariana's Purple Study Buddy — smart Grade 8 Jamaica tutor">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <title>Ariana's Purple Study Buddy</title>
 <style>
 :root{
- --purple:#6c3cf0;--purple2:#8a63ff;--purple3:#b49aff;--lav:#f3efff;--pink:#ffe0f0;--gold:#ffd76c;
- --ink:#24263a;--muted:#697082;--bg:#f7f5ff;--card:#fff;--line:#e2def2;--good:#16754f;--bad:#b84a56;
- --shadow:0 14px 36px rgba(73,55,146,.12);--radius:22px;
+ --purple:#6c3cf0;--purple2:#8d68ff;--lav:#f3efff;--lav2:#faf8ff;--gold:#ffd76c;
+ --ink:#24263a;--muted:#687083;--bg:#f7f5ff;--card:#fff;--line:#e2def1;
+ --good:#16754f;--bad:#b84a56;--blue:#3277c7;--shadow:0 14px 38px rgba(73,55,146,.12);
 }
 *{box-sizing:border-box}
-html,body{max-width:100%;overflow-x:hidden}
+html,body{margin:0;max-width:100%;overflow-x:hidden}
 html{scroll-behavior:smooth}
-body{
- margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
- color:var(--ink);line-height:1.55;background:
- radial-gradient(circle at 8% 0%,rgba(138,99,255,.11),transparent 25%),
- radial-gradient(circle at 96% 6%,rgba(255,224,240,.55),transparent 25%),var(--bg)
-}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);line-height:1.55;background:radial-gradient(circle at 9% 0%,rgba(141,104,255,.12),transparent 24%),radial-gradient(circle at 94% 5%,rgba(255,216,238,.52),transparent 24%),var(--bg);padding-bottom:74px}
 button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:var(--purple)}
-.wrap{width:min(1220px,calc(100% - 28px));margin:auto}
-.topbar{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.topin{min-height:70px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 0}
-.brand{display:flex;align-items:center;gap:10px;font-weight:950;min-width:0}
-.brand img{width:46px;height:46px;border-radius:14px;box-shadow:var(--shadow)}
-.brand .txt{white-space:nowrap}.brand small{display:block;color:var(--muted);font-size:.71rem;font-weight:750}
-.header-actions{margin-left:auto;display:flex;gap:7px;align-items:center;flex-wrap:wrap}
-.device-select,.iconbtn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 10px;color:var(--ink)}
-.nav{
- width:100%;order:3;margin:0;
- display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px
-}
-.nav button{
- min-width:0;border:0;background:transparent;border-radius:12px;padding:9px 5px;font-size:.82rem;font-weight:850;
- color:var(--muted);white-space:normal;text-align:center
-}
-.nav button.active,.nav button:hover{background:var(--lav);color:var(--purple)}
-.hero{padding:24px 0 18px}
-.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}
-.hero-card{
- color:#fff;border-radius:28px;padding:28px;box-shadow:var(--shadow);overflow:hidden;position:relative;
- background:linear-gradient(145deg,#6035d8,#8158f5 58%,#aa8cff)
-}
-.hero-card:after{content:"";position:absolute;width:250px;height:250px;border:32px solid rgba(255,255,255,.11);border-radius:50%;right:-100px;top:-105px}
-.eyebrow{display:inline-flex;gap:7px;align-items:center;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em}
-h1{position:relative;font-size:clamp(2.2rem,5vw,4rem);line-height:1.01;letter-spacing:-.055em;margin:16px 0 12px;z-index:1}
-.hero-card p{position:relative;z-index:1;color:#f6f3ff;max-width:760px}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px;position:relative;z-index:2}
-.btn{border:0;border-radius:14px;padding:11px 14px;font-weight:900}
-.btn.purple{background:var(--purple);color:#fff}.btn.white{background:#fff;color:var(--purple)}
-.btn.gold{background:var(--gold);color:#322500}.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
-.btn.soft{background:var(--lav);color:var(--purple)}
-.card,.panel{background:var(--card);border:1px solid var(--line)}
-.card{border-radius:var(--radius);padding:18px;box-shadow:0 6px 18px rgba(65,55,115,.045)}
-.panel{border-radius:28px;padding:22px;box-shadow:var(--shadow)}
-.card h3,.panel h3{margin:0 0 8px}.card p,.panel p{color:var(--muted)}
-.badge{display:inline-flex;gap:5px;align-items:center;padding:6px 9px;border-radius:999px;background:var(--lav);color:var(--purple);font-size:.73rem;font-weight:900}
-.progress-top{display:grid;grid-template-columns:110px 1fr;gap:13px;align-items:center}
-.ring{width:110px;height:110px;border-radius:50%;display:grid;place-items:center;position:relative;background:conic-gradient(var(--purple) 0deg,#ece8f8 0deg)}
-.ring:before{content:"";position:absolute;inset:11px;background:#fff;border-radius:50%}.ring span{position:relative;font-weight:950;font-size:1.25rem}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
-.stat{background:#faf9ff;border-radius:14px;padding:10px;text-align:center}.stat b{display:block}.stat small{color:var(--muted)}
-.section{display:none;padding:10px 0 34px}.section.active{display:block}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:14px;margin:10px 0 15px}
-.section-head h2{margin:0;font-size:clamp(1.65rem,3vw,2.3rem);letter-spacing:-.03em}.section-head p{margin:5px 0 0;color:var(--muted);max-width:800px}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
-.subject-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.subject-card{border:1px solid var(--line);background:#fff;border-radius:19px;padding:15px;box-shadow:0 5px 16px rgba(64,52,121,.045);transition:.18s;min-width:0}
-.subject-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.subject-card.hidden{opacity:.52;filter:grayscale(.4)}
-.subject-icon{font-size:1.7rem}.subject-card h3{margin:7px 0 4px}.subject-card p{font-size:.88rem}
-.search{display:flex;gap:7px;flex-wrap:wrap}.input,.search input,.search select,textarea{border:1px solid #cfd3e5;background:#fff;border-radius:13px;padding:10px 11px;min-width:0}
-.search input{flex:1}
-.coverage-card{border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px;margin-bottom:12px}
-.coverage-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap}
-.coverage-terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
-.term{border:1px solid #e4dff5;background:#fcfbff;border-radius:14px;padding:12px;min-width:0}
-.term h4{margin:0 0 7px;color:var(--purple)}.term ul{margin:0;padding-left:18px}.term li{margin:5px 0}
-.status-official{background:#e8f7f0;color:#16754f}.status-confirm{background:#fff3ce;color:#7f6100}
-.lesson-layout{display:grid;grid-template-columns:295px minmax(0,1fr);gap:15px}
-.lesson-list{position:sticky;top:130px;align-self:start;max-height:calc(100vh - 155px);overflow-y:auto;overflow-x:hidden}
-.lesson-list button{width:100%;border:0;background:transparent;text-align:left;border-radius:12px;padding:10px;color:#4d566d;font-weight:820}
-.lesson-list button.active,.lesson-list button:hover{background:var(--lav);color:var(--purple)}.lesson-list small{display:block;color:var(--muted);font-weight:650}
-.lesson-main{min-width:0}.lesson-main h2{margin:.35rem 0}
-.easybox{display:grid;grid-template-columns:155px minmax(0,1fr);gap:13px;align-items:center;border:1px solid #e5dffa;background:#fcfbff;border-radius:17px;padding:13px;margin:13px 0}
-.visual{min-height:115px;border:1px solid #ece8fb;border-radius:14px;background:#fff;display:grid;place-items:center;font-size:3.4rem}
-.wordchips{display:flex;flex-wrap:wrap;gap:7px}.chip{font-size:.78rem;font-weight:850;background:#f5f1ff;color:#5e40bc;border-radius:999px;padding:5px 8px}
-.steps{display:grid;gap:8px}.step{display:flex;gap:9px}.stepno{flex:0 0 27px;width:27px;height:27px;border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;font-weight:950}
-.example{border:1px dashed #e4cc7b;background:#fffdf6;border-radius:15px;padding:13px;margin:13px 0}
-.quiz-shell{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:14px}.qtext{font-size:1.18rem;font-weight:900;margin:11px 0}
-.options{display:grid;gap:8px}.option{border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px;text-align:left;font-weight:800}
-.option.selected{background:#f1edff;border-color:var(--purple);color:var(--purple)}
-.qnav{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.qnav button{aspect-ratio:1;border:1px solid var(--line);background:#fff;border-radius:9px}.qnav button.done{background:var(--lav);color:var(--purple)}
-.study-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.timer{font-size:3rem;font-weight:950;letter-spacing:-.05em;text-align:center}
-.reminderbox{border:2px solid #e3d9ff;background:#fcfaff;border-radius:18px;padding:15px}
-.switchline{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.switchline input[type=time]{border:1px solid var(--line);border-radius:12px;padding:9px}
-.status{padding:10px;border-radius:12px;background:#f7f5ff;margin-top:10px;font-size:.88rem}
-.todo{display:grid;gap:8px}.todo-item{display:flex;gap:9px;padding:9px;border:1px solid var(--line);border-radius:11px;background:#fcfbff}
-.hwrow{display:grid;grid-template-columns:minmax(0,1fr) 150px 100px;gap:7px}.hwlist{display:grid;gap:7px;margin-top:10px}.hw{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:8px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:9px}
-.source-list{display:grid;gap:8px}.source{border:1px solid var(--line);background:#fcfbff;border-radius:13px;padding:11px}
-.mimi-dock{position:fixed;right:14px;bottom:14px;z-index:140;display:flex;align-items:end;gap:8px}.mimi-bubble{max-width:235px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:16px 16px 4px 16px;padding:10px 12px;font-size:.9rem}
-.mimi{width:75px;height:75px;border-radius:50%;border:4px solid #fff;box-shadow:0 11px 26px rgba(70,50,145,.23);background:linear-gradient(145deg,#7649ee,#a17fff);position:relative}
-.mimi:before,.mimi:after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:#fff;top:24px}.mimi:before{left:19px}.mimi:after{right:19px}.mimi i{position:absolute;left:50%;top:41px;transform:translateX(-50%);width:22px;height:11px;border:3px solid #fff;border-top:0;border-left:0;border-right:0;border-radius:0 0 14px 14px}.mimi button{position:absolute;inset:0;border:0;background:transparent;border-radius:50%}
-.help-panel{position:fixed;right:14px;bottom:102px;width:min(430px,calc(100vw - 24px));max-height:78vh;overflow:auto;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:22px;padding:15px;z-index:150;display:none}.help-panel.show{display:block}
-.help-head{display:flex;justify-content:space-between;align-items:center}.tabs{display:flex;gap:5px;margin:10px 0}.tabs button{flex:1;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px;font-weight:850}.tabs button.active{background:var(--lav);color:var(--purple)}
-.pane{display:none}.pane.active{display:block}.photo{border:2px dashed #d8cff5;border-radius:15px;padding:11px;background:#fcfbff;text-align:center}.photo img{display:none;max-height:170px;margin:8px auto 0;border-radius:10px}.result{border:1px solid #e4def7;background:#fbfaff;border-radius:14px;padding:12px;margin-top:10px}
-.ai-status{display:flex;gap:8px;align-items:flex-start;border:1px solid #e2dafb;background:#faf8ff;border-radius:13px;padding:10px;margin:8px 0;font-size:.86rem}.ai-dot{width:10px;height:10px;flex:0 0 10px;border-radius:50%;margin-top:5px;background:#9aa0ad}.ai-dot.ready{background:#18a66f}.ai-dot.wait{background:#e1a51e}.equation-read{border:2px solid #dcd0ff;background:#fff;border-radius:16px;padding:12px;margin:10px 0}.equation-read .eq{font-family:"Cambria Math","Times New Roman",serif;font-size:1.45rem;font-weight:800;color:#4d2fc0;text-align:center;padding:8px}.balance-step{display:grid;grid-template-columns:34px minmax(0,1fr);gap:9px;align-items:start;margin:9px 0}.balance-step .num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#6c3cf0;color:#fff;font-weight:950}.check-box{border:1px solid #ccebdc;background:#f3fcf7;color:#12623f;border-radius:12px;padding:10px;margin-top:10px}.smart-answer{white-space:pre-wrap;line-height:1.6}.mini-muted{font-size:.8rem;color:var(--muted)}.note{font-size:.85rem;color:var(--muted);background:#f8f7fc;border-radius:10px;padding:8px}
-.modal{position:fixed;inset:0;z-index:190;background:rgba(27,26,47,.6);display:none;align-items:center;justify-content:center;padding:14px}.modal.show{display:flex}.modal-card{width:min(760px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:22px;padding:20px}.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.toggles{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.toggle{display:flex;gap:7px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px}
-.toast{position:fixed;right:16px;bottom:16px;z-index:230;background:#24223b;color:#fff;padding:11px 14px;border-radius:11px;opacity:0;transform:translateY(10px);transition:.2s}.toast.show{opacity:1;transform:none}
-.footer{padding:20px 0 50px;text-align:center;color:var(--muted);font-size:.83rem}
-.good{color:var(--good)}.bad{color:var(--bad)}.feedback{font-weight:850;margin-top:8px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #9dc7ff;outline-offset:2px}
+.wrap{width:min(1160px,calc(100% - 24px));margin:auto}
+.topbar{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topin{min-height:66px;display:flex;align-items:center;gap:10px}
+.brand{display:flex;gap:9px;align-items:center;min-width:0;font-weight:950}
+.brand img{width:43px;height:43px;border-radius:13px;box-shadow:var(--shadow)}
+.brand small{display:block;color:var(--muted);font-weight:700;font-size:.7rem}
+.brandtxt{white-space:nowrap}
+.topactions{margin-left:auto;display:flex;gap:6px;align-items:center}
+.iconbtn,.device{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:12px;padding:8px 10px}
+.desktop-nav{display:flex;gap:5px}
+.desktop-nav button{border:0;background:transparent;border-radius:11px;padding:9px 10px;font-weight:850;color:var(--muted)}
+.desktop-nav button.active,.desktop-nav button:hover{background:var(--lav);color:var(--purple)}
+.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:100;background:rgba(255,255,255,.97);border-top:1px solid var(--line);display:none;grid-template-columns:repeat(4,1fr);padding:6px max(8px,env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));box-shadow:0 -8px 25px rgba(52,42,108,.08)}
+.bottom-nav button{border:0;background:transparent;border-radius:12px;padding:6px 3px;color:var(--muted);font-weight:800;font-size:.72rem;min-width:0}
+.bottom-nav button span{display:block;font-size:1.25rem;line-height:1.1}
+.bottom-nav button.active{background:var(--lav);color:var(--purple)}
+.hero{padding:20px 0 14px}
+.hero-card{background:linear-gradient(145deg,#6036d9,#7f58f2 58%,#ad92ff);color:#fff;border-radius:27px;padding:25px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.hero-card:after{content:"";position:absolute;width:230px;height:230px;border:30px solid rgba(255,255,255,.10);border-radius:50%;right:-100px;top:-105px}
+.eyebrow,.badge{display:inline-flex;gap:5px;align-items:center;padding:6px 9px;border-radius:999px;font-size:.72rem;font-weight:900}
+.eyebrow{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);text-transform:uppercase;letter-spacing:.05em}
+.badge{background:var(--lav);color:var(--purple)}
+h1{font-size:clamp(2rem,5vw,3.7rem);line-height:1.02;letter-spacing:-.05em;margin:14px 0 9px;position:relative;z-index:1}
+.hero-card p{color:#f7f4ff;max-width:720px;position:relative;z-index:1;margin-bottom:0}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.btn{border:0;border-radius:14px;padding:10px 14px;font-weight:900}
+.btn.purple{background:var(--purple);color:white}.btn.white{background:#fff;color:var(--purple)}.btn.gold{background:var(--gold);color:#312400}.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}.btn.soft{background:var(--lav);color:var(--purple)}
+.section{display:none;padding:8px 0 28px}.section.active{display:block}
+.section-head{display:flex;justify-content:space-between;gap:12px;align-items:end;margin:10px 0 14px}.section-head h2{margin:0;font-size:clamp(1.55rem,3vw,2.15rem);letter-spacing:-.025em}.section-head p{margin:4px 0 0;color:var(--muted);max-width:780px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:17px;box-shadow:0 6px 18px rgba(62,50,120,.045);min-width:0}
+.card h3{margin:0 0 7px}.card p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.home-action{display:flex;flex-direction:column;min-height:170px}.home-action .bigicon{font-size:2rem}.home-action .btn{margin-top:auto;width:max-content}
+.today{display:grid;gap:8px}.todo{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);background:#fcfbff;border-radius:12px;padding:9px}
+.searchrow{display:flex;gap:7px;flex-wrap:wrap}.input,textarea{border:1px solid #ccd2e4;background:#fff;border-radius:13px;padding:10px 11px;min-width:0}.searchrow .input{flex:1}
+.subject-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.subject-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;min-width:0;transition:.16s;box-shadow:0 5px 15px rgba(60,50,118,.04)}
+.subject-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.subject-card.hidden{display:none}.subject-icon{font-size:1.8rem}.subject-card h3{margin:7px 0 4px}.subject-card p{font-size:.86rem;margin:0 0 10px}.progressline{height:7px;background:#eeeaf8;border-radius:999px;overflow:hidden}.progressline i{display:block;height:100%;background:var(--purple)}
+.subject-view{display:none}.subject-view.show{display:block}.subject-picker.hide{display:none}
+.subject-hero{display:flex;gap:12px;align-items:center;background:linear-gradient(135deg,#f7f3ff,#fff);border:1px solid #ded5fa;border-radius:20px;padding:16px}.subject-hero .ico{font-size:3rem}.subject-hero h2{margin:0}.subject-hero p{margin:3px 0;color:var(--muted)}
+.backbtn{border:0;background:transparent;color:var(--purple);font-weight:900;padding:5px 0;margin-bottom:8px}
+.subtabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:12px 0}.subtabs button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 6px;font-weight:850;color:var(--muted);min-width:0}.subtabs button.active{background:var(--lav);border-color:#cbbdff;color:var(--purple)}
+.subpane{display:none}.subpane.active{display:block}
+.termgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.term{border:1px solid var(--line);background:#fcfbff;border-radius:14px;padding:12px}.term h4{margin:0 0 7px;color:var(--purple)}.unit{border-top:1px solid #ece8f5;padding:8px 0}.unit:first-of-type{border-top:0}.unit b{display:block}
+.learnlist{display:grid;gap:9px}.learncard{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff}.learncard h4{margin:0 0 4px}.learncard p{margin:0 0 8px;color:var(--muted);font-size:.9rem}
+.lesson-full{border:1px solid #ded6f9;background:#fcfbff;border-radius:16px;padding:14px}.easy{display:grid;grid-template-columns:100px minmax(0,1fr);gap:12px;align-items:center}.lesson-icon{height:95px;border-radius:15px;background:#fff;border:1px solid #e9e4f8;display:grid;place-items:center;font-size:3rem}.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.chip{background:var(--lav);color:#5b42ae;border-radius:999px;padding:5px 8px;font-size:.75rem;font-weight:800}.steps{display:grid;gap:7px}.step{display:flex;gap:8px}.num{flex:0 0 27px;width:27px;height:27px;border-radius:50%;display:grid;place-items:center;background:var(--purple);color:#fff;font-weight:950}.example{background:#fffdf6;border:1px dashed #e2ca72;border-radius:13px;padding:11px;margin:10px 0}
+.practicebox{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:12px}.qtext{font-size:1.12rem;font-weight:900;margin:8px 0 11px}.options{display:grid;gap:7px}.option{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px;text-align:left;font-weight:800}.option.selected{background:var(--lav);border-color:var(--purple);color:var(--purple)}.qnav{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.qnav button{aspect-ratio:1;border:1px solid var(--line);background:#fff;border-radius:9px}.qnav button.done{background:var(--lav);color:var(--purple)}
+.study-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.timer{font-size:2.8rem;font-weight:950;text-align:center;letter-spacing:-.04em}.reminder{border:2px solid #e0d6ff;background:#fcfaff;border-radius:17px;padding:14px}.status{font-size:.84rem;color:var(--muted);background:#f8f6ff;border-radius:10px;padding:8px;margin-top:8px}.hwrow{display:grid;grid-template-columns:minmax(0,1fr) 150px 90px;gap:7px}.hwlist{display:grid;gap:7px;margin-top:9px}.hw{display:grid;grid-template-columns:100px minmax(0,1fr) auto;gap:8px;align-items:center;border:1px solid var(--line);border-radius:11px;padding:8px}
+.mimi-shell{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:13px}.mimi-main{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px}.mimi-side{background:#fcfbff;border:1px solid var(--line);border-radius:20px;padding:14px;height:max-content}.ai-status{display:flex;gap:7px;align-items:center;background:#f8f6ff;border-radius:11px;padding:8px;font-size:.84rem}.dot{width:9px;height:9px;border-radius:50%;background:#a0a0a0}.dot.ok{background:#22a36a}.dot.wait{background:#e5a92e}
+.modechips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin:10px 0}.modechips button{border:1px solid var(--line);background:#fff;border-radius:11px;padding:8px 5px;font-weight:800;color:var(--muted)}.modechips button.active{background:var(--lav);border-color:#cdbfff;color:var(--purple)}
+.tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;margin:10px 0}.tabs button{border:1px solid var(--line);background:#fff;border-radius:11px;padding:8px;font-weight:850}.tabs button.active{background:var(--lav);color:var(--purple)}
+.pane{display:none}.pane.active{display:block}.photo{border:2px dashed #d6ccf7;background:#fcfbff;border-radius:15px;padding:11px;text-align:center}.photo img{display:none;max-height:190px;margin:8px auto 0;border-radius:10px}.result{border:1px solid #ded7f6;background:#fbfaff;border-radius:15px;padding:13px;margin-top:10px;white-space:normal}.result h4{margin:.4rem 0}.result ol{padding-left:20px}.answer-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.note{font-size:.84rem;color:var(--muted);background:#f8f7fc;border-radius:10px;padding:8px}.good{color:var(--good)}.bad{color:var(--bad)}.feedback{font-weight:850;margin-top:7px}
+.modal{position:fixed;inset:0;z-index:180;background:rgba(25,24,45,.58);display:none;align-items:center;justify-content:center;padding:14px}.modal.show{display:flex}.modal-card{width:min(760px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:21px;padding:19px}.settingsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.toggles{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}.toggle{display:flex;gap:7px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px}
+.toast{position:fixed;right:14px;bottom:78px;z-index:220;background:#24213c;color:#fff;border-radius:11px;padding:10px 13px;opacity:0;transform:translateY(10px);transition:.2s}.toast.show{opacity:1;transform:none}
 body.large{font-size:18px}body.highcontrast{--bg:#fff;--card:#fff;--ink:#000;--muted:#222;--line:#000;--lav:#eee}
-
-/* Device mode — deliberately no sideways scrolling */
-body[data-device="phone"] .wrap{width:min(480px,calc(100% - 20px))}
-body[data-device="phone"] .hero-grid,
-body[data-device="phone"] .grid,
-body[data-device="phone"] .grid.two,
-body[data-device="phone"] .subject-grid,
-body[data-device="phone"] .coverage-terms,
-body[data-device="phone"] .lesson-layout,
-body[data-device="phone"] .quiz-shell,
-body[data-device="phone"] .study-grid,
-body[data-device="phone"] .settings-grid,
-body[data-device="phone"] .toggles{grid-template-columns:1fr}
-body[data-device="phone"] .nav{grid-template-columns:repeat(4,minmax(0,1fr))}
-body[data-device="phone"] .lesson-list{position:static;max-height:none;display:grid;grid-template-columns:1fr}
-body[data-device="phone"] .easybox{grid-template-columns:1fr}
+body[data-device="phone"] .wrap{width:min(480px,calc(100% - 18px))}
+body[data-device="phone"] .desktop-nav{display:none}
+body[data-device="phone"] .bottom-nav{display:grid}
+body[data-device="phone"] .brandtxt{display:none}
+body[data-device="phone"] .grid,body[data-device="phone"] .grid.two,body[data-device="phone"] .subject-grid,body[data-device="phone"] .termgrid,body[data-device="phone"] .study-grid,body[data-device="phone"] .mimi-shell,body[data-device="phone"] .practicebox,body[data-device="phone"] .settingsgrid,body[data-device="phone"] .toggles{grid-template-columns:1fr}
+body[data-device="phone"] .subtabs{grid-template-columns:repeat(2,1fr)}
+body[data-device="phone"] .easy{grid-template-columns:1fr}
 body[data-device="phone"] .hwrow{grid-template-columns:1fr}
-body[data-device="phone"] .brand .txt{display:none}
-
-body[data-device="tablet"] .wrap{width:min(820px,calc(100% - 24px))}
-body[data-device="tablet"] .subject-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-body[data-device="tablet"] .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-body[data-device="tablet"] .lesson-layout{grid-template-columns:240px minmax(0,1fr)}
-body[data-device="tablet"] .nav{grid-template-columns:repeat(4,minmax(0,1fr))}
-
-body[data-device="laptop"] .wrap{width:min(1220px,calc(100% - 30px))}
-
-@media(max-width:900px){
- body[data-device="auto"] .hero-grid,body[data-device="auto"] .quiz-shell,body[data-device="auto"] .study-grid{grid-template-columns:1fr}
- body[data-device="auto"] .subject-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- body[data-device="auto"] .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- body[data-device="auto"] .lesson-layout{grid-template-columns:1fr}
- body[data-device="auto"] .lesson-list{position:static;max-height:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
- body[data-device="auto"] .nav{grid-template-columns:repeat(4,minmax(0,1fr))}
+body[data-device="tablet"] .wrap{width:min(820px,calc(100% - 22px))}
+body[data-device="tablet"] .subject-grid{grid-template-columns:repeat(2,1fr)}
+body[data-device="tablet"] .grid{grid-template-columns:repeat(2,1fr)}
+body[data-device="tablet"] .desktop-nav{display:none}
+body[data-device="tablet"] .bottom-nav{display:grid}
+body[data-device="tablet"] .termgrid{grid-template-columns:1fr 1fr}
+body[data-device="laptop"] .wrap{width:min(1160px,calc(100% - 28px))}
+@media(max-width:860px){
+ body[data-device="auto"] .desktop-nav{display:none}
+ body[data-device="auto"] .bottom-nav{display:grid}
+ body[data-device="auto"] .grid,body[data-device="auto"] .grid.two,body[data-device="auto"] .study-grid,body[data-device="auto"] .mimi-shell,body[data-device="auto"] .practicebox{grid-template-columns:1fr}
+ body[data-device="auto"] .subject-grid{grid-template-columns:repeat(2,1fr)}
+ body[data-device="auto"] .termgrid{grid-template-columns:1fr 1fr}
 }
-@media(max-width:600px){
- body[data-device="auto"] .wrap{width:min(100% - 20px,480px)}
- body[data-device="auto"] .hero-grid,body[data-device="auto"] .grid,body[data-device="auto"] .grid.two,body[data-device="auto"] .subject-grid,body[data-device="auto"] .coverage-terms,body[data-device="auto"] .study-grid,body[data-device="auto"] .settings-grid,body[data-device="auto"] .toggles{grid-template-columns:1fr}
- body[data-device="auto"] .nav{grid-template-columns:repeat(4,minmax(0,1fr))}
- body[data-device="auto"] .brand .txt{display:none}
- body[data-device="auto"] .lesson-list{grid-template-columns:1fr}
- body[data-device="auto"] .easybox{grid-template-columns:1fr}
+@media(max-width:560px){
+ body[data-device="auto"] .wrap{width:min(480px,calc(100% - 18px))}
+ body[data-device="auto"] .brandtxt{display:none}
+ body[data-device="auto"] .subject-grid,body[data-device="auto"] .termgrid,body[data-device="auto"] .settingsgrid,body[data-device="auto"] .toggles{grid-template-columns:1fr}
+ body[data-device="auto"] .subtabs{grid-template-columns:repeat(2,1fr)}
+ body[data-device="auto"] .easy{grid-template-columns:1fr}
  body[data-device="auto"] .hwrow{grid-template-columns:1fr}
- .mimi-bubble{display:none}
+ .device{max-width:106px}
 }
 </style>
 </head>
 <body data-device="auto">
 <header class="topbar">
  <div class="wrap topin">
-  <div class="brand"><img src="icons/icon-192.png" alt=""><span class="txt">Ariana's Purple Study Buddy<small>Grade 8 • Jamaica • smarter Mimi tutor</small></span></div>
-  <div class="header-actions">
-   <select class="device-select" id="deviceMode" aria-label="Device layout">
-    <option value="auto">Auto layout</option><option value="phone">Phone</option><option value="tablet">Tablet</option><option value="laptop">Laptop</option>
-   </select>
-   <button class="iconbtn" id="installBtn" hidden>⬇ Install</button>
-   <button class="iconbtn" id="settingsBtn">⚙️</button>
-   <button class="iconbtn" id="accessBtn">Aa</button>
-  </div>
-  <nav class="nav">
-   <button data-go="home" class="active">Home</button>
-   <button data-go="subjects">Subjects</button>
-   <button data-go="coverage">Curriculum</button>
-   <button data-go="learn">Learn</button>
-   <button data-go="quiz">Quiz</button>
-   <button data-go="study">Study</button>
-   <button data-go="sources">Sources</button>
+  <div class="brand"><img src="icons/icon-192.png" alt=""><span class="brandtxt">Ariana's Study Buddy<small>Smart Grade 8 tutor • purple edition</small></span></div>
+  <nav class="desktop-nav">
+   <button data-go="home" class="active">Home</button><button data-go="subjects">Subjects</button><button data-go="study">Study</button><button data-go="mimi">Mimi</button>
   </nav>
+  <div class="topactions">
+   <select id="deviceMode" class="device"><option value="auto">Auto</option><option value="phone">Phone</option><option value="tablet">Tablet</option><option value="laptop">Laptop</option></select>
+   <button id="installBtn" class="iconbtn" hidden>⬇</button><button id="settingsBtn" class="iconbtn">⚙️</button><button id="accessBtn" class="iconbtn">Aa</button>
+  </div>
  </div>
 </header>
 
-<div class="wrap hero">
- <div class="hero-grid">
-  <section class="hero-card">
-   <div class="eyebrow">💜 Ariana • Grade 8 • Smart Tutor Edition</div>
-   <h1>A real study helper — not just a pretty interface.</h1>
-   <p>Install it from Chrome, choose Phone/Tablet/Laptop layout, set a daily reminder, and use Mimi as a real tutor. Mimi now understands generic algebra such as 3n + 2 = 17, checks her answers, and can use Chrome’s built-in AI on compatible laptops.</p>
-   <div class="actions">
-    <button class="btn gold" id="heroInstall">Install Ariana's app</button>
-    <button class="btn white" data-go="coverage">See curriculum coverage</button>
-    <button class="btn white" id="heroReminder">Set daily reminder</button>
-   </div>
-  </section>
-  <aside class="panel">
-   <div class="progress-top"><div class="ring" id="ring"><span id="pct">0%</span></div><div><span class="badge">Ariana's progress</span><h3 style="margin:.55rem 0 .2rem">Understanding first.</h3><p style="margin:0">No pressure to race through topics.</p></div></div>
-   <div class="stats"><div class="stat"><b id="lessonStat">0</b><small>lessons</small></div><div class="stat"><b id="quizStat">—</b><small>quiz avg.</small></div><div class="stat"><b id="taskStat">0</b><small>tasks</small></div></div>
-  </aside>
- </div>
+<nav class="bottom-nav">
+ <button data-go="home" class="active"><span>🏠</span>Home</button>
+ <button data-go="subjects"><span>📚</span>Subjects</button>
+ <button data-go="study"><span>⏱️</span>Study</button>
+ <button data-go="mimi"><span>💜</span>Mimi</button>
+</nav>
+
+<div class="wrap hero" id="hero">
+ <section class="hero-card">
+  <div class="eyebrow">💜 Made for Ariana</div>
+  <h1>One place. Every subject. One friendly tutor.</h1>
+  <p>Choose a subject, learn one small idea, practise it, or ask Mimi. The complicated curriculum stays in the background and helps Mimi know what Grade 8 topic Ariana is working on.</p>
+  <div class="actions"><button class="btn gold" id="continueBtn">Continue studying</button><button class="btn white" data-go="subjects">Choose a subject</button><button class="btn white" data-go="mimi">Ask Mimi</button></div>
+ </section>
 </div>
 
 <main class="wrap">
 <section id="home" class="section active">
- <div class="section-head"><div><h2>Hi Ariana 👋</h2><p>The app is designed so nothing should require sideways scrolling. The navigation wraps, cards shrink properly, and you can force a Phone, Tablet or Laptop layout at any time.</p></div></div>
+ <div class="section-head"><div><h2>What would you like to do?</h2><p>Four simple choices. No searching through lots of menus.</p></div></div>
  <div class="grid">
-  <article class="card"><span class="badge">1 • Know the map</span><h3>Curriculum coverage</h3><p>See each subject by term and unit, with a status showing whether it was matched to an official Ministry guide or needs school sequencing confirmed.</p><button class="btn purple" data-go="coverage">Open curriculum</button></article>
-  <article class="card"><span class="badge">2 • Learn simply</span><h3>Small lessons</h3><p>Every topic is broken into easy words, small steps, examples and a quick check.</p><button class="btn ghost" data-go="learn">Open lessons</button></article>
-  <article class="card"><span class="badge">3 • Build a habit</span><h3>Daily study reminder</h3><p>Choose a study time. The app can notify while open and use Chrome background support where available; an exact calendar backup is included too.</p><button class="btn ghost" id="homeReminder">Reminder settings</button></article>
+  <article class="card home-action"><div class="bigicon">▶️</div><h3>Continue</h3><p id="continueText">Pick up from the last subject Ariana used.</p><button class="btn purple" id="continueCard">Continue</button></article>
+  <article class="card home-action"><div class="bigicon">📚</div><h3>Choose a subject</h3><p>See all Ariana's Grade 8 subjects in one clear grid.</p><button class="btn ghost" data-go="subjects">Subjects</button></article>
+  <article class="card home-action"><div class="bigicon">💜</div><h3>I'm stuck</h3><p>Type or photograph a question. Mimi will identify the subject and choose the right way to help.</p><button class="btn ghost" data-go="mimi">Ask Mimi</button></article>
  </div>
- <div class="section-head" style="margin-top:26px"><div><h2>Today's short plan</h2><p>A mixed plan changes daily so Ariana keeps reviewing old material while learning new material.</p></div></div>
- <div class="grid two">
-  <article class="card"><div id="todayTasks" class="todo"></div><div class="actions"><button class="btn purple" data-go="study">Open study centre</button><button class="btn ghost" id="shuffleToday">Change mix</button></div></article>
-  <article class="card"><h3>Why short sessions?</h3><p>One small concept + a few questions + correcting mistakes is usually more useful than rereading a long page.</p><div class="todo"><div class="todo-item"><b>3 min</b><span>Recall something from yesterday.</span></div><div class="todo-item"><b>7 min</b><span>Learn one small idea.</span></div><div class="todo-item"><b>7 min</b><span>Try a few questions.</span></div><div class="todo-item"><b>3 min</b><span>Fix mistakes.</span></div></div></article>
- </div>
- <div class="section-head" style="margin-top:26px"><div><h2>Homework notes</h2><p>Saved only on this device.</p></div></div>
- <div class="card"><div class="hwrow"><input class="input" id="hwText" placeholder="e.g. Finish Science worksheet"><select class="input" id="hwSubject"></select><button class="btn purple" id="addHw">Add</button></div><div class="hwlist" id="hwList"></div></div>
+ <div class="section-head" style="margin-top:24px"><div><h2>Today's short plan</h2><p>Small mixed practice helps old learning stay fresh while new learning is added.</p></div></div>
+ <div class="grid two"><article class="card"><div id="todayTasks" class="today"></div><div class="actions"><button class="btn purple" data-go="study">Study centre</button><button class="btn ghost" id="shuffleToday">Change plan</button></div></article><article class="card"><h3>Ariana's progress</h3><div class="today"><div class="todo"><b id="lessonStat">0</b><span>lessons or curriculum units reviewed</span></div><div class="todo"><b id="quizStat">—</b><span>recent quiz average</span></div><div class="todo"><b id="taskStat">0</b><span>study tasks completed</span></div></div></article></div>
 </section>
 
 <section id="subjects" class="section">
- <div class="section-head"><div><h2>Subjects</h2><p>This build includes Mathematics, English, Integrated Science, Social Studies, French, Spanish, IT, Civics, Resource & Technology, Religious Education, PE, Music, Drama, Visual Arts, Career Education and HFLE.</p></div><div class="search"><input id="subjectSearch" placeholder="Search subjects"></div></div>
- <div class="subject-grid" id="subjectGrid"></div>
-</section>
-
-<section id="coverage" class="section">
- <div class="section-head"><div><h2>Grade 8 curriculum coverage</h2><p>This is the master map. “Official guide matched” means the unit/strand was checked against a Jamaican Ministry curriculum source. “Confirm school sequence” means the subject is recognized but Holy Childhood may arrange the sequence differently or a current public Grade 8 guide was not located.</p></div><div class="search"><input id="coverageSearch" placeholder="Search units, e.g. binary, weather, algebra"></div></div>
- <div id="coverageList"></div>
-</section>
-
-<section id="learn" class="section">
- <div class="section-head"><div><h2>Simple learning library</h2><p>Detailed lessons are included for common trouble spots. Every curriculum unit also has a Quick Guide so no syllabus unit is left as an empty card.</p></div><div class="search"><input id="lessonSearch" placeholder="Search all units and lessons"></div></div>
- <div class="lesson-layout"><aside class="card lesson-list" id="lessonList"></aside><article class="card lesson-main" id="lessonMain"></article></div>
-</section>
-
-<section id="quiz" class="section">
- <div class="section-head"><div><h2>Quick quiz</h2><p>Choose a subject or mix subjects. Explanations appear after the quiz.</p></div><div class="search"><select id="quizSubject" class="input"></select><select id="quizLength" class="input"><option value="5">5 questions</option><option value="10" selected>10 questions</option></select><button class="btn purple" id="startQuiz">Start</button></div></div>
- <div id="quizStart" class="card"><h3>Ready when you are</h3><p>There is no timer. This is practice, not pressure.</p></div>
- <div id="quizShell" class="quiz-shell" style="display:none"><article class="card"><div class="badge" id="qCount"></div><div class="qtext" id="qText"></div><div class="options" id="qOptions"></div><div class="actions"><button class="btn ghost" id="prevQ">Back</button><button class="btn purple" id="nextQ">Next</button><button class="btn soft" id="helpQ">Ask Mimi</button></div></article><aside class="card"><h3>Questions</h3><div class="qnav" id="qNav"></div><button class="btn gold" id="finishQuiz" style="width:100%;margin-top:12px">Finish</button></aside></div>
- <div id="quizResult" style="display:none"></div>
+ <div class="subject-picker" id="subjectPicker">
+  <div class="section-head"><div><h2>Choose a subject</h2><p>Tap one card. Everything for that subject opens in one place.</p></div><div class="searchrow"><input id="subjectSearch" class="input" placeholder="Search subject"></div></div>
+  <div class="subject-grid" id="subjectGrid"></div>
+ </div>
+ <div class="subject-view" id="subjectView">
+  <button class="backbtn" id="backSubjects">← All subjects</button>
+  <div class="subject-hero"><div class="ico" id="subjectIcon"></div><div><h2 id="subjectTitle"></h2><p id="subjectSummary"></p></div></div>
+  <div class="subtabs"><button class="active" data-subtab="overview">What to learn</button><button data-subtab="teach">Teach me</button><button data-subtab="practice">Practise</button><button data-subtab="ask">Ask Mimi</button></div>
+  <div id="sub-overview" class="subpane active"></div>
+  <div id="sub-teach" class="subpane"></div>
+  <div id="sub-practice" class="subpane"></div>
+  <div id="sub-ask" class="subpane"></div>
+ </div>
 </section>
 
 <section id="study" class="section">
- <div class="section-head"><div><h2>Study centre</h2><p>Set the daily reminder, use a 20-minute timer and follow the catch-up plan.</p></div></div>
+ <div class="section-head"><div><h2>Study centre</h2><p>Timer, daily reminder, homework and a short weekly plan — all in one place.</p></div></div>
  <div class="study-grid">
-  <article class="card"><h3>20-minute focus timer</h3><div class="timer" id="timerFace">20:00</div><div class="actions" style="justify-content:center"><button class="btn purple" id="timerStart">Start</button><button class="btn ghost" id="timerPause">Pause</button><button class="btn ghost" id="timerReset">Reset</button></div><p class="note">Stop sooner if the task is complete or Ariana needs a break.</p></article>
-  <article class="reminderbox">
-   <span class="badge">🔔 Daily study reminder</span>
-   <h3>Choose Ariana's study time</h3>
-   <div class="switchline"><label><input type="checkbox" id="reminderEnabled"> Enable reminder</label><input type="time" id="reminderTime" value="18:00"></div>
-   <div class="actions"><button class="btn purple" id="saveReminder">Save & allow notifications</button><button class="btn ghost" id="testReminder">Test notification</button><button class="btn ghost" id="calendarBackup">Download exact calendar backup</button></div>
-   <div class="status" id="reminderStatus"></div>
-  </article>
+  <article class="card"><h3>20-minute focus timer</h3><div class="timer" id="timerFace">20:00</div><div class="actions" style="justify-content:center"><button class="btn purple" id="timerStart">Start</button><button class="btn ghost" id="timerPause">Pause</button><button class="btn ghost" id="timerReset">Reset</button></div><p class="note">Ariana can stop earlier if she finishes the task or needs a break.</p></article>
+  <article class="reminder"><span class="badge">🔔 Daily reminder</span><h3>Choose a study time</h3><div class="actions"><label><input type="checkbox" id="reminderEnabled"> On</label><input type="time" id="reminderTime" class="input" value="18:00"></div><div class="actions"><button class="btn purple" id="saveReminder">Save reminder</button><button class="btn ghost" id="testReminder">Test</button><button class="btn ghost" id="calendarBackup">Exact calendar backup</button></div><div class="status" id="reminderStatus"></div></article>
  </div>
- <div class="card" style="margin-top:14px"><h3>4-week confidence plan</h3><div id="planBox"></div></div>
+ <div class="grid two" style="margin-top:13px">
+  <article class="card"><h3>Homework</h3><div class="hwrow"><input id="hwText" class="input" placeholder="e.g. Finish French worksheet"><select id="hwSubject" class="input"></select><button id="addHw" class="btn purple">Add</button></div><div id="hwList" class="hwlist"></div></article>
+  <article class="card"><h3>4-week confidence plan</h3><div id="planBox" class="today"></div></article>
+ </div>
 </section>
 
-<section id="sources" class="section">
- <div class="section-head"><div><h2>Curriculum & technical sources</h2><p>The app is an independent study aid, not an official Holy Childhood app. Curriculum areas are based mainly on Jamaican Ministry materials; the install/reminder behavior follows current web-platform capabilities.</p></div></div>
- <div class="source-list" id="sourceList"></div>
+<section id="mimi" class="section">
+ <div class="section-head"><div><h2>💜 Mimi</h2><p>Tell Mimi what you need: explain it, give a hint, check Ariana's answer, or quiz her.</p></div></div>
+ <div class="mimi-shell">
+  <div class="mimi-main">
+   <div class="ai-status"><span class="dot" id="aiDot"></span><span id="aiStatusText">Checking Smart Mimi…</span></div>
+   <div class="modechips"><button class="active" data-mode="explain">Explain</button><button data-mode="hint">Hint only</button><button data-mode="check">Check my answer</button><button data-mode="quizme">Quiz me</button></div>
+   <div class="tabs"><button class="active" data-pane="typePane">⌨️ Type</button><button data-pane="photoPane">📷 Photo</button></div>
+   <div id="typePane" class="pane active">
+    <select id="assistSubject" class="input" style="width:100%;margin-bottom:7px"><option value="auto">✨ Auto-detect subject</option></select>
+    <textarea id="assistQuestion" rows="5" style="width:100%" placeholder="Type the exact question here. If Ariana already tried it, include her answer too."></textarea>
+    <input id="studentAttempt" class="input" style="width:100%;margin-top:7px" placeholder="Optional: Ariana's answer or what she tried">
+    <div class="actions"><button class="btn purple" id="mimiGo">Help me</button><button class="btn soft" id="smartGo" hidden>✨ Smart Mimi</button></div>
+   </div>
+   <div id="photoPane" class="pane">
+    <div class="photo"><b>Take or choose a clear photo</b><p class="note">Mimi will try to read the question, detect the subject, and use the correct tutor style.</p><input type="file" id="photoInput" accept="image/*" capture="environment"><img id="photoPreview" alt="Homework preview"><div class="actions" style="justify-content:center"><button class="btn purple" id="readPhoto">Read & help</button><button class="btn soft" id="smartPhoto" hidden>✨ Smart photo</button></div><div id="ocrStatus" class="note">Printed text works best on phones. Compatible desktop Chrome can use the image directly with Smart Mimi.</div></div>
+    <textarea id="ocrText" rows="4" style="width:100%;margin-top:7px" placeholder="What Mimi read will appear here. Correct anything that is wrong."></textarea>
+    <button id="explainOcr" class="btn purple" style="margin-top:7px">Use corrected text</button>
+   </div>
+   <div class="result" id="assistResult"><b>Mimi says:</b><p>Send me the question. I will first work out what subject it belongs to, then use the right kind of explanation.</p></div>
+  </div>
+  <aside class="mimi-side">
+   <h3>How Mimi helps</h3>
+   <div class="today">
+    <div class="todo"><span>➗</span><span><b>Math:</b> calculate, show each step, then check the answer.</span></div>
+    <div class="todo"><span>📚</span><span><b>English:</b> find the instruction word, use evidence, then build the answer.</span></div>
+    <div class="todo"><span>🔬</span><span><b>Science:</b> identify the idea, evidence/variables, then explain cause and effect.</span></div>
+    <div class="todo"><span>🌍</span><span><b>Social/History/Geography:</b> point → explain → Jamaican/Caribbean example.</span></div>
+    <div class="todo"><span>🇫🇷</span><span><b>Languages:</b> meaning → grammar pattern → short example → pronunciation cue where useful.</span></div>
+    <div class="todo"><span>🎨</span><span><b>Practical/creative subjects:</b> key term → what to do → example → how to improve.</span></div>
+   </div>
+   <div class="actions"><button class="btn ghost" id="sendWA">WhatsApp a trusted adult</button></div>
+  </aside>
+ </div>
 </section>
 </main>
 
-<div class="mimi-dock"><div class="mimi-bubble">Hi Ariana! I can explain a question in smaller steps. 💜</div><div class="mimi"><i></i><button id="mimiOpen" aria-label="Open Mimi"></button></div></div>
-<div class="help-panel" id="helpPanel">
- <div class="help-head"><div><span class="badge">💜 Mimi</span><h3 style="margin:.4rem 0 0">What are you stuck on?</h3></div><button class="iconbtn" id="mimiClose">✕</button></div>
- <div class="tabs"><button class="active" data-pane="typePane">Type</button><button data-pane="photoPane">Photo</button><button data-pane="waPane">WhatsApp</button></div>
- <div id="typePane" class="pane active">
-  <div class="ai-status" id="aiStatus"><span class="ai-dot" id="aiDot"></span><span id="aiStatusText">Checking Smart Mimi availability…</span></div>
-  <select id="assistSubject" class="input" style="width:100%"></select>
-  <textarea id="assistQuestion" rows="4" style="width:100%;margin-top:7px" placeholder="Type the question exactly, e.g. 3n + 2 = 17"></textarea>
-  <div class="actions"><button class="btn purple" id="assistExplain">Explain simply</button><button class="btn soft" id="smartExplain" hidden>✨ Smart Mimi AI</button><button class="btn ghost" id="useQuizQuestion">Use current quiz question</button></div>
- </div>
- <div id="photoPane" class="pane">
-  <div class="photo"><b>📷 Snap or choose a question</b><p class="note">Mimi first tries to read the question. If it looks like maths, she will automatically clean it and solve it in steps.</p><input type="file" id="photoInput" accept="image/*" capture="environment"><img id="photoPreview" alt="Question photo"><div class="actions" style="justify-content:center"><button class="btn purple" id="readPhoto">Read & explain</button><button class="btn soft" id="smartPhoto" hidden>✨ Ask Smart Mimi from photo</button><button class="btn ghost" id="sharePhoto">Share photo for help</button></div><div class="note" id="ocrStatus">Photo reading uses OCR on phones; compatible desktop Chrome can use its built-in AI directly.</div></div><textarea id="ocrText" rows="4" style="width:100%;margin-top:7px" placeholder="What Mimi read appears here. Correct it if needed, then explain again."></textarea><button class="btn purple" id="explainOcr" style="margin-top:7px">Explain corrected text</button>
- </div>
- <div id="waPane" class="pane"><p>Set a trusted WhatsApp contact in Settings. Mimi will prepare a message with the subject and exact question.</p><div class="actions"><button class="btn purple" id="sendWA">Open WhatsApp</button><button class="btn ghost" id="openSettingsHelp">Settings</button></div></div>
- <div class="result" id="assistResult"><b>Mimi says:</b><p>I will explain what I can. If I am not confident, I will say so instead of guessing.</p></div>
-</div>
-
-<div class="modal" id="settingsModal"><div class="modal-card"><h2>Settings</h2><div class="settings-grid"><label><b>Student name</b><input class="input" id="studentName" style="width:100%"></label><label><b>WhatsApp contact name</b><input class="input" id="contactName" style="width:100%" placeholder="e.g. Uncle Glenroy"></label><label style="grid-column:1/-1"><b>WhatsApp number</b><input class="input" id="contactPhone" style="width:100%" inputmode="tel" placeholder="1876XXXXXXX"></label></div><h3>Subjects Ariana takes</h3><div class="toggles" id="subjectToggles"></div><div class="actions"><button class="btn purple" id="saveSettings">Save</button><button class="btn ghost" id="closeSettings">Cancel</button><button class="btn ghost" id="resetApp">Reset app data</button></div></div></div>
-<div class="modal" id="accessModal"><div class="modal-card"><h2>Make it easier to use</h2><div class="actions"><button class="btn ghost" id="toggleLarge">Larger text</button><button class="btn ghost" id="toggleContrast">High contrast</button><button class="btn ghost" id="readPage">Read page aloud</button><button class="btn purple" id="closeAccess">Done</button></div></div></div>
+<div class="modal" id="settingsModal"><div class="modal-card"><h2>Settings</h2><div class="settingsgrid"><label><b>Student name</b><input id="studentName" class="input" style="width:100%"></label><label><b>WhatsApp contact</b><input id="contactName" class="input" style="width:100%" placeholder="e.g. Uncle Glenroy"></label><label style="grid-column:1/-1"><b>WhatsApp number</b><input id="contactPhone" class="input" style="width:100%" inputmode="tel" placeholder="1876XXXXXXX"></label></div><h3>Subjects Ariana takes</h3><div id="subjectToggles" class="toggles"></div><div class="actions"><button id="saveSettings" class="btn purple">Save</button><button id="closeSettings" class="btn ghost">Cancel</button><button id="resetApp" class="btn ghost">Reset app data</button></div><hr style="border:0;border-top:1px solid var(--line);margin:18px 0"><h3>About the curriculum</h3><p class="note">Verified Grade 8 Jamaican curriculum content is built into each subject. Geography and History are also provided as school-subject lenses because the Ministry's Core Curriculum Unit recognizes them, but their exact Holy Childhood Grade 8 sequence should be matched to Ariana's school outline when available.</p><div class="actions"><a class="btn ghost" href="https://moey.gov.jm/curriculum-grades/secondary-level/grade-7-9/" target="_blank" rel="noopener">Ministry Grade 7–9 curriculum</a></div></div></div>
+<div class="modal" id="accessModal"><div class="modal-card"><h2>Make it easier to use</h2><div class="actions"><button id="toggleLarge" class="btn ghost">Larger text</button><button id="toggleContrast" class="btn ghost">High contrast</button><button id="readPage" class="btn ghost">Read page aloud</button><button id="closeAccess" class="btn purple">Done</button></div></div></div>
 <div class="toast" id="toast"></div>
-<footer class="wrap footer">Ariana's Purple Study Buddy • Grade 8 Jamaica study aid • installable PWA when served over HTTPS</footer>
 
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const STORE='ariana-study-v5';
-let state=JSON.parse(localStorage.getItem(STORE)||'{}');
-
+const STORE='ariana-study-v7';
 const subjects={
  math:{name:'Mathematics',icon:'➗',summary:'Numbers, algebra, geometry, data, measurement and graphs.',status:'official'},
  english:{name:'English Language & Literature',icon:'📚',summary:'Speaking, listening, reading, writing, language structure, literature and research.',status:'official'},
@@ -310,7 +239,10 @@ const subjects={
  visual:{name:'Visual Arts',icon:'🎨',summary:'Design process, media, art elements/principles, art history, criticism and creation.',status:'official'},
  career:{name:'Career Education',icon:'🧭',summary:'Self-awareness, career exploration, entry requirements and life/career planning.',status:'official'},
  hfle:{name:'HFLE',icon:'❤️',summary:'Self, relationships, health, sexuality education, eating/fitness, safety and life skills.',status:'official'}
-};
+}
+;
+subjects.geography={name:'Geography',icon:'🗺️',summary:'Maps, Caribbean landscapes, rocks, settlement, hazards, climate and human-environment links.',status:'confirm'};
+subjects.history={name:'History',icon:'🏛️',summary:'Jamaican/Caribbean heritage, people, change over time, evidence and historical explanation.',status:'confirm'};
 
 const curriculum={
  math:{
@@ -620,7 +552,36 @@ const curriculum={
    ]}
   ]
  }
-};
+}
+;
+curriculum.geography={
+ terms:[
+  {name:'Physical Geography lens — confirm school sequence',units:[
+   ['Map skills & location','direction • scale • symbols • coordinates/relative location • reading maps and diagrams'],
+   ['Rocks, relief & Caribbean landscapes','igneous/sedimentary/metamorphic rocks • limestone/karst • mountains/plains/valleys • topography'],
+   ['Human activity & settlement','how relief affects settlement • transport • agriculture • tourism • mining/quarrying'],
+   ['Weather, climate & hazards','weather/climate • hurricanes • floods • drought • earthquakes • preparedness'],
+   ['Environment & sustainability','human impact • pollution • conservation • climate change • biodiversity']
+  ]},
+  {name:'Where this comes from',units:[
+   ['Social Studies/Geography overlap','These themes are strongly represented in the verified Grade 8 Social Studies guide; Holy Childhood may timetable Geography separately.']
+  ]},
+  {name:'School sequence',units:[['Confirm timetable','Use Ariana’s class outline/booklist to match the exact order once available.']]}
+ ]};
+curriculum.history={
+ terms:[
+  {name:'Historical thinking lens — confirm school sequence',units:[
+   ['Using evidence','primary/secondary sources • reliability • point of view • evidence vs opinion'],
+   ['Change over time','causes • consequences • continuity/change • timelines • sequencing events'],
+   ['Jamaican & Caribbean heritage','culture • ancestry • identity • preservation • contribution of groups/individuals'],
+   ['National development','independence/nationalism • institutions • citizenship • development over time'],
+   ['Historical explanation','make a point • use evidence • explain why it matters']
+  ]},
+  {name:'Where this comes from',units:[
+   ['Social Studies/History overlap','Verified Grade 8 Social Studies content includes heritage, culture, nationalism and evidence skills; a separate current public Grade 8 History sequence was not located.']
+  ]},
+  {name:'School sequence',units:[['Confirm timetable','Use Ariana’s History outline/booklist to match exact topics once available.']]}
+ ]};
 
 const detailedLessons=[
  {id:'math-fractions',s:'math',unit:'Fractions: add and subtract',icon:'🍕',easy:'Fractions are pieces of a whole. Before you add or subtract them, make sure the pieces are the same size. The bottom number tells the piece size.',words:['numerator = top number','denominator = bottom number','common denominator = same bottom number'],steps:['Look at the bottom numbers.','Find a bottom number both fractions can use.','Rewrite the fractions with that same bottom number.','Add or subtract only the top numbers.','Simplify if you can.'],example:'2/3 + 1/6 → 4/6 + 1/6 → 5/6',check:'What is 1/4 + 3/8?',answer:'5/8'},
@@ -635,7 +596,6 @@ const detailedLessons=[
  {id:'visual-elements',s:'visual',unit:'Elements & principles of art',icon:'🎨',easy:'Art elements are the building blocks you can see. Design principles are ways artists arrange those building blocks.',words:['line/shape/colour/texture = elements','balance/contrast/emphasis = principles','composition = how parts are arranged'],steps:['Look carefully at the artwork.','Name one element you can see.','Name one principle the artist used.','Explain what effect it creates.'],example:'A bright red object in a mostly grey picture creates contrast and emphasis.',check:'Is colour an element of art or a design principle?',answer:'element'},
  {id:'hfle-emotions',s:'hfle',unit:'Feelings & healthy choices',icon:'💜',easy:'Feelings give you information. Naming the feeling can make it easier to choose what to do next.',words:['feeling = emotional state','coping = healthy way of handling a feeling','trusted adult = safe person to ask for help'],steps:['Notice the feeling.','Name it.','Pause before reacting.','Choose a safe response.','Ask for help if you need it.'],example:'If you are angry, pause before sending a message you may regret.',check:'Name one healthy first step when very upset.',answer:'pause'}
 ];
-
 const questions=[
  {s:'math',q:'What is 2/3 + 1/6?',o:['1/2','5/6','3/9','1'],a:1,why:'Make the bottoms match: 2/3 becomes 4/6, then 4/6 + 1/6 = 5/6.'},
  {s:'math',q:'Solve 3x + 5 = 20.',o:['3','5','15','25'],a:1,why:'Subtract 5 first: 3x=15. Then divide by 3.'},
@@ -661,7 +621,6 @@ const questions=[
  {s:'career',q:'A career pathway is:',o:['the route/steps toward a career','a test score','a school desk','a single hobby'],a:0,why:'A pathway may include subjects, training and experience.'},
  {s:'hfle',q:'If something feels unsafe, a good step is to:',o:['tell a trusted adult','keep harmful secrets','ignore it forever','blame yourself'],a:0,why:'Getting help from a trusted adult is an important safety skill.'}
 ];
-
 const sources=[
  ['Jamaica Ministry — National Standards Curriculum','https://moey.gov.jm/curriculum/','Main Grade 7–9 curriculum portal.'],
  ['Jamaica Ministry — Core Curriculum Unit','https://moey.gov.jm/core-curriculum-unit/','Lists major curriculum subject areas, including French.'],
@@ -685,417 +644,247 @@ const sources=[
  ['Chrome Prompt API','https://developer.chrome.com/docs/ai/prompt-api','Optional Smart Mimi AI on supported desktop Chrome; supports text and image input.']
 ];
 
-state.name=state.name||'Ariana';
-state.contactName=state.contactName||'';
-state.contactPhone=state.contactPhone||'';
-state.device=state.device||'auto';
-state.enabled=state.enabled||Object.fromEntries(Object.keys(subjects).map(k=>[k,true]));
-state.done=state.done||{};
-state.tasks=state.tasks||{};
-state.quizHistory=state.quizHistory||[];
-state.homework=state.homework||[];
-state.seed=state.seed||0;
-state.reminder=state.reminder||{enabled:false,time:'18:00',lastLocal:''};
+state.name=state.name||'Ariana';state.contactName=state.contactName||'';state.contactPhone=state.contactPhone||'';
+state.device=state.device||'auto';state.enabled=state.enabled||Object.fromEntries(Object.keys(subjects).map(k=>[k,true]));
+state.done=state.done||{};state.tasks=state.tasks||{};state.quizHistory=state.quizHistory||[];state.homework=state.homework||[];state.seed=state.seed||0;
+state.reminder=state.reminder||{enabled:false,time:'18:00',lastLocal:''};state.lastSubject=state.lastSubject||'math';state.lastLearn=state.lastLearn||'';
+let activeSubject=state.lastSubject, subjectTab='overview', tutorMode='explain', help={s:'math',q:'',ans:''};
 
-function save(){localStorage.setItem(STORE,JSON.stringify(state));renderStats()}
+function save(){localStorage.setItem(STORE,JSON.stringify(state));renderHomeStats()}
 function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
-function go(id){$$('.section').forEach(s=>s.classList.toggle('active',s.id===id));$$('[data-go]').forEach(b=>b.classList.toggle('active',b.dataset.go===id));history.replaceState(null,'','#'+id);window.scrollTo({top:0,behavior:'smooth'})}
+function go(id){
+ $$('.section').forEach(s=>s.classList.toggle('active',s.id===id));
+ $$('[data-go]').forEach(b=>b.classList.toggle('active',b.dataset.go===id));
+ $('#hero').style.display=id==='home'?'block':'none';
+ history.replaceState(null,'','#'+id);window.scrollTo({top:0,behavior:'smooth'});
+}
 $$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
-
-function enabled(){return Object.keys(subjects).filter(k=>state.enabled[k])}
-function opts(mixed=false){return (mixed?'<option value="all">Mixed subjects</option>':'')+enabled().map(k=>`<option value="${k}">${subjects[k].name}</option>`).join('')}
-function renderStats(){
- const d=Object.values(state.done).filter(Boolean).length;
- const total=detailedLessons.filter(l=>state.enabled[l.s]).length||1;
- const pct=Math.min(100,Math.round(d/total*100));
- $('#lessonStat').textContent=d;$('#pct').textContent=pct+'%';$('#ring').style.background=`conic-gradient(var(--purple) ${pct*3.6}deg,#ece8f8 0deg)`;
+function enabledSubjects(){return Object.keys(subjects).filter(k=>state.enabled[k])}
+function subjectOptions(auto=false){return (auto?'<option value="auto">✨ Auto-detect subject</option>':'')+enabledSubjects().map(k=>`<option value="${k}">${subjects[k].icon} ${subjects[k].name}</option>`).join('')}
+function renderHomeStats(){
+ const d=Object.values(state.done).filter(Boolean).length;$('#lessonStat').textContent=d;
  const q=state.quizHistory.slice(-10);$('#quizStat').textContent=q.length?Math.round(q.reduce((a,b)=>a+b,0)/q.length)+'%':'—';
  $('#taskStat').textContent=Object.values(state.tasks).filter(Boolean).length;
+ const s=subjects[state.lastSubject]||subjects.math;$('#continueText').textContent=`Continue with ${s.icon} ${s.name}.`;
 }
-
+function progressForSubject(s){
+ const all=[];
+ if(curriculum[s])curriculum[s].terms.forEach((t,ti)=>t.units.forEach((u,ui)=>all.push(`unit-${s}-${ti}-${ui}`)));
+ detailedLessons.filter(l=>l.s===s).forEach(l=>all.push(l.id));
+ if(!all.length)return 0;return Math.round(all.filter(id=>state.done[id]).length/all.length*100);
+}
 function renderSubjects(filter=''){
- const f=filter.toLowerCase().trim();
- $('#subjectGrid').innerHTML=Object.entries(subjects).filter(([k,v])=>!f||(v.name+' '+v.summary).toLowerCase().includes(f)).map(([k,v])=>`
- <article class="subject-card ${state.enabled[k]?'':'hidden'}" data-sub="${k}">
-  <div class="subject-icon">${v.icon}</div><span class="badge">${state.enabled[k]?'Included':'Hidden'}</span>
-  <h3>${v.name}</h3><p>${v.summary}</p>
- </article>`).join('');
- $$('[data-sub]').forEach(c=>c.onclick=()=>{const s=c.dataset.sub;if(!state.enabled[s]){openSettings();return}document.querySelector('#coverageSearch').value=subjects[s].name;renderCoverage(subjects[s].name);go('coverage')});
+ const f=filter.trim().toLowerCase();
+ $('#subjectGrid').innerHTML=Object.entries(subjects).filter(([k,v])=>state.enabled[k]&&(!f||(v.name+' '+v.summary).toLowerCase().includes(f))).map(([k,v])=>`
+  <article class="subject-card" data-open-sub="${k}">
+   <div class="subject-icon">${v.icon}</div><h3>${v.name}</h3><p>${v.summary}</p>
+   <div class="progressline"><i style="width:${progressForSubject(k)}%"></i></div><small style="color:var(--muted)">${progressForSubject(k)}% reviewed</small>
+  </article>`).join('');
+ $$('[data-open-sub]').forEach(c=>c.onclick=()=>openSubject(c.dataset.openSub));
 }
 $('#subjectSearch').oninput=e=>renderSubjects(e.target.value);
 
-function renderCoverage(filter=''){
- const f=filter.toLowerCase().trim();
- $('#coverageList').innerHTML=Object.entries(curriculum).filter(([k,v])=>{
-   const blob=subjects[k].name+' '+v.terms.map(t=>t.name+' '+t.units.flat().join(' ')).join(' ');
-   return state.enabled[k] && (!f||blob.toLowerCase().includes(f));
- }).map(([k,v])=>`
- <article class="coverage-card">
-  <div class="coverage-top">
-   <div><span style="font-size:1.55rem">${subjects[k].icon}</span> <b style="font-size:1.15rem">${subjects[k].name}</b><p style="margin:.3rem 0;color:var(--muted)">${subjects[k].summary}</p></div>
-   <span class="badge ${subjects[k].status==='official'?'status-official':'status-confirm'}">${subjects[k].status==='official'?'✓ Official guide matched':'⚠ Confirm school sequence'}</span>
-  </div>
-  <div class="coverage-terms">${v.terms.map(t=>`<div class="term"><h4>${t.name}</h4><ul>${t.units.map(u=>`<li><b>${u[0]}</b><br><span style="color:var(--muted)">${u[1]}</span></li>`).join('')}</ul></div>`).join('')}</div>
- </article>`).join('')||'<div class="card"><p>No matching curriculum units.</p></div>';
+function openSubject(s,tab='overview'){
+ activeSubject=s;state.lastSubject=s;save();subjectTab=tab;
+ $('#subjectPicker').classList.add('hide');$('#subjectView').classList.add('show');
+ $('#subjectIcon').textContent=subjects[s].icon;$('#subjectTitle').textContent=subjects[s].name;$('#subjectSummary').textContent=subjects[s].summary;
+ renderSubjectTab();
+ go('subjects');
 }
-$('#coverageSearch').oninput=e=>renderCoverage(e.target.value);
-
-/* Build learning list: detailed lessons first + one Quick Guide per curriculum unit */
-function allLearnItems(){
- const arr=[...detailedLessons.map(l=>({...l,type:'detail'}))];
- Object.entries(curriculum).forEach(([s,c])=>c.terms.forEach((t,ti)=>t.units.forEach((u,ui)=>{
-  const id=`quick-${s}-${ti}-${ui}`;
-  if(!arr.find(x=>x.id===id))arr.push({id,s,type:'quick',unit:u[0],term:t.name,focus:u[1]});
- })));
+$('#backSubjects').onclick=()=>{$('#subjectView').classList.remove('show');$('#subjectPicker').classList.remove('hide');renderSubjects($('#subjectSearch').value||'')};
+$$('[data-subtab]').forEach(b=>b.onclick=()=>{subjectTab=b.dataset.subtab;renderSubjectTab()});
+function renderSubjectTab(){
+ $$('[data-subtab]').forEach(b=>b.classList.toggle('active',b.dataset.subtab===subjectTab));
+ $$('.subpane').forEach(p=>p.classList.toggle('active',p.id==='sub-'+subjectTab));
+ if(subjectTab==='overview')renderOverview();
+ if(subjectTab==='teach')renderTeach();
+ if(subjectTab==='practice')renderSubjectPractice();
+ if(subjectTab==='ask')renderSubjectAsk();
+}
+function renderOverview(){
+ const c=curriculum[activeSubject];
+ $('#sub-overview').innerHTML=`<div class="termgrid">${(c?.terms||[]).map((t,ti)=>`<div class="term"><h4>${t.name}</h4>${t.units.map((u,ui)=>`<div class="unit"><b>${u[0]}</b><span style="color:var(--muted);font-size:.88rem">${u[1]}</span><div class="actions"><button class="btn soft unitTeach" data-unit="${ti}-${ui}">Teach me</button><button class="btn ghost unitDone" data-id="unit-${activeSubject}-${ti}-${ui}">${state.done[`unit-${activeSubject}-${ti}-${ui}`]?'✓ Reviewed':'Mark reviewed'}</button></div></div>`).join('')}</div>`).join('')}</div>`;
+ $$('.unitTeach').forEach(b=>b.onclick=()=>{const [ti,ui]=b.dataset.unit.split('-').map(Number);state.lastLearn=`quick-${activeSubject}-${ti}-${ui}`;save();subjectTab='teach';renderSubjectTab();setTimeout(()=>document.querySelector(`[data-learn="${state.lastLearn}"]`)?.click(),0)});
+ $$('.unitDone').forEach(b=>b.onclick=()=>{state.done[b.dataset.id]=!state.done[b.dataset.id];save();renderOverview()});
+}
+function learnItemsForSubject(s){
+ const arr=detailedLessons.filter(l=>l.s===s).map(l=>({...l,type:'detail'}));
+ (curriculum[s]?.terms||[]).forEach((t,ti)=>t.units.forEach((u,ui)=>arr.push({id:`quick-${s}-${ti}-${ui}`,s,type:'quick',unit:u[0],term:t.name,focus:u[1]})));
  return arr;
 }
-let currentLearn=detailedLessons[0].id;
-function renderLearn(){
- const f=($('#lessonSearch').value||'').toLowerCase().trim();
- const items=allLearnItems().filter(i=>state.enabled[i.s] && (!f||(i.unit+' '+(i.focus||'')+' '+subjects[i.s].name).toLowerCase().includes(f)));
- if(!items.find(i=>i.id===currentLearn))currentLearn=(items[0]||allLearnItems()[0]).id;
- $('#lessonList').innerHTML=items.map(i=>`<button class="${i.id===currentLearn?'active':''}" data-learn="${i.id}">${state.done[i.id]?'✓ ':''}${i.unit}<small>${subjects[i.s].icon} ${subjects[i.s].name}${i.type==='quick'?' • Quick Guide':''}</small></button>`).join('');
- $$('[data-learn]').forEach(b=>b.onclick=()=>{currentLearn=b.dataset.learn;renderLearn()});
- const i=allLearnItems().find(x=>x.id===currentLearn);if(!i)return;
+function renderTeach(){
+ const items=learnItemsForSubject(activeSubject);
+ let selected=state.lastLearn&&items.find(x=>x.id===state.lastLearn)?state.lastLearn:(items[0]?.id||'');
+ $('#sub-teach').innerHTML=`<div class="learnlist">${items.map(i=>`<div class="learncard"><h4>${state.done[i.id]?'✓ ':''}${i.unit}</h4><p>${i.type==='detail'?'Full simple lesson':'Quick Guide: '+i.focus}</p><button class="btn ${i.id===selected?'purple':'soft'}" data-learn="${i.id}">${i.id===selected?'Open':'Teach me'}</button></div>`).join('')}</div><div id="lessonDetail" style="margin-top:12px"></div>`;
+ $$('[data-learn]').forEach(b=>b.onclick=()=>showLesson(b.dataset.learn));
+ if(selected)showLesson(selected);
+}
+function showLesson(id){
+ state.lastLearn=id;save();const i=learnItemsForSubject(activeSubject).find(x=>x.id===id);if(!i)return;
  if(i.type==='detail'){
-  $('#lessonMain').innerHTML=`
-   <span class="badge">${subjects[i.s].icon} ${subjects[i.s].name}</span><h2>${i.unit}</h2>
-   <div class="wordchips">${i.words.map(w=>`<span class="chip">${w}</span>`).join('')}</div>
-   <div class="easybox"><div class="visual">${i.icon}</div><div><h3>What this means in easy words</h3><p>${i.easy}</p></div></div>
-   <h3>Do it in small steps</h3><div class="steps">${i.steps.map((s,n)=>`<div class="step"><span class="stepno">${n+1}</span><span>${s}</span></div>`).join('')}</div>
-   <div class="example"><b>One example</b><p>${i.example}</p></div>
-   <div class="card" style="background:#fcfbff"><b>Quick check</b><p>${i.check}</p><input class="input" id="learnAnswer" style="width:100%" placeholder="Type your answer"><div class="actions"><button class="btn purple" id="checkLearn">Check</button><button class="btn ghost" id="askLearn">Ask Mimi</button><button class="btn ghost" id="completeLearn">${state.done[i.id]?'✓ Completed':'Mark complete'}</button></div><div id="learnFeedback" class="feedback"></div></div>`;
-  $('#checkLearn').onclick=()=>{const u=$('#learnAnswer').value.trim().toLowerCase(),a=i.answer.toLowerCase();const ok=u===a||u.includes(a)||a.includes(u)&&u.length>2;$('#learnFeedback').className='feedback '+(ok?'good':'bad');$('#learnFeedback').textContent=ok?'Yes — that matches the key idea.':'Not yet. Try the steps again, or ask Mimi.'};
-  $('#askLearn').onclick=()=>openHelp(i.s,i.check,'');
-  $('#completeLearn').onclick=()=>{state.done[i.id]=!state.done[i.id];save();renderLearn()};
+  $('#lessonDetail').innerHTML=`<div class="lesson-full"><span class="badge">${subjects[i.s].icon} ${subjects[i.s].name}</span><h3>${i.unit}</h3><div class="chips">${i.words.map(w=>`<span class="chip">${w}</span>`).join('')}</div><div class="easy"><div class="lesson-icon">${i.icon||subjects[i.s].icon}</div><div><h3>In easy words</h3><p>${i.easy}</p></div></div><h3>Small steps</h3><div class="steps">${i.steps.map((x,n)=>`<div class="step"><span class="num">${n+1}</span><span>${x}</span></div>`).join('')}</div><div class="example"><b>Example:</b> ${i.example}</div><div class="card"><b>Quick check:</b><p>${i.check}</p><input id="lessonAnswer" class="input" style="width:100%" placeholder="Your answer"><div class="actions"><button class="btn purple" id="checkLesson">Check</button><button class="btn ghost" id="lessonMimi">Ask Mimi</button><button class="btn ghost" id="lessonDone">${state.done[i.id]?'✓ Completed':'Mark complete'}</button></div><div id="lessonFeedback" class="feedback"></div></div></div>`;
+  $('#checkLesson').onclick=()=>{const u=$('#lessonAnswer').value.trim().toLowerCase(),a=String(i.answer).toLowerCase();const ok=u===a||u.includes(a)||a.includes(u)&&u.length>2;$('#lessonFeedback').className='feedback '+(ok?'good':'bad');$('#lessonFeedback').textContent=ok?'Yes — that matches the key idea.':'Not yet. Try the steps again or ask Mimi.'};
+  $('#lessonMimi').onclick=()=>openMimiFor(i.s,i.check,'explain');
+  $('#lessonDone').onclick=()=>{state.done[i.id]=!state.done[i.id];save();renderTeach()};
  }else{
   const parts=i.focus.split(' • ');
-  $('#lessonMain').innerHTML=`
-   <span class="badge">${subjects[i.s].icon} ${subjects[i.s].name} • ${i.term||''}</span><h2>${i.unit}</h2>
-   <div class="easybox"><div class="visual">${subjects[i.s].icon}</div><div><h3>Start here</h3><p>This unit is easier if you learn one small part at a time. Do not try to memorize the whole list at once.</p></div></div>
-   <h3>Learn these one by one</h3><div class="steps">${parts.map((p,n)=>`<div class="step"><span class="stepno">${n+1}</span><span><b>${p}</b><br><span style="color:var(--muted)">Ask yourself: “What does this mean? Can I give one example?”</span></span></div>`).join('')}</div>
-   <div class="example"><b>A simple study method</b><p>Choose the first item. Read a short explanation in your class notes or ask Mimi. Close the note. Explain it in your own words. Then move to the next item.</p></div>
-   <div class="actions"><button class="btn purple" id="askQuick">Ask Mimi about this unit</button><button class="btn ghost" id="completeQuick">${state.done[i.id]?'✓ Reviewed':'Mark reviewed'}</button></div>`;
-  $('#askQuick').onclick=()=>openHelp(i.s,`Please explain the Grade 8 topic "${i.unit}" in very simple steps. The unit includes: ${i.focus}`,'');
-  $('#completeQuick').onclick=()=>{state.done[i.id]=!state.done[i.id];save();renderLearn()};
+  $('#lessonDetail').innerHTML=`<div class="lesson-full"><span class="badge">${subjects[i.s].icon} ${i.term||''}</span><h3>${i.unit}</h3><div class="easy"><div class="lesson-icon">${subjects[i.s].icon}</div><div><h3>Start simple</h3><p>Do not learn this whole unit at once. Learn one line below, say it back in your own words, then move to the next.</p></div></div><div class="steps">${parts.map((x,n)=>`<div class="step"><span class="num">${n+1}</span><span><b>${x}</b><br><small style="color:var(--muted)">Ask: What does it mean? Can I give one example?</small></span></div>`).join('')}</div><div class="actions"><button class="btn purple" id="quickMimi">Ask Mimi to teach this</button><button class="btn ghost" id="quickDone">${state.done[i.id]?'✓ Reviewed':'Mark reviewed'}</button></div></div>`;
+  $('#quickMimi').onclick=()=>openMimiFor(i.s,`Teach me "${i.unit}" in very easy Grade 8 steps. It includes: ${i.focus}`,'explain');
+  $('#quickDone').onclick=()=>{state.done[i.id]=!state.done[i.id];save();renderTeach()};
  }
+ $('#lessonDetail').scrollIntoView({behavior:'smooth',block:'start'});
 }
-$('#lessonSearch').oninput=renderLearn;
-
-/* Quiz */
-let quiz=[],qi=0,qa=[];
-function startQuiz(){
- const s=$('#quizSubject').value,n=+$('#quizLength').value;
- let pool=questions.filter(q=>s==='all'?state.enabled[q.s]:q.s===s);
- if(!pool.length)return toast('No questions available for that subject yet.');
- pool=[...pool].sort(()=>Math.random()-.5);while(pool.length<n)pool=pool.concat([...pool].sort(()=>Math.random()-.5));
- quiz=pool.slice(0,n);qi=0;qa=[];$('#quizStart').style.display='none';$('#quizResult').style.display='none';$('#quizShell').style.display='grid';renderQ();
+let subjQuiz=[],sqIndex=0,sqAns=[];
+function renderSubjectPractice(){
+ const pool=questions.filter(q=>q.s===activeSubject);
+ $('#sub-practice').innerHTML=pool.length?`<div class="practicebox"><div><span class="badge">${subjects[activeSubject].icon} ${subjects[activeSubject].name}</span><h3>5-question practice</h3><div id="subjectQ"></div></div><aside class="card"><h3>Questions</h3><div class="qnav" id="subjectQNav"></div><div class="actions"><button class="btn purple" id="finishSubjectQuiz">Finish</button></div></aside></div>`:`<div class="card"><h3>Practice with Mimi</h3><p>The fixed question bank for this subject is still small, but Mimi can generate a short practice question from any curriculum unit.</p><button class="btn purple" id="genMimiQuiz">Ask Mimi to quiz me</button></div>`;
+ if(!pool.length){$('#genMimiQuiz').onclick=()=>openMimiFor(activeSubject,'Quiz me on one Grade 8 topic from this subject. Ask one question at a time.','quizme');return}
+ subjQuiz=[...pool].sort(()=>Math.random()-.5);while(subjQuiz.length<5)subjQuiz=subjQuiz.concat([...pool].sort(()=>Math.random()-.5));subjQuiz=subjQuiz.slice(0,5);sqIndex=0;sqAns=[];renderSubjectQ();
+ $('#finishSubjectQuiz').onclick=finishSubjectQuiz;
 }
-function renderQ(){const q=quiz[qi];if(!q)return;$('#qCount').textContent=`${subjects[q.s].icon} ${subjects[q.s].name} • ${qi+1}/${quiz.length}`;$('#qText').textContent=q.q;$('#qOptions').innerHTML=q.o.map((x,i)=>`<button class="option ${qa[qi]===i?'selected':''}" data-o="${i}">${x}</button>`).join('');$$('[data-o]').forEach(b=>b.onclick=()=>{qa[qi]=+b.dataset.o;renderQ()});$('#qNav').innerHTML=quiz.map((_,i)=>`<button class="${qa[i]!==undefined?'done':''}" data-j="${i}">${i+1}</button>`).join('');$$('[data-j]').forEach(b=>b.onclick=()=>{qi=+b.dataset.j;renderQ()});$('#prevQ').disabled=qi===0}
-$('#startQuiz').onclick=startQuiz;$('#prevQ').onclick=()=>{if(qi>0){qi--;renderQ()}};$('#nextQ').onclick=()=>{if(qi<quiz.length-1){qi++;renderQ()}else toast('Review your answers, then finish.')};$('#helpQ').onclick=()=>{const q=quiz[qi];openHelp(q.s,q.q,qa[qi]!==undefined?q.o[qa[qi]]:'')};
-$('#finishQuiz').onclick=()=>{let c=0;quiz.forEach((q,i)=>{if(qa[i]===q.a)c++});const p=Math.round(c/quiz.length*100);state.quizHistory.push(p);save();$('#quizShell').style.display='none';$('#quizResult').style.display='block';$('#quizResult').innerHTML=`<div class="card"><h2>${c}/${quiz.length} — ${p}%</h2><p>${p>=80?'Strong work. Review anything missed.':p>=60?'Good start. Use the explanations below.':'Go back to the matching lessons, then try a shorter quiz.'}</p>${quiz.map((q,i)=>`<div class="source"><b>${i+1}. ${q.q}</b><br><span class="${qa[i]===q.a?'good':'bad'}">${qa[i]===q.a?'✓ Correct':'✗ Your answer: '+(q.o[qa[i]]||'No answer')}</span><br>Answer: ${q.o[q.a]}. ${q.why}</div>`).join('')}</div>`};
+function renderSubjectQ(){const q=subjQuiz[sqIndex];$('#subjectQ').innerHTML=`<div class="qtext">${q.q}</div><div class="options">${q.o.map((o,i)=>`<button class="option ${sqAns[sqIndex]===i?'selected':''}" data-so="${i}">${o}</button>`).join('')}</div><div class="actions"><button class="btn ghost" id="sqPrev">Back</button><button class="btn purple" id="sqNext">Next</button><button class="btn soft" id="sqMimi">Ask Mimi</button></div>`;$$('[data-so]').forEach(b=>b.onclick=()=>{sqAns[sqIndex]=+b.dataset.so;renderSubjectQ()});$('#subjectQNav').innerHTML=subjQuiz.map((_,i)=>`<button class="${sqAns[i]!==undefined?'done':''}" data-sj="${i}">${i+1}</button>`).join('');$$('[data-sj]').forEach(b=>b.onclick=()=>{sqIndex=+b.dataset.sj;renderSubjectQ()});$('#sqPrev').onclick=()=>{if(sqIndex>0){sqIndex--;renderSubjectQ()}};$('#sqNext').onclick=()=>{if(sqIndex<subjQuiz.length-1){sqIndex++;renderSubjectQ()}};$('#sqMimi').onclick=()=>openMimiFor(q.s,q.q,'hint')};
+function finishSubjectQuiz(){let c=0;subjQuiz.forEach((q,i)=>{if(sqAns[i]===q.a)c++});const p=Math.round(c/subjQuiz.length*100);state.quizHistory.push(p);save();$('#sub-practice').innerHTML=`<div class="card"><h3>${c}/5 — ${p}%</h3><p>${p>=80?'Strong work. Review anything missed.':p>=60?'Good start. Check the explanations below.':'Go back to Teach me, then try again later.'}</p>${subjQuiz.map((q,i)=>`<div class="learncard"><b>${q.q}</b><br><span class="${sqAns[i]===q.a?'good':'bad'}">${sqAns[i]===q.a?'✓ Correct':'✗ '+(q.o[sqAns[i]]||'No answer')}</span><br><span>${q.o[q.a]}. ${q.why}</span></div>`).join('')}</div>`}
+function renderSubjectAsk(){$('#sub-ask').innerHTML=`<div class="card"><div style="font-size:2rem">${subjects[activeSubject].icon} 💜</div><h3>Ask Mimi about ${subjects[activeSubject].name}</h3><p>Mimi will open with this subject already selected, so Ariana does not need to choose it again.</p><div class="actions"><button class="btn purple" id="openSubjectMimi">Ask a question</button><button class="btn ghost" id="subjectQuizMimi">Quiz me</button></div></div>`;$('#openSubjectMimi').onclick=()=>openMimiFor(activeSubject,'','explain');$('#subjectQuizMimi').onclick=()=>openMimiFor(activeSubject,'Quiz me on one Grade 8 topic from this subject.','quizme')}
 
-/* Homework + today */
-function renderHW(){$('#hwSubject').innerHTML=opts(false);$('#hwList').innerHTML=state.homework.length?state.homework.map((h,i)=>`<div class="hw"><span class="badge">${subjects[h.s].name}</span><span>${esc(h.text)}</span><button class="iconbtn" data-dhw="${i}">✕</button></div>`).join(''):'<p class="note">No homework saved yet.</p>';$$('[data-dhw]').forEach(b=>b.onclick=()=>{state.homework.splice(+b.dataset.dhw,1);save();renderHW()})}
-$('#addHw').onclick=()=>{const t=$('#hwText').value.trim();if(!t)return toast('Type the homework first.');state.homework.push({text:t,s:$('#hwSubject').value});$('#hwText').value='';save();renderHW()};
-const todayTemplates=[['Review one lesson in {A}','Do 5 questions in {B}','Ask Mimi one question'],['Learn one new topic in {A}','Review one old mistake','Finish one homework item'],['Do a mixed 5-question quiz','Read one Quick Guide in {A}','Explain one idea in your own words']];
-function pickSub(o=0){const a=enabled();return a[(new Date().getDate()+state.seed+o)%a.length]||'math'}
-function renderToday(){const temp=todayTemplates[(new Date().getDate()+state.seed)%todayTemplates.length],a=subjects[pickSub()].name,b=subjects[pickSub(1)].name;$('#todayTasks').innerHTML=temp.map((x,i)=>{const k='today-'+new Date().toISOString().slice(0,10)+'-'+i;return `<label class="todo-item"><input type="checkbox" data-task="${k}" ${state.tasks[k]?'checked':''}><span>${x.replace('{A}',a).replace('{B}',b)}</span></label>`}).join('');$$('[data-task]').forEach(c=>c.onchange=()=>{state.tasks[c.dataset.task]=c.checked;save()})}
+/* Daily plan */
+const plans=[['Review one topic in {A}','Do one short practice in {B}','Ask Mimi about one thing you still do not understand'],['Learn one small idea in {A}','Review one old mistake','Finish one homework item'],['Do a 5-question practice','Open one Grade 8 unit in {A}','Explain one idea back in your own words']];
+function pickSubject(o=0){const a=enabledSubjects();return a[(new Date().getDate()+state.seed+o)%a.length]||'math'}
+function renderToday(){const p=plans[(new Date().getDate()+state.seed)%plans.length],a=subjects[pickSubject()].name,b=subjects[pickSubject(1)].name;$('#todayTasks').innerHTML=p.map((x,i)=>{const k='today-'+new Date().toISOString().slice(0,10)+'-'+i;return `<label class="todo"><input type="checkbox" data-task="${k}" ${state.tasks[k]?'checked':''}><span>${x.replace('{A}',a).replace('{B}',b)}</span></label>`}).join('');$$('[data-task]').forEach(c=>c.onchange=()=>{state.tasks[c.dataset.task]=c.checked;save()})}
 $('#shuffleToday').onclick=()=>{state.seed++;save();renderToday()};
 
-/* Study plan + timer */
-function renderPlan(){const w=[['Week 1','Math foundations • English reading • Science investigation • French/Spanish basics'],['Week 2','Algebra/ratio • writing/persuasion • Social Studies • IT'],['Week 3','Geometry/data • science forces/body • Civics/R&T • arts/PE'],['Week 4','Graphs/preview • mixed quizzes • Career/HFLE • review weak areas']];$('#planBox').innerHTML=w.map((x,i)=>`<label class="todo-item"><input type="checkbox" data-plan="p${i}" ${state.tasks['p'+i]?'checked':''}><span><b>${x[0]}:</b> ${x[1]}</span></label>`).join('');$$('[data-plan]').forEach(c=>c.onchange=()=>{state.tasks[c.dataset.plan]=c.checked;save()})}
-let seconds=1200,timerId=null;function timerRender(){const m=Math.floor(seconds/60),s=seconds%60;$('#timerFace').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}
-$('#timerStart').onclick=()=>{if(timerId)return;timerId=setInterval(()=>{seconds--;timerRender();if(seconds<=0){clearInterval(timerId);timerId=null;toast('Study block complete 💜')}},1000)};$('#timerPause').onclick=()=>{clearInterval(timerId);timerId=null};$('#timerReset').onclick=()=>{clearInterval(timerId);timerId=null;seconds=1200;timerRender()};
+/* Study */
+function renderHomework(){$('#hwSubject').innerHTML=subjectOptions(false);$('#hwList').innerHTML=state.homework.length?state.homework.map((h,i)=>`<div class="hw"><span class="badge">${subjects[h.s]?.name||'Study'}</span><span>${esc(h.text)}</span><button class="iconbtn" data-hwd="${i}">✕</button></div>`).join(''):'<p class="note">No homework saved yet.</p>';$$('[data-hwd]').forEach(b=>b.onclick=()=>{state.homework.splice(+b.dataset.hwd,1);save();renderHomework()})}
+$('#addHw').onclick=()=>{const t=$('#hwText').value.trim();if(!t)return toast('Type the homework first.');state.homework.push({text:t,s:$('#hwSubject').value});$('#hwText').value='';save();renderHomework()};
+function renderPlan(){const p=[['Week 1','Math/English foundations + languages'],['Week 2','Science/Social Studies/IT'],['Week 3','Civics/R&T/arts/PE'],['Week 4','Mixed practice + weakest topics']];$('#planBox').innerHTML=p.map((x,i)=>`<label class="todo"><input type="checkbox" data-plan="week${i}" ${state.tasks['week'+i]?'checked':''}><span><b>${x[0]}:</b> ${x[1]}</span></label>`).join('');$$('[data-plan]').forEach(c=>c.onchange=()=>{state.tasks[c.dataset.plan]=c.checked;save()})}
+let seconds=1200,timerId=null;function renderTimer(){const m=Math.floor(seconds/60),s=seconds%60;$('#timerFace').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}
+$('#timerStart').onclick=()=>{if(timerId)return;timerId=setInterval(()=>{seconds--;renderTimer();if(seconds<=0){clearInterval(timerId);timerId=null;toast('Study block complete 💜')}},1000)};$('#timerPause').onclick=()=>{clearInterval(timerId);timerId=null};$('#timerReset').onclick=()=>{clearInterval(timerId);timerId=null;seconds=1200;renderTimer()};
 
-/* PWA install */
-let deferredPrompt=null;
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('#installBtn').hidden=false});
-window.addEventListener('appinstalled',()=>{deferredPrompt=null;$('#installBtn').hidden=true;toast('Ariana’s Study Buddy is installed 💜')});
-function isStandalone(){return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true}
-async function installApp(){
- if(isStandalone())return toast('The app is already installed.');
- if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;return}
- toast('In Chrome, use the menu and choose “Install app” or “Add to Home screen”.')
-}
-$('#installBtn').onclick=installApp;$('#heroInstall').onclick=installApp;
+/* PWA install/reminders */
+let deferredPrompt=null,swReg=null,reminderTimer=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('#installBtn').hidden=false});$('#installBtn').onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null}else toast('Use Chrome’s “Install app” or “Add to Home screen”.')};
+async function initSW(){if('serviceWorker' in navigator&&location.protocol.startsWith('http')){try{swReg=await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready}catch(e){}}updateReminderStatus()}
+function updateReminderStatus(){const a=[];if(location.protocol==='file:')a.push('Install and closed-app reminders need HTTPS hosting.');if('Notification' in window)a.push(`Notifications: ${Notification.permission}.`);else a.push('Notifications are not supported here.');a.push('For an exact daily time, use the calendar backup.');$('#reminderStatus').textContent=a.join(' ')}
+$('#saveReminder').onclick=async()=>{state.reminder.enabled=$('#reminderEnabled').checked;state.reminder.time=$('#reminderTime').value||'18:00';if(state.reminder.enabled&&'Notification'in window&&Notification.permission!=='granted')await Notification.requestPermission();save();scheduleReminder();updateReminderStatus();toast('Reminder saved')};
+$('#testReminder').onclick=async()=>{if(!('Notification'in window))return toast('Notifications are not supported here.');if(Notification.permission!=='granted'&&await Notification.requestPermission()!=='granted')return;if(swReg)swReg.showNotification('Ariana’s Study Buddy 💜',{body:'This is a test reminder.',icon:'icons/icon-192.png'});else new Notification('Ariana’s Study Buddy 💜',{body:'This is a test reminder.'})};
+function scheduleReminder(){clearInterval(reminderTimer);reminderTimer=setInterval(checkReminder,30000);checkReminder()}
+function checkReminder(){if(!state.reminder.enabled||!('Notification'in window)||Notification.permission!=='granted')return;const n=new Date(),d=n.toISOString().slice(0,10),[h,m]=state.reminder.time.split(':').map(Number);if(n.getHours()*60+n.getMinutes()>=h*60+m&&state.reminder.lastLocal!==d){new Notification('Ariana, it’s study time 💜',{body:'A short 20-minute session is enough.',icon:'icons/icon-192.png'});state.reminder.lastLocal=d;save()}}
+$('#calendarBackup').onclick=()=>{const [hh,mm]=state.reminder.time.split(':');const n=new Date();n.setDate(n.getDate()+1);const dt=`${n.getFullYear()}${String(n.getMonth()+1).padStart(2,'0')}${String(n.getDate()).padStart(2,'0')}T${hh}${mm}00`;const ics=`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nBEGIN:VEVENT\r\nDTSTART;TZID=America/Jamaica:${dt}\r\nRRULE:FREQ=DAILY\r\nSUMMARY:Ariana's Daily Study Time 💜\r\nBEGIN:VALARM\r\nTRIGGER:PT0M\r\nACTION:DISPLAY\r\nDESCRIPTION:Time for Ariana's study session.\r\nEND:VALARM\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n`;const b=new Blob([ics],{type:'text/calendar'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Ariana_Daily_Study_Reminder.ics';a.click()};
 
-/* Service worker + reminders */
-let swReg=null;
-async function initSW(){
- if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  try{swReg=await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready;syncReminderToSW()}catch(e){console.warn(e)}
- }
- updateReminderStatus();
-}
-function dateKey(d=new Date()){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
-function syncReminderToSW(){if(navigator.serviceWorker?.controller)navigator.serviceWorker.controller.postMessage({type:'SAVE_REMINDER',payload:{...state.reminder}});else if(swReg?.active)swReg.active.postMessage({type:'SAVE_REMINDER',payload:{...state.reminder}})}
-async function registerPeriodic(){
- if(!swReg)return false;
- try{
-  if('periodicSync' in swReg){
-   const perm=await navigator.permissions.query({name:'periodic-background-sync'});
-   if(perm.state==='granted'){await swReg.periodicSync.register('ariana-daily-study',{minInterval:24*60*60*1000});return true}
-  }
- }catch(e){}
- return false
-}
-function updateReminderStatus(){
- const parts=[];
- if(location.protocol==='file:')parts.push('Preview mode: install/service-worker reminders need HTTPS hosting.');
- else parts.push(isStandalone()?'Installed as app.':'Not installed yet.');
- if(!('Notification' in window))parts.push('This browser does not support web notifications.');
- else parts.push(`Notification permission: ${Notification.permission}.`);
- if(swReg && 'periodicSync' in swReg)parts.push('Best-effort background reminder support detected.');
- else parts.push('Closed-app background reminders may not be available on this browser.');
- parts.push('The calendar backup is the best option when you need a specific exact time every day.');
- $('#reminderStatus').textContent=parts.join(' ');
-}
-async function saveReminder(){
- state.reminder.enabled=$('#reminderEnabled').checked;state.reminder.time=$('#reminderTime').value||'18:00';save();
- if(state.reminder.enabled && 'Notification' in window && Notification.permission!=='granted'){
-  const p=await Notification.requestPermission();if(p!=='granted')toast('Notifications were not allowed.');
- }
- syncReminderToSW();await registerPeriodic();scheduleForeground();updateReminderStatus();toast('Daily study reminder saved.');
-}
-$('#saveReminder').onclick=saveReminder;
-$('#testReminder').onclick=async()=>{
- if(!('Notification' in window))return toast('Notifications are not supported here.');
- if(Notification.permission!=='granted'){const p=await Notification.requestPermission();if(p!=='granted')return toast('Allow notifications first.')}
- if(swReg)swReg.showNotification('Ariana’s Study Buddy 💜',{body:'This is a test study reminder.',icon:'./icons/icon-192.png',badge:'./icons/icon-192.png'});
- else new Notification('Ariana’s Study Buddy 💜',{body:'This is a test study reminder.',icon:'icons/icon-192.png'});
+/* Mimi: subject routing */
+const subjectLexicon={
+ math:['equation','solve','calculate','fraction','decimal','percent','ratio','area','volume','angle','graph','gradient','mean','median','mode','algebra','number','base','indices','power','x','n=','y='],
+ english:['passage','paragraph','author','writer','infer','inference','theme','tone','point of view','persuasive','grammar','sentence','noun','verb','poem','story','evidence','summary'],
+ science:['experiment','variable','force','speed','mass','matter','chemical','physical','cell','digest','nutrition','respiration','energy','organism','plant','gas','hypothesis'],
+ social:['jamaica','caribbean','development','consumer','bank','credit union','hazard','disaster','culture','media','government','democracy','climate'],
+ geography:['map','topography','rock','limestone','karst','relief','settlement','latitude','longitude','climate','landform','river','mountain'],
+ history:['history','historical','heritage','ancestor','independence','nationalism','primary source','secondary source','timeline','cause','consequence'],
+ french:['bonjour','français','french','je ','j’ai','j aime','j’aime','quel','quelle','comment','au revoir','merci'],
+ spanish:['español','spanish','hola','quisiera','cuánto','cuanto','me gusta','voy a','qué','que tiempo'],
+ it:['computer','hardware','software','binary','algorithm','flowchart','network','internet','input','output','spreadsheet','multimedia'],
+ civics:['citizen','citizenship','national symbol','patriotism','responsibility','rights','community','flag','anthem','coat of arms'],
+ resource:['design','agriculture','business basics','consumer management','industrial','tool','material','sustainability','banking services'],
+ religion:['religion','religious','belief','worship','faith','moral','honesty','compassion','tradition'],
+ pe:['fitness','sport','warm up','warm-up','basketball','athletics','flexibility','strength','endurance','movement'],
+ music:['music','dynamics','crescendo','rhythm','melody','harmony','notation','tempo','instrument'],
+ drama:['drama','character','scene','plot','actor','acting','script','gesture','role','improv'],
+ visual:['art','visual','colour','color','line','texture','composition','balance','contrast','drawing','painting','artist'],
+ career:['career','job','occupation','strength','interest','pathway','training','qualification','goal'],
+ hfle:['hfle','feeling','emotion','safety','relationship','peer pressure','healthy choice','trusted adult']
 };
-let reminderInterval=null;
-function scheduleForeground(){
- clearInterval(reminderInterval);
- reminderInterval=setInterval(checkForegroundReminder,30000);
- checkForegroundReminder();
+function detectSubject(text){
+ const t=String(text||'').toLowerCase();let best='math',score=-1;
+ for(const [s,words] of Object.entries(subjectLexicon)){let sc=0;words.forEach(w=>{if(t.includes(w))sc+=w.length>5?2:1});if(sc>score){score=sc;best=s}}
+ if(/[a-z]\s*[\+\-*/]\s*\d|\d\s*[a-z]\s*[=+\-]|=/.test(t)&&/[0-9]/.test(t))return 'math';
+ return score>0?best:(activeSubject&&subjects[activeSubject]?activeSubject:'english');
 }
-async function checkForegroundReminder(){
- if(!state.reminder.enabled || Notification.permission!=='granted')return;
- const now=new Date(),today=dateKey(now),[h,m]=state.reminder.time.split(':').map(Number),target=h*60+m,cur=now.getHours()*60+now.getMinutes();
- if(cur>=target && state.reminder.lastLocal!==today){
-  if(swReg)await swReg.showNotification('Ariana, it’s study time 💜',{body:'A short 20-minute session is enough.',icon:'./icons/icon-192.png',badge:'./icons/icon-192.png',tag:'ariana-daily-study'});
-  else new Notification('Ariana, it’s study time 💜',{body:'A short 20-minute session is enough.'});
-  state.reminder.lastLocal=today;save();
+function commandWord(text){const t=text.toLowerCase();return ['define','describe','explain','compare','contrast','identify','state','list','calculate','solve','evaluate','analyse','analyze','infer','justify','discuss'].find(w=>t.includes(w))||''}
+function retrieveUnit(s,text){
+ const c=curriculum[s];if(!c)return null;const t=text.toLowerCase(),terms=t.split(/[^a-z0-9À-ÿ]+/).filter(w=>w.length>2);
+ let best=null,score=-1;
+ c.terms.forEach(term=>term.units.forEach(u=>{const blob=(u[0]+' '+u[1]).toLowerCase();let sc=0;terms.forEach(w=>{if(blob.includes(w))sc+=w.length>5?2:1});if(sc>score){score=sc;best={term:term.name,title:u[0],focus:u[1],score:sc}}}));
+ return best;
+}
+function tutorFramework(s,text,mode,attempt=''){
+ const unit=retrieveUnit(s,text),cmd=commandWord(text);const u=unit?unit.title:'this topic';
+ const focus=unit?unit.focus.split(' • '):[];
+ const lead=mode==='hint'?'I’ll give you a clue without doing the whole answer.':mode==='check'?'I’ll check the idea and show what to fix.':mode==='quizme'?'I’ll turn the topic into a quick question.':'I’ll break it into the smallest useful steps.';
+ if(s==='english'){
+  if(/passage|paragraph|poem|story|text/i.test(text)&&text.length<100)return `<b>📚 English Mimi</b><p>${lead}</p><p>I need the actual passage or the sentence Ariana is answering from. Paste or photograph it so I can use evidence instead of guessing.</p>`;
+  return `<b>📚 English Mimi</b><p>${lead}</p><ol><li><b>Instruction word:</b> ${cmd||'First find the instruction word in the question.'}</li><li><b>Topic:</b> ${esc(u)}</li><li><b>Find evidence:</b> point to a word, sentence or detail that supports the answer.</li><li><b>Build the answer:</b> answer the question first, then explain the evidence.</li></ol>${attempt?`<p><b>Ariana tried:</b> ${esc(attempt)}</p><p>Check whether it answers the instruction word and uses evidence.</p>`:''}`;
  }
+ if(s==='science'){
+  return `<b>🔬 Science Mimi</b><p>${lead}</p><ol><li><b>What idea?</b> ${esc(u)}</li><li><b>What do we know?</b> ${focus.slice(0,2).map(esc).join(' • ')||'Pull out the facts/data from the question.'}</li><li><b>What changes or causes what?</b> Link the cause to the result.</li><li><b>Answer in science words:</b> make one clear statement, then explain why.</li></ol>${attempt?`<p><b>Check Ariana’s answer:</b> ${esc(attempt)}</p>`:''}`;
+ }
+ if(['social','history','geography','civics'].includes(s)){
+  return `<b>${subjects[s].icon} ${subjects[s].name} Mimi</b><p>${lead}</p><ol><li><b>Point:</b> give the direct answer.</li><li><b>Explain:</b> say how or why it happens.</li><li><b>Example:</b> use a Jamaica/Caribbean example when it fits.</li><li><b>Link back:</b> show how the example answers the question.</li></ol><p><b>Topic Mimi matched:</b> ${esc(u)}</p>${focus.length?`<p class="note">Useful ideas: ${focus.slice(0,4).map(esc).join(' • ')}</p>`:''}`;
+ }
+ if(['french','spanish'].includes(s)){
+  const lang=s==='french'?'French':'Spanish';
+  return `<b>${subjects[s].icon} ${lang} Mimi</b><p>${lead}</p><ol><li><b>Meaning:</b> work out what the sentence/question is asking.</li><li><b>Pattern:</b> identify the verb or sentence pattern.</li><li><b>Build:</b> use a short correct sentence before trying a long one.</li><li><b>Check:</b> look at agreement, word order and accents where needed.</li></ol><p><b>Topic Mimi matched:</b> ${esc(u)}</p>${attempt?`<p><b>Ariana wrote:</b> ${esc(attempt)}</p><p>Check meaning first, then grammar.</p>`:''}`;
+ }
+ if(s==='it'){
+  return `<b>💻 IT Mimi</b><p>${lead}</p><ol><li><b>Identify:</b> what computer concept is being tested? ${esc(u)}</li><li><b>Input:</b> what information or resource goes in?</li><li><b>Process:</b> what steps or rule are used?</li><li><b>Output:</b> what result should come out?</li></ol>${focus.length?`<p class="note">Key ideas: ${focus.slice(0,4).map(esc).join(' • ')}</p>`:''}`;
+ }
+ if(['resource','pe','music','drama','visual','career','religion','hfle'].includes(s)){
+  return `<b>${subjects[s].icon} ${subjects[s].name} Mimi</b><p>${lead}</p><ol><li><b>Key term:</b> ${esc(u)}</li><li><b>What it means:</b> ${focus[0]?esc(focus[0]):'Say the idea in one simple sentence.'}</li><li><b>What to do:</b> ${focus[1]?esc(focus[1]):'Apply it to the question or task.'}</li><li><b>Example/check:</b> give one example, action or reason that shows understanding.</li></ol>${attempt?`<p><b>Ariana tried:</b> ${esc(attempt)}</p>`:''}`;
+ }
+ return null;
 }
-function downloadICS(){
- const [hh,mm]=(state.reminder.time||'18:00').split(':');
- const now=new Date();now.setDate(now.getDate()+1);
- const y=now.getFullYear(),mo=String(now.getMonth()+1).padStart(2,'0'),d=String(now.getDate()).padStart(2,'0');
- const dt=`${y}${mo}${d}T${hh}${mm}00`;
- const uid=`ariana-study-${Date.now()}@studybuddy`;
- const ics=`BEGIN:VCALENDAR\r
-VERSION:2.0\r
-PRODID:-//Ariana Study Buddy//EN\r
-CALSCALE:GREGORIAN\r
-BEGIN:VEVENT\r
-UID:${uid}\r
-DTSTART;TZID=America/Jamaica:${dt}\r
-RRULE:FREQ=DAILY\r
-SUMMARY:Ariana's Daily Study Time 💜\r
-DESCRIPTION:Open Ariana's Purple Study Buddy for a short study session.\r
-BEGIN:VALARM\r
-TRIGGER:PT0M\r
-ACTION:DISPLAY\r
-DESCRIPTION:Time for Ariana's daily study session.\r
-END:VALARM\r
-END:VEVENT\r
-END:VCALENDAR\r
-`;
- const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Ariana_Daily_Study_Reminder.ics';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-}
-$('#calendarBackup').onclick=downloadICS;
-function openReminder(){go('study');setTimeout(()=>$('#reminderTime').focus(),350)}
-$('#heroReminder').onclick=openReminder;$('#homeReminder').onclick=openReminder;
 
-/* Device selector */
-$('#deviceMode').value=state.device;document.body.dataset.device=state.device;
-$('#deviceMode').onchange=e=>{state.device=e.target.value;document.body.dataset.device=state.device;save()};
+/* Linear maths solver from v6, generalized to any variable */
+function niceNumber(n){if(!Number.isFinite(n))return String(n);if(Math.abs(n-Math.round(n))<1e-10)return String(Math.round(n));return String(Math.round(n*1000000)/1000000)}
+function cleanMathOCR(raw){return String(raw||'').replace(/[−–—]/g,'-').replace(/[×·⋅]/g,'*').replace(/÷/g,'/').replace(/[＝]/g,'=').replace(/[＋]/g,'+').replace(/\b(?:solve|find|calculate|work\s*out|evaluate|simplify)\s*[:\-]?\s*/ig,'').replace(/\s*([=+\-*/()])\s*/g,' $1 ').replace(/\s+/g,' ').trim()}
+function tokenizeLinear(input){const s=input.replace(/\s+/g,'');let i=0,t=[];while(i<s.length){const c=s[i];if(/[0-9.]/.test(c)){let j=i+1;while(j<s.length&&/[0-9.]/.test(s[j]))j++;t.push({k:'num',v:Number(s.slice(i,j))});i=j;continue}if(/[A-Za-z]/.test(c)){t.push({k:'var',v:c.toLowerCase()});i++;continue}if('+-*/()'.includes(c)){t.push({k:c,v:c});i++;continue}throw Error('unsupported')}return t}
+function parseLinearExpression(input,expected=null){const toks=tokenizeLinear(input);let pos=0,variable=expected;const add=(x,y)=>({a:x.a+y.a,b:x.b+y.b}),sub=(x,y)=>({a:x.a-y.a,b:x.b-y.b});const mul=(x,y)=>{if(Math.abs(x.a)>1e-12&&Math.abs(y.a)>1e-12)throw Error('nonlinear');if(Math.abs(x.a)>1e-12)return{a:x.a*y.b,b:x.b*y.b};if(Math.abs(y.a)>1e-12)return{a:y.a*x.b,b:y.b*x.b};return{a:0,b:x.b*y.b}};const div=(x,y)=>{if(Math.abs(y.a)>1e-12||Math.abs(y.b)<1e-12)throw Error('division');return{a:x.a/y.b,b:x.b/y.b}};const begins=t=>t&&(t.k==='num'||t.k==='var'||t.k==='(');function primary(){const z=toks[pos];if(!z)throw Error();if(z.k==='num'){pos++;return{a:0,b:z.v}}if(z.k==='var'){pos++;if(variable&&variable!==z.v)throw Error('two vars');variable=variable||z.v;return{a:1,b:0}}if(z.k==='('){pos++;const v=expr();if(toks[pos]?.k!==')')throw Error();pos++;return v}throw Error()}function unary(){if(toks[pos]?.k==='+'){pos++;return unary()}if(toks[pos]?.k==='-'){pos++;const x=unary();return{a:-x.a,b:-x.b}}return primary()}function term(){let x=unary();while(pos<toks.length){const op=toks[pos]?.k;if(op==='*'||op==='/'){pos++;const y=unary();x=op==='*'?mul(x,y):div(x,y);continue}if(begins(toks[pos])){x=mul(x,unary());continue}break}return x}function expr(){let x=term();while(pos<toks.length&&(toks[pos].k==='+'||toks[pos].k==='-')){const op=toks[pos++].k,y=term();x=op==='+'?add(x,y):sub(x,y)}return x}const v=expr();if(pos!==toks.length)throw Error();return{a:v.a,b:v.b,variable}}
+function fmt(a,b,v){let r='';if(Math.abs(a)>1e-12)r=(Math.abs(a-1)<1e-12?v:Math.abs(a+1)<1e-12?'-'+v:niceNumber(a)+v);if(Math.abs(b)>1e-12||!r)r+=(!r?niceNumber(b):(b>=0?' + ':' - ')+niceNumber(Math.abs(b)));return r}
+function solveEquation(raw){const c=cleanMathOCR(raw);if(!c.includes('='))return null;const p=c.split('=');if(p.length!==2)return null;try{let L=parseLinearExpression(p[0]),R=parseLinearExpression(p[1],L.variable),v=R.variable||L.variable;if(!v)return null;L=parseLinearExpression(p[0],v);R=parseLinearExpression(p[1],v);const k=L.a-R.a,rhs=R.b-L.b;if(Math.abs(k)<1e-12)return{candidate:c,special:Math.abs(rhs)<1e-12?'infinite':'none',variable:v};const x=rhs/k,steps=[];if(Math.abs(R.a)>1e-12)steps.push(`Move the ${v} terms to one side. This gives ${fmt(k,L.b,v)} = ${niceNumber(R.b)}.`);if(Math.abs(L.b)>1e-12)steps.push(`${L.b>0?'Take away '+niceNumber(L.b):'Add '+niceNumber(Math.abs(L.b))} on both sides. Now ${fmt(k,0,v)} = ${niceNumber(rhs)}.`);if(Math.abs(k-1)>1e-12)steps.push(`Divide both sides by ${niceNumber(k)}. So ${v} = ${niceNumber(x)}.`);if(!steps.length)steps.push(`${v} is already by itself: ${v} = ${niceNumber(x)}.`);return{candidate:c,variable:v,x,steps,left:L.a*x+L.b,right:R.a*x+R.b}}catch(e){return null}}
+function mathTutor(text,mode,attempt=''){const sol=solveEquation(text);if(sol){if(sol.special)return `<b>➗ Math Mimi</b><p>I read: <b>${esc(sol.candidate)}</b></p><p>${sol.special==='infinite'?'Both sides are the same, so there are infinitely many solutions.':'The variable cancels but the numbers conflict, so there is no solution.'}</p>`;if(mode==='hint')return `<b>➗ Math Mimi — hint</b><p>I read: <b>${esc(sol.candidate)}</b></p><p>Start by getting <b>${esc(sol.variable)}</b> by itself. ${esc(sol.steps[0])}</p>`;return `<b>➗ Math Mimi</b><p><b>I read the problem as:</b> ${esc(sol.candidate)}</p><p>We want <b>${esc(sol.variable)}</b> by itself.</p><ol>${sol.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol><p class="good"><b>Check:</b> put ${esc(sol.variable)} = ${niceNumber(sol.x)} back in. Left side = ${niceNumber(sol.left)} and right side = ${niceNumber(sol.right)}. They match ✓</p><p><b>Answer:</b> ${esc(sol.variable)} = ${niceNumber(sol.x)}</p>`}
+ return tutorFramework('math',text,mode,attempt)||`<b>➗ Math Mimi</b><p>I can match this to the Grade 8 math curriculum, but I need the exact numbers/symbols to calculate it accurately.</p>`}
 
-/* Settings & accessibility */
-function openSettings(){$('#studentName').value=state.name;$('#contactName').value=state.contactName;$('#contactPhone').value=state.contactPhone;$('#subjectToggles').innerHTML=Object.entries(subjects).map(([k,v])=>`<label class="toggle"><input type="checkbox" data-tog="${k}" ${state.enabled[k]?'checked':''}><span>${v.icon} ${v.name}</span></label>`).join('');$('#settingsModal').classList.add('show')}
-$('#settingsBtn').onclick=openSettings;$('#openSettingsHelp').onclick=openSettings;$('#closeSettings').onclick=()=>$('#settingsModal').classList.remove('show');
-$('#saveSettings').onclick=()=>{state.name=$('#studentName').value.trim()||'Ariana';state.contactName=$('#contactName').value.trim();state.contactPhone=$('#contactPhone').value.replace(/\D/g,'');$$('[data-tog]').forEach(c=>state.enabled[c.dataset.tog]=c.checked);save();$('#settingsModal').classList.remove('show');syncUI();toast('Settings saved')};
-$('#resetApp').onclick=()=>{if(confirm('Reset all saved progress and settings?')){localStorage.removeItem(STORE);location.reload()}};
-$('#settingsModal').onclick=e=>{if(e.target.id==='settingsModal')$('#settingsModal').classList.remove('show')};
-$('#accessBtn').onclick=()=>$('#accessModal').classList.add('show');$('#closeAccess').onclick=()=>$('#accessModal').classList.remove('show');$('#toggleLarge').onclick=()=>document.body.classList.toggle('large');$('#toggleContrast').onclick=()=>document.body.classList.toggle('highcontrast');$('#readPage').onclick=()=>{if(!('speechSynthesis' in window))return toast('Read aloud is not supported here.');speechSynthesis.cancel();const u=new SpeechSynthesisUtterance($('.section.active').innerText);u.rate=.94;speechSynthesis.speak(u)};
+/* Smart Mimi */
+let smartAvailability='unknown';
+async function checkSmart(){const dot=$('#aiDot'),txt=$('#aiStatusText'),btn=$('#smartGo'),pbtn=$('#smartPhoto');if(!('LanguageModel'in window)){txt.textContent='Local Mimi is ready. Smart Mimi AI is not available on this device.';return}try{const opts={expectedInputs:[{type:'text',languages:['en','fr','es']}],expectedOutputs:[{type:'text',languages:['en','fr','es']}]};smartAvailability=await LanguageModel.availability(opts);dot.className='dot '+(smartAvailability==='available'?'ok':'wait');txt.textContent=smartAvailability==='available'?'Smart Mimi AI is ready on this device.':'Smart Mimi is supported; Chrome may need to download its local model.';btn.hidden=false;pbtn.hidden=false}catch(e){txt.textContent='Local Mimi is ready. Smart Mimi could not be started.'}}
+function smartSystem(subject,mode){return `You are Mimi, a warm Grade 8 tutor for Ariana in Jamaica. Subject: ${subjects[subject]?.name||'auto-detect'}. Help mode: ${mode}. Keep the response short, visually scannable, and at a simple Grade 7-8 reading level. Never dump a long essay. First say what the question is asking. Then explain key words. Then use 2-5 tiny steps. For Mathematics, calculate accurately, show each algebra step, and verify the answer. For English, use instruction word + evidence + explanation and ask for the passage if it is missing. For Science, identify variables/data/cause-effect and use correct scientific vocabulary. For Social Studies, History, Geography and Civics use Point → Explain → Jamaica/Caribbean Example → Link. For French/Spanish give meaning, grammar pattern, one short model sentence and correct accents; do not invent translations. For IT use Input → Process → Output when useful. For practical/creative subjects explain key term → what to do → example → how to improve. HFLE responses must stay age-appropriate, health-focused and safety-focused. If the question/image is unclear, say exactly what is unclear instead of guessing.`}
+async function smartSession(subject,image=false){const expectedInputs=image?[{type:'text',languages:['en','fr','es']},{type:'image'}]:[{type:'text',languages:['en','fr','es']}];return await LanguageModel.create({expectedInputs,expectedOutputs:[{type:'text',languages:['en','fr','es']}],initialPrompts:[{role:'system',content:smartSystem(subject,tutorMode)}]})}
+async function smartHelp(text,subject,attempt=''){if(!('LanguageModel'in window))return localHelp(text,subject,attempt);const s=subject==='auto'?detectSubject(text):subject;$('#assistResult').innerHTML='<b>✨ Smart Mimi:</b><p>Thinking in small steps…</p>';try{const sess=await smartSession(s,false);const context=retrieveUnit(s,text);const prompt=`Question: ${text}\nAriana's attempt: ${attempt||'none'}\nLikely curriculum context: ${context?context.title+' — '+context.focus:'not matched'}\nRespond using the tutor rules.`;const r=await sess.prompt(prompt);help={s,q:text,ans:attempt};$('#assistResult').innerHTML=`<b>✨ Smart Mimi — ${subjects[s].name}</b><div>${esc(r).replace(/\n/g,'<br>')}</div>${waButton()}`;sess.destroy?.()}catch(e){toast('Smart Mimi could not run. Using Local Mimi.');localHelp(text,s,attempt)}}
 
-/* Mimi */
-let help={s:'math',q:'',ans:''};
-function openMimi(){$('#helpPanel').classList.add('show')}function openHelp(s,q,ans=''){help={s,q,ans};$('#assistSubject').value=s;$('#assistQuestion').value=q;openMimi()}
-$('#mimiOpen').onclick=openMimi;$('#mimiClose').onclick=()=>$('#helpPanel').classList.remove('show');$$('[data-pane]').forEach(b=>b.onclick=()=>{$$('[data-pane]').forEach(x=>x.classList.remove('active'));b.classList.add('active');$$('.pane').forEach(p=>p.classList.toggle('active',p.id===b.dataset.pane))});
-$('#useQuizQuestion').onclick=()=>{if(quiz.length){const q=quiz[qi];openHelp(q.s,q.q,qa[qi]!==undefined?q.o[qa[qi]]:'')}else toast('Start a quiz first or type the question.')};
-function niceNumber(n){
- if(!Number.isFinite(n))return String(n);
- if(Math.abs(n-Math.round(n))<1e-10)return String(Math.round(n));
- return String(Math.round(n*1000000)/1000000);
-}
-function cleanMathOCR(raw){
- return String(raw||'')
-  .replace(/[−–—]/g,'-').replace(/[×·⋅]/g,'*').replace(/÷/g,'/')
-  .replace(/[＝]/g,'=').replace(/[＋]/g,'+').replace(/[“”]/g,'"')
-  .replace(/\b(?:solve|find|calculate|work\s*out|evaluate|simplify)\s*[:\-]?\s*/ig,'')
-  .replace(/\s*([=+\-*/()])\s*/g,' $1 ')
-  .replace(/\s+/g,' ').trim();
-}
-function mathCandidate(raw){
- const clean=cleanMathOCR(raw);
- // Prefer a line containing an equals sign. Strip obvious prose before/after it.
- const lines=String(raw||'').split(/\n+/).map(cleanMathOCR).filter(Boolean);
- let candidates=lines.filter(x=>x.includes('=')).concat(clean.includes('=')?[clean]:[]);
- for(let c of candidates){
-   if(/[=]/.test(c)&&/[0-9]/.test(c))return c;
- }
- return clean;
-}
-function tokenizeLinear(input){
- const s=input.replace(/\s+/g,'');let i=0,t=[];
- while(i<s.length){const c=s[i];
-  if(/[0-9.]/.test(c)){let j=i+1;while(j<s.length&&/[0-9.]/.test(s[j]))j++;const n=Number(s.slice(i,j));if(!Number.isFinite(n))throw Error('bad number');t.push({k:'num',v:n});i=j;continue}
-  if(/[A-Za-z]/.test(c)){t.push({k:'var',v:c.toLowerCase()});i++;continue}
-  if('+-*/()'.includes(c)){t.push({k:c,v:c});i++;continue}
-  throw Error('unsupported character');
- }
- return t;
-}
-function parseLinearExpression(input, expectedVar=null){
- const toks=tokenizeLinear(input);let pos=0,variable=expectedVar;
- const add=(x,y)=>({a:x.a+y.a,b:x.b+y.b});
- const sub=(x,y)=>({a:x.a-y.a,b:x.b-y.b});
- const mul=(x,y)=>{if(Math.abs(x.a)>1e-12&&Math.abs(y.a)>1e-12)throw Error('nonlinear');if(Math.abs(x.a)>1e-12)return {a:x.a*y.b,b:x.b*y.b};if(Math.abs(y.a)>1e-12)return {a:y.a*x.b,b:y.b*x.b};return {a:0,b:x.b*y.b}};
- const div=(x,y)=>{if(Math.abs(y.a)>1e-12||Math.abs(y.b)<1e-12)throw Error('bad division');return {a:x.a/y.b,b:x.b/y.b}};
- const beginsAtom=tok=>tok&&(tok.k==='num'||tok.k==='var'||tok.k==='(');
- function primary(){const tok=toks[pos];if(!tok)throw Error('unexpected end');if(tok.k==='num'){pos++;return {a:0,b:tok.v}}if(tok.k==='var'){pos++;if(variable&&variable!==tok.v)throw Error('more than one variable');variable=variable||tok.v;return {a:1,b:0}}if(tok.k==='('){pos++;const v=expr();if(!toks[pos]||toks[pos].k!==')')throw Error('missing )');pos++;return v}throw Error('expected value')}
- function unary(){if(toks[pos]?.k==='+'){pos++;return unary()}if(toks[pos]?.k==='-'){pos++;const x=unary();return {a:-x.a,b:-x.b}}return primary()}
- function term(){let x=unary();while(pos<toks.length){let op=toks[pos]?.k;if(op==='*'||op==='/'){pos++;const y=unary();x=op==='*'?mul(x,y):div(x,y);continue}if(beginsAtom(toks[pos])){const y=unary();x=mul(x,y);continue}break}return x}
- function expr(){let x=term();while(pos<toks.length&&(toks[pos].k==='+'||toks[pos].k==='-')){const op=toks[pos++].k,y=term();x=op==='+'?add(x,y):sub(x,y)}return x}
- const value=expr();if(pos!==toks.length)throw Error('extra tokens');return {a:value.a,b:value.b,variable};
-}
-function fmtLinear(a,b,v){
- const bits=[];
- if(Math.abs(a)>1e-12){if(Math.abs(a-1)<1e-12)bits.push(v);else if(Math.abs(a+1)<1e-12)bits.push('-'+v);else bits.push(niceNumber(a)+v)}
- if(Math.abs(b)>1e-12||!bits.length){const nb=niceNumber(Math.abs(b));if(!bits.length)bits.push(niceNumber(b));else bits.push((b>=0?' + ':' - ')+nb)}
- return bits.join('');
-}
-function solveLinearEquation(raw){
- const candidate=mathCandidate(raw);if(!candidate.includes('='))return null;
- const parts=candidate.split('=');if(parts.length!==2)return null;
- try{
-  const L=parseLinearExpression(parts[0]);const R=parseLinearExpression(parts[1],L.variable);const v=R.variable||L.variable;if(!v)return null;
-  // Reparse left if variable was discovered only on right.
-  const left=L.variable?L:parseLinearExpression(parts[0],v);const right=parseLinearExpression(parts[1],v);
-  const k=left.a-right.a, rhs=right.b-left.b;
-  if(Math.abs(k)<1e-12)return {candidate,variable:v,special:Math.abs(rhs)<1e-12?'infinite':'none'};
-  const x=rhs/k,checkL=left.a*x+left.b,checkR=right.a*x+right.b;
-  const steps=[];
-  if(Math.abs(right.a)>1e-12){const op=right.a>0?`subtract ${niceNumber(Math.abs(right.a))}${v}`:`add ${niceNumber(Math.abs(right.a))}${v}`;steps.push({why:`Get the ${v} terms onto one side.`,do:`${op} on both sides.`,result:`${fmtLinear(k,left.b,v)} = ${niceNumber(right.b)}`})}
-  if(Math.abs(left.b)>1e-12){const op=left.b>0?`take away ${niceNumber(left.b)}`:`add ${niceNumber(Math.abs(left.b))}`;steps.push({why:`Get ${v} by itself.`,do:`${op} on both sides.`,result:`${fmtLinear(k,0,v)} = ${niceNumber(rhs)}`})}
-  if(Math.abs(k-1)>1e-12){steps.push({why:`There are ${niceNumber(k)} lots of ${v}.`,do:`Divide both sides by ${niceNumber(k)}.`,result:`${v} = ${niceNumber(x)}`})}
-  if(!steps.length)steps.push({why:`${v} is already by itself.`,do:'Read the value on the other side.',result:`${v} = ${niceNumber(x)}`});
-  return {candidate,variable:v,x,left,right,steps,checkL,checkR};
- }catch(e){return null}
-}
-function renderLinearSolution(sol){
- if(sol.special==='infinite')return `<b>Mimi says:</b><div class="equation-read"><div>I read this as</div><div class="eq">${esc(sol.candidate)}</div></div><p>Both sides simplify to the same thing, so there are infinitely many solutions.</p>`;
- if(sol.special==='none')return `<b>Mimi says:</b><div class="equation-read"><div>I read this as</div><div class="eq">${esc(sol.candidate)}</div></div><p>The variable terms cancel but the numbers do not match, so there is no solution.</p>`;
- return `<b>Mimi says:</b>
-  <div class="equation-read"><div><b>I read the problem as:</b></div><div class="eq">${esc(sol.candidate)}</div><div class="mini-muted">If that is not what the picture says, correct the text above and press Explain again.</div></div>
-  <p><b>We want ${esc(sol.variable)} all by itself.</b></p>
-  ${sol.steps.map((st,i)=>`<div class="balance-step"><span class="num">${i+1}</span><div><b>${esc(st.why)}</b><br>${esc(st.do)}<br><span class="eq" style="font-family:Cambria Math,serif;color:#4d2fc0">${esc(st.result)}</span></div></div>`).join('')}
-  <div class="check-box"><b>✓ Check the answer:</b><br>Put ${esc(sol.variable)} = ${niceNumber(sol.x)} back into the original equation.<br>Left side = ${niceNumber(sol.checkL)} and right side = ${niceNumber(sol.checkR)}. They match.</div>
-  <p class="note"><b>Answer:</b> ${esc(sol.variable)} = ${niceNumber(sol.x)}</p>`;
-}
-function simplifyLinearExpression(raw){
- const c=mathCandidate(raw);if(c.includes('='))return null;
- try{const p=parseLinearExpression(c);if(!p.variable)return null;return {candidate:c,result:fmtLinear(p.a,p.b,p.variable)}}catch(e){return null}
-}
-function simpleExplain(s,text){
- const normalized=cleanMathOCR(text);
- const eq=solveLinearEquation(normalized);
- if(eq)return renderLinearSolution(eq);
- if(s==='math'){
-  const simp=simplifyLinearExpression(normalized);if(simp)return `<b>Mimi says:</b><div class="equation-read"><div>I read:</div><div class="eq">${esc(simp.candidate)}</div></div><p>Combine the like terms. The simplified expression is <b>${esc(simp.result)}</b>.</p>`;
- }
- const qh=questions.find(q=>q.s===s && (normalized.toLowerCase().includes(q.q.toLowerCase().replace(/[?.]/g,''))||q.q.toLowerCase().includes(normalized.toLowerCase().replace(/[?.]/g,''))));
- if(qh)return `<b>Mimi says:</b><p><b>Answer:</b> ${qh.o[qh.a]}</p><p>${qh.why}</p><p class="note">Now say the reason in your own words.</p>`;
- const hit=detailedLessons.find(l=>l.s===s && (normalized.toLowerCase().includes(l.unit.toLowerCase().split(' ')[0])||l.words.some(w=>normalized.toLowerCase().includes(w.split('=')[0].trim().toLowerCase()))));
- if(hit)return `<b>Mimi says:</b><p><b>Easy meaning:</b> ${hit.easy}</p><p><b>Small steps:</b></p><ol>${hit.steps.map(x=>`<li>${x}</li>`).join('')}</ol><p><b>Example:</b> ${hit.example}</p>`;
- const c=curriculum[s];if(c){const all=c.terms.flatMap(t=>t.units);let best=all.map(u=>[u,(u[0]+' '+u[1]).toLowerCase().split(/\W+/).filter(w=>w.length>3&&normalized.toLowerCase().includes(w)).length]).sort((a,b)=>b[1]-a[1])[0];if(best&&best[1]>0)return `<b>Mimi says:</b><p>This looks related to <b>${best[0][0]}</b>.</p><p>Let’s break the unit into small pieces:</p><ol>${best[0][1].split(' • ').map(x=>`<li>${x}</li>`).join('')}</ol><p class="note">If the question asks something more specific, use the exact wording or WhatsApp a trusted adult instead of guessing.</p>`}
- return `<b>Mimi says:</b><p>I am not confident enough to answer that from the built-in local tutor, so I will not guess.</p><ol><li>Check that the subject is correct.</li><li>Use the exact wording from the question.</li><li>If Smart Mimi AI is available on this device, try it.</li><li>Otherwise WhatsApp a trusted adult.</li></ol>`;
-}
-function showLocalAnswer(subject,text){
- help={s:subject,q:text,ans:''};$('#assistResult').innerHTML=simpleExplain(subject,text)+`<div class="actions"><button class="btn ghost" id="waResult">WhatsApp this question</button></div>`;$('#waResult').onclick=openWA;
-}
-$('#assistExplain').onclick=()=>showLocalAnswer($('#assistSubject').value,$('#assistQuestion').value);
+function localHelp(text,subject,attempt=''){const s=subject==='auto'?detectSubject(text):subject;help={s,q:text,ans:attempt};let html=s==='math'?mathTutor(text,tutorMode,attempt):tutorFramework(s,text,tutorMode,attempt);if(!html){const unit=retrieveUnit(s,text);html=`<b>${subjects[s].icon} ${subjects[s].name} Mimi</b><p>I matched this to <b>${esc(unit?.title||'this Grade 8 topic')}</b>.</p><p>Tell me the exact question wording if you want a more specific answer.</p>`}$('#assistSubject').value=s;$('#assistResult').innerHTML=html+waButton();bindWA()}
+function waButton(){return `<div class="answer-actions"><button class="btn ghost" id="waResult">WhatsApp this question</button></div>`}
+function bindWA(){const b=$('#waResult');if(b)b.onclick=openWA}
+$$('[data-mode]').forEach(b=>b.onclick=()=>{$$('[data-mode]').forEach(x=>x.classList.remove('active'));b.classList.add('active');tutorMode=b.dataset.mode});
+$$('[data-pane]').forEach(b=>b.onclick=()=>{$$('[data-pane]').forEach(x=>x.classList.remove('active'));b.classList.add('active');$$('.pane').forEach(p=>p.classList.toggle('active',p.id===b.dataset.pane))});
+$('#mimiGo').onclick=()=>localHelp($('#assistQuestion').value,$('#assistSubject').value,$('#studentAttempt').value);$('#smartGo').onclick=()=>smartHelp($('#assistQuestion').value,$('#assistSubject').value,$('#studentAttempt').value);
+function openMimiFor(s,q='',mode='explain'){tutorMode=mode;$$('[data-mode]').forEach(x=>x.classList.toggle('active',x.dataset.mode===mode));$('#assistSubject').value=s;$('#assistQuestion').value=q;$('#studentAttempt').value='';go('mimi');setTimeout(()=>$('#assistQuestion').focus(),250)}
+/* photo OCR */
+let photo=null;$('#photoInput').onchange=e=>{photo=e.target.files?.[0]||null;if(!photo)return;const r=new FileReader();r.onload=x=>{$('#photoPreview').src=x.target.result;$('#photoPreview').style.display='block'};r.readAsDataURL(photo);$('#ocrStatus').textContent='Photo ready.'};
+function loadOCR(){return new Promise((res,rej)=>{if(window.Tesseract)return res();const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
+$('#readPhoto').onclick=async()=>{if(!photo)return toast('Choose a photo first.');try{$('#ocrStatus').textContent='Reading the question…';await loadOCR();const r=await Tesseract.recognize(photo,'eng',{logger:m=>{if(m.status==='recognizing text')$('#ocrStatus').textContent=`Reading… ${Math.round((m.progress||0)*100)}%`}});const t=(r.data.text||'').trim();$('#ocrText').value=t;$('#ocrStatus').textContent='Check what Mimi read below.';const s=detectSubject(t);$('#assistSubject').value=s;localHelp(t,s,'')}catch(e){$('#ocrStatus').textContent='Photo reading could not load. Type the question instead.'}};
+$('#explainOcr').onclick=()=>{const t=$('#ocrText').value,s=detectSubject(t);$('#assistSubject').value=s;localHelp(t,s,'')};
+$('#smartPhoto').onclick=async()=>{if(!photo)return toast('Choose a photo first.');if(!('LanguageModel'in window))return $('#readPhoto').click();const s=$('#assistSubject').value==='auto'?(activeSubject||'math'):$('#assistSubject').value;$('#assistResult').innerHTML='<b>✨ Smart Mimi:</b><p>Looking carefully at the homework photo…</p>';try{const sess=await smartSession(s,true);const r=await sess.prompt([{role:'user',content:[{type:'text',value:'Read the exact school question in this image, identify the most likely subject, then tutor Ariana using the subject-specific rules. If there is an equation, solve it and check it. If the image is unclear, say what you cannot read.'},{type:'image',value:photo}]}]);help={s,q:$('#ocrText').value||'Question shown in photo',ans:''};$('#assistResult').innerHTML=`<b>✨ Smart Mimi</b><div>${esc(r).replace(/\n/g,'<br>')}</div>${waButton()}`;bindWA();sess.destroy?.()}catch(e){toast('Smart photo could not run. Using OCR.');$('#readPhoto').click()}};
+
+/* WhatsApp */
 function waText(){let m=`Hi ${state.contactName||'there'}, Ariana is having trouble with a Grade 8 ${subjects[help.s]?.name||'school'} question.\n\nQuestion: ${help.q||'I need help.'}`;if(help.ans)m+=`\n\nWhat I tried: ${help.ans}`;m+=`\n\nCan you help me understand it when you get a chance?`;return m}
 function openWA(){if(!state.contactPhone){openSettings();return toast('Add the WhatsApp number first.')}window.open(`https://wa.me/${state.contactPhone}?text=${encodeURIComponent(waText())}`,'_blank','noopener')}
 $('#sendWA').onclick=openWA;
 
-/* Smart Mimi — Chrome built-in Prompt API when supported */
-let smartMimiSession=null,smartMimiAvailability='unknown';
-async function checkSmartMimi(){
- const dot=$('#aiDot'),txt=$('#aiStatusText'),btn=$('#smartExplain'),pbtn=$('#smartPhoto');
- if(!('LanguageModel' in window)){smartMimiAvailability='unavailable';txt.textContent='Smart Mimi AI is not available on this device. Local Mimi is active.';dot.className='ai-dot';btn.hidden=true;pbtn.hidden=true;return}
- try{
-  const options={expectedInputs:[{type:'text',languages:['en']}],expectedOutputs:[{type:'text',languages:['en']}]};
-  smartMimiAvailability=await LanguageModel.availability(options);
-  if(smartMimiAvailability==='unavailable'){txt.textContent='Chrome’s built-in AI is unavailable here. Local Mimi is active.';dot.className='ai-dot';btn.hidden=true;pbtn.hidden=true;return}
-  txt.textContent=smartMimiAvailability==='available'?'Smart Mimi AI is ready on this laptop.':'Smart Mimi AI is supported; Chrome may need to download its local model first.';
-  dot.className='ai-dot '+(smartMimiAvailability==='available'?'ready':'wait');btn.hidden=false;pbtn.hidden=false;
- }catch(e){txt.textContent='Could not check Smart Mimi. Local Mimi is active.';dot.className='ai-dot';}
-}
-async function getSmartSession(multimodal=false){
- const expectedInputs=multimodal?[{type:'text',languages:['en']},{type:'image'}]:[{type:'text',languages:['en']}];
- const expectedOutputs=[{type:'text',languages:['en']}];
- const availability=await LanguageModel.availability({expectedInputs,expectedOutputs});
- if(availability==='unavailable')throw Error('Built-in AI is unavailable for this input type.');
- return await LanguageModel.create({
-  expectedInputs,expectedOutputs,
-  initialPrompts:[{role:'system',content:`You are Mimi, a warm Grade 8 tutor for Ariana in Jamaica. Explain school questions at a simple Grade 7-8 reading level. For maths: first state exactly what problem you read, solve in tiny balance-preserving steps, explain why each step is allowed, and always verify by substituting the answer. Do not just give an answer. For other subjects: identify the subject/topic, explain key words first, then answer in 3-6 small steps. If an image or question is unclear, say what is unclear and do not invent details.`}],
-  monitor(m){m.addEventListener('downloadprogress',e=>{$('#aiStatusText').textContent=`Preparing Smart Mimi… ${Math.round(e.loaded*100)}%`;$('#aiDot').className='ai-dot wait'})}
- });
-}
-async function smartExplainText(){
- const subject=$('#assistSubject').value,text=$('#assistQuestion').value.trim();if(!text)return toast('Type the question first.');
- $('#assistResult').innerHTML='<b>Smart Mimi:</b><p>Thinking through the problem…</p>';
- try{const session=await getSmartSession(false);const result=await session.prompt(`Subject: ${subjects[subject]?.name||subject}\nQuestion: ${text}\nExplain it to Ariana in the simplest accurate way. If it is maths, show each equation step and check the final answer.`);help={s:subject,q:text,ans:''};$('#assistResult').innerHTML=`<b>✨ Smart Mimi:</b><div class="smart-answer">${esc(result)}</div><div class="actions"><button class="btn ghost" id="waResult">WhatsApp this question</button></div>`;$('#waResult').onclick=openWA;session.destroy?.()}catch(e){toast('Smart Mimi could not run. Using Local Mimi instead.');showLocalAnswer(subject,text)}
-}
-$('#smartExplain').onclick=smartExplainText;
+/* Settings/access/device/install */
+function openSettings(){$('#studentName').value=state.name;$('#contactName').value=state.contactName;$('#contactPhone').value=state.contactPhone;$('#subjectToggles').innerHTML=Object.entries(subjects).map(([k,v])=>`<label class="toggle"><input type="checkbox" data-tog="${k}" ${state.enabled[k]?'checked':''}><span>${v.icon} ${v.name}</span></label>`).join('');$('#settingsModal').classList.add('show')}
+$('#settingsBtn').onclick=openSettings;$('#closeSettings').onclick=()=>$('#settingsModal').classList.remove('show');$('#saveSettings').onclick=()=>{state.name=$('#studentName').value.trim()||'Ariana';state.contactName=$('#contactName').value.trim();state.contactPhone=$('#contactPhone').value.replace(/\D/g,'');$$('[data-tog]').forEach(c=>state.enabled[c.dataset.tog]=c.checked);save();$('#settingsModal').classList.remove('show');syncUI();toast('Settings saved')};$('#resetApp').onclick=()=>{if(confirm('Reset all app progress and settings?')){localStorage.removeItem(STORE);location.reload()}};
+$('#accessBtn').onclick=()=>$('#accessModal').classList.add('show');$('#closeAccess').onclick=()=>$('#accessModal').classList.remove('show');$('#toggleLarge').onclick=()=>document.body.classList.toggle('large');$('#toggleContrast').onclick=()=>document.body.classList.toggle('highcontrast');$('#readPage').onclick=()=>{if(!('speechSynthesis'in window))return toast('Read aloud is unavailable here.');speechSynthesis.cancel();const u=new SpeechSynthesisUtterance($('.section.active').innerText);u.rate=.94;speechSynthesis.speak(u)};
+$('#deviceMode').value=state.device;document.body.dataset.device=state.device;$('#deviceMode').onchange=e=>{state.device=e.target.value;document.body.dataset.device=state.device;save()};
 
-let photo=null;$('#photoInput').onchange=e=>{photo=e.target.files?.[0]||null;if(!photo)return;const r=new FileReader();r.onload=x=>{$('#photoPreview').src=x.target.result;$('#photoPreview').style.display='block'};r.readAsDataURL(photo);$('#ocrStatus').textContent='Photo ready. Press Read & explain.'};
-function loadOCR(){return new Promise((res,rej)=>{if(window.Tesseract)return res();const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
-$('#readPhoto').onclick=async()=>{
- if(!photo)return toast('Choose a photo first.');
- try{
-  $('#ocrStatus').textContent='Loading photo reader…';await loadOCR();
-  const r=await Tesseract.recognize(photo,'eng',{logger:m=>{if(m.status==='recognizing text')$('#ocrStatus').textContent=`Reading… ${Math.round((m.progress||0)*100)}%`}});
-  const raw=(r.data.text||'').trim();const cleaned=mathCandidate(raw);$('#ocrText').value=cleaned||raw;
-  if(solveLinearEquation(cleaned)||/[=]/.test(cleaned)&&/[0-9]/.test(cleaned))$('#assistSubject').value='math';
-  $('#ocrStatus').textContent='Mimi read the text. I have cleaned common OCR symbols; correct it if needed.';
-  showLocalAnswer($('#assistSubject').value,$('#ocrText').value);
- }catch(e){$('#ocrStatus').textContent='OCR could not load. Check internet or type the question.'}
-};
-$('#explainOcr').onclick=()=>{const t=$('#ocrText').value;$('#assistQuestion').value=t;showLocalAnswer($('#assistSubject').value,t)};
-async function smartExplainPhoto(){
- if(!photo)return toast('Choose a photo first.');
- $('#assistResult').innerHTML='<b>✨ Smart Mimi:</b><p>Looking at the photo carefully…</p>';
- try{const subject=$('#assistSubject').value;const session=await getSmartSession(true);const result=await session.prompt([{role:'user',content:[{type:'text',value:`This is Ariana's Grade 8 ${subjects[subject]?.name||subject} work. Read the exact problem in the image first. Then explain it in very small, accurate steps. If it is an equation, solve it and substitute the answer to check it. If the image is unclear, say so.`},{type:'image',value:photo}]}]);help={s:subject,q:$('#ocrText').value||'Problem shown in the photo',ans:''};$('#assistResult').innerHTML=`<b>✨ Smart Mimi:</b><div class="smart-answer">${esc(result)}</div><div class="actions"><button class="btn ghost" id="waResult">WhatsApp this question</button></div>`;$('#waResult').onclick=openWA;session.destroy?.()}catch(e){toast('Smart photo AI is unavailable here. Using OCR + Local Mimi.');$('#readPhoto').click()}
-}
-$('#smartPhoto').onclick=smartExplainPhoto;
-$('#sharePhoto').onclick=async()=>{if(!photo)return toast('Choose a photo first.');help={s:$('#assistSubject').value,q:$('#ocrText').value||'I need help with the problem in this photo.',ans:''};if(navigator.share&&(!navigator.canShare||navigator.canShare({files:[photo]}))){try{await navigator.share({title:'Ariana needs help',text:waText(),files:[photo]});return}catch(e){}}openWA()};
-checkSmartMimi();
 
-/* Sources + init */
-function renderSources(){$('#sourceList').innerHTML=sources.map(s=>`<div class="source"><a href="${s[1]}" target="_blank" rel="noopener"><b>${s[0]}</b></a><div>${s[2]}</div></div>`).join('')}
+/* Continue */
+function continueStudy(){openSubject(state.lastSubject||'math',state.lastLearn?'teach':'overview')}$('#continueBtn').onclick=continueStudy;$('#continueCard').onclick=continueStudy;
+
+/* Sync */
 function syncUI(){
- $('#quizSubject').innerHTML=opts(true);$('#assistSubject').innerHTML=opts(false);$('#reminderEnabled').checked=state.reminder.enabled;$('#reminderTime').value=state.reminder.time;
- renderSubjects($('#subjectSearch').value||'');renderCoverage($('#coverageSearch').value||'');renderLearn();renderHW();renderToday();renderPlan();renderSources();renderStats();updateReminderStatus()
+ $('#assistSubject').innerHTML=subjectOptions(true);$('#hwSubject').innerHTML=subjectOptions(false);$('#reminderEnabled').checked=state.reminder.enabled;$('#reminderTime').value=state.reminder.time;
+ renderSubjects($('#subjectSearch').value||'');renderToday();renderHomeStats();renderHomework();renderPlan();renderTimer();updateReminderStatus();
 }
-timerRender();syncUI();scheduleForeground();initSW();
-const initial=(location.hash||'').replace('#','');if(['home','subjects','coverage','learn','quiz','study','sources'].includes(initial))go(initial);
+syncUI();scheduleReminder();initSW();checkSmart();
+const initial=(location.hash||'').slice(1);if(['home','subjects','study','mimi'].includes(initial))go(initial);
 </script>
 </body>
 </html>
