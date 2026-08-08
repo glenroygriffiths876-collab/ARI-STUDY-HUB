@@ -3,1361 +3,948 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#174a8b">
-<title>Ariana's Grade 8 Study Buddy — Jamaica</title>
+<meta name="theme-color" content="#6c3cf0">
+<meta name="description" content="Ariana's Purple Study Buddy — Grade 8 Jamaica study hub">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>Ariana's Purple Study Buddy</title>
 <style>
 :root{
-  --blue:#174a8b; --blue2:#2567b7; --sky:#dff1ff; --gold:#f4c542; --gold2:#ffe796;
-  --purple:#7458d8; --mint:#dff7ed; --green:#16825d; --red:#b94c54; --pink:#ffe5f2;
-  --ink:#1f2b3d; --muted:#667386; --bg:#f5f8fd; --card:#fff; --line:#dfe6f2;
-  --soft:#eef4fb; --shadow:0 14px 38px rgba(30,58,110,.12); --radius:22px;
+ --purple:#6c3cf0;--purple2:#8a63ff;--purple3:#b49aff;--lav:#f3efff;--pink:#ffe0f0;--gold:#ffd76c;
+ --ink:#24263a;--muted:#697082;--bg:#f7f5ff;--card:#fff;--line:#e2def2;--good:#16754f;--bad:#b84a56;
+ --shadow:0 14px 36px rgba(73,55,146,.12);--radius:22px;
 }
 *{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
 html{scroll-behavior:smooth}
 body{
-  margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  color:var(--ink);background:
-  radial-gradient(circle at 8% 0%,rgba(244,197,66,.15),transparent 24%),
-  radial-gradient(circle at 95% 10%,rgba(37,103,183,.11),transparent 26%),
-  var(--bg);line-height:1.55
+ margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ color:var(--ink);line-height:1.55;background:
+ radial-gradient(circle at 8% 0%,rgba(138,99,255,.11),transparent 25%),
+ radial-gradient(circle at 96% 6%,rgba(255,224,240,.55),transparent 25%),var(--bg)
 }
-button,input,select,textarea{font:inherit}
-button{cursor:pointer}
-img{max-width:100%}
-a{color:var(--blue2)}
-button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
-  outline:3px solid #62a8ff;outline-offset:2px
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:var(--purple)}
+.wrap{width:min(1220px,calc(100% - 28px));margin:auto}
+.topbar{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topin{min-height:70px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:950;min-width:0}
+.brand img{width:46px;height:46px;border-radius:14px;box-shadow:var(--shadow)}
+.brand .txt{white-space:nowrap}.brand small{display:block;color:var(--muted);font-size:.71rem;font-weight:750}
+.header-actions{margin-left:auto;display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.device-select,.iconbtn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:9px 10px;color:var(--ink)}
+.nav{
+ width:100%;order:3;margin:0;
+ display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px
 }
-.wrap{max-width:1240px;margin:auto;padding:0 18px}
-.topbar{
-  position:sticky;top:0;z-index:80;background:rgba(255,255,255,.94);
-  border-bottom:1px solid var(--line);backdrop-filter:blur(12px)
+.nav button{
+ min-width:0;border:0;background:transparent;border-radius:12px;padding:9px 5px;font-size:.82rem;font-weight:850;
+ color:var(--muted);white-space:normal;text-align:center
 }
-.top-inner{min-height:72px;display:flex;align-items:center;gap:13px}
-.brand{display:flex;align-items:center;gap:11px;font-weight:950;letter-spacing:-.025em}
-.logo{
-  width:48px;height:48px;border-radius:15px;display:grid;place-items:center;color:white;font-weight:950;
-  background:linear-gradient(135deg,var(--blue),var(--blue2) 55%,var(--gold) 56% 68%,var(--blue) 69%);
-  box-shadow:var(--shadow)
-}
-.brand small{display:block;font-size:.72rem;font-weight:750;color:var(--muted);letter-spacing:.01em}
-.nav{margin-left:auto;display:flex;gap:5px;overflow:auto;scrollbar-width:none}
-.nav::-webkit-scrollbar{display:none}
-.nav button{border:0;background:transparent;border-radius:999px;padding:10px 12px;font-weight:850;color:var(--muted);white-space:nowrap}
-.nav button:hover,.nav button.active{background:var(--soft);color:var(--blue)}
-.iconbtn{border:1px solid var(--line);background:white;border-radius:13px;padding:9px 11px}
-.hero{padding:30px 0 18px}
-.hero-grid{display:grid;grid-template-columns:1.28fr .72fr;gap:18px}
+.nav button.active,.nav button:hover{background:var(--lav);color:var(--purple)}
+.hero{padding:24px 0 18px}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:16px}
 .hero-card{
-  color:white;border-radius:30px;padding:30px;position:relative;overflow:hidden;box-shadow:var(--shadow);
-  background:linear-gradient(135deg,#153f7e,#2465ae 62%,#588ac7)
+ color:#fff;border-radius:28px;padding:28px;box-shadow:var(--shadow);overflow:hidden;position:relative;
+ background:linear-gradient(145deg,#6035d8,#8158f5 58%,#aa8cff)
 }
-.hero-card:before{
-  content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-90px;top:-100px;
-  border:36px solid rgba(244,197,66,.28)
-}
-.hero-card:after{
-  content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:120px;bottom:-125px;
-  background:rgba(255,255,255,.08)
-}
-.eyebrow{
-  position:relative;z-index:1;display:inline-flex;align-items:center;gap:7px;
-  padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.23);font-size:.76rem;font-weight:900;text-transform:uppercase;letter-spacing:.06em
-}
-h1{position:relative;z-index:1;font-size:clamp(2.15rem,5vw,4.15rem);line-height:1;letter-spacing:-.055em;margin:16px 0 12px}
-.hero-card p{position:relative;z-index:1;max-width:760px;color:#edf6ff;font-size:1.03rem}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px;position:relative;z-index:2}
-.btn{border:0;border-radius:14px;padding:11px 15px;font-weight:900}
-.btn.primary{background:var(--gold);color:#292100}
-.btn.blue{background:var(--blue);color:white}
-.btn.white{background:white;color:var(--blue)}
-.btn.ghost{background:white;border:1px solid var(--line);color:var(--ink)}
-.btn.soft{background:var(--soft);color:var(--blue)}
-.btn.danger{background:#fff0f0;color:#9c3f48;border:1px solid #f0c5c7}
-.panel,.card{
-  background:var(--card);border:1px solid var(--line);box-shadow:0 6px 20px rgba(34,57,105,.045)
-}
-.panel{border-radius:30px;padding:24px;box-shadow:var(--shadow)}
-.card{border-radius:var(--radius);padding:19px}
-.panel h3,.card h3{margin:0 0 8px}
-.panel p,.card p{color:var(--muted)}
-.progress-top{display:grid;grid-template-columns:118px 1fr;gap:15px;align-items:center}
-.progress-ring{
-  width:118px;height:118px;border-radius:50%;display:grid;place-items:center;position:relative;
-  background:conic-gradient(var(--blue) 0deg,#e6ebf3 0deg)
-}
-.progress-ring:before{content:"";position:absolute;inset:12px;background:white;border-radius:50%}
-.progress-ring span{position:relative;font-size:1.35rem;font-weight:950}
+.hero-card:after{content:"";position:absolute;width:250px;height:250px;border:32px solid rgba(255,255,255,.11);border-radius:50%;right:-100px;top:-105px}
+.eyebrow{display:inline-flex;gap:7px;align-items:center;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.05em}
+h1{position:relative;font-size:clamp(2.2rem,5vw,4rem);line-height:1.01;letter-spacing:-.055em;margin:16px 0 12px;z-index:1}
+.hero-card p{position:relative;z-index:1;color:#f6f3ff;max-width:760px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px;position:relative;z-index:2}
+.btn{border:0;border-radius:14px;padding:11px 14px;font-weight:900}
+.btn.purple{background:var(--purple);color:#fff}.btn.white{background:#fff;color:var(--purple)}
+.btn.gold{background:var(--gold);color:#322500}.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.btn.soft{background:var(--lav);color:var(--purple)}
+.card,.panel{background:var(--card);border:1px solid var(--line)}
+.card{border-radius:var(--radius);padding:18px;box-shadow:0 6px 18px rgba(65,55,115,.045)}
+.panel{border-radius:28px;padding:22px;box-shadow:var(--shadow)}
+.card h3,.panel h3{margin:0 0 8px}.card p,.panel p{color:var(--muted)}
+.badge{display:inline-flex;gap:5px;align-items:center;padding:6px 9px;border-radius:999px;background:var(--lav);color:var(--purple);font-size:.73rem;font-weight:900}
+.progress-top{display:grid;grid-template-columns:110px 1fr;gap:13px;align-items:center}
+.ring{width:110px;height:110px;border-radius:50%;display:grid;place-items:center;position:relative;background:conic-gradient(var(--purple) 0deg,#ece8f8 0deg)}
+.ring:before{content:"";position:absolute;inset:11px;background:#fff;border-radius:50%}.ring span{position:relative;font-weight:950;font-size:1.25rem}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
-.stat{background:#f8faff;border-radius:14px;padding:11px;text-align:center}
-.stat b{display:block;font-size:1.07rem}.stat small{color:var(--muted)}
-.section{display:none;padding:10px 0 34px}
-.section.active{display:block}
-.section-head{display:flex;justify-content:space-between;gap:16px;align-items:end;margin:12px 0 16px}
-.section-head h2{margin:0;font-size:clamp(1.7rem,3vw,2.35rem);letter-spacing:-.035em}
-.section-head p{margin:5px 0 0;color:var(--muted);max-width:800px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.grid.two{grid-template-columns:repeat(2,1fr)}
-.badge{
-  display:inline-flex;align-items:center;gap:5px;padding:6px 9px;border-radius:999px;
-  background:var(--soft);color:var(--blue);font-size:.73rem;font-weight:900
+.stat{background:#faf9ff;border-radius:14px;padding:10px;text-align:center}.stat b{display:block}.stat small{color:var(--muted)}
+.section{display:none;padding:10px 0 34px}.section.active{display:block}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:14px;margin:10px 0 15px}
+.section-head h2{margin:0;font-size:clamp(1.65rem,3vw,2.3rem);letter-spacing:-.03em}.section-head p{margin:5px 0 0;color:var(--muted);max-width:800px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.subject-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.subject-card{border:1px solid var(--line);background:#fff;border-radius:19px;padding:15px;box-shadow:0 5px 16px rgba(64,52,121,.045);transition:.18s;min-width:0}
+.subject-card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.subject-card.hidden{opacity:.52;filter:grayscale(.4)}
+.subject-icon{font-size:1.7rem}.subject-card h3{margin:7px 0 4px}.subject-card p{font-size:.88rem}
+.search{display:flex;gap:7px;flex-wrap:wrap}.input,.search input,.search select,textarea{border:1px solid #cfd3e5;background:#fff;border-radius:13px;padding:10px 11px;min-width:0}
+.search input{flex:1}
+.coverage-card{border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px;margin-bottom:12px}
+.coverage-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.coverage-terms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.term{border:1px solid #e4dff5;background:#fcfbff;border-radius:14px;padding:12px;min-width:0}
+.term h4{margin:0 0 7px;color:var(--purple)}.term ul{margin:0;padding-left:18px}.term li{margin:5px 0}
+.status-official{background:#e8f7f0;color:#16754f}.status-confirm{background:#fff3ce;color:#7f6100}
+.lesson-layout{display:grid;grid-template-columns:295px minmax(0,1fr);gap:15px}
+.lesson-list{position:sticky;top:130px;align-self:start;max-height:calc(100vh - 155px);overflow-y:auto;overflow-x:hidden}
+.lesson-list button{width:100%;border:0;background:transparent;text-align:left;border-radius:12px;padding:10px;color:#4d566d;font-weight:820}
+.lesson-list button.active,.lesson-list button:hover{background:var(--lav);color:var(--purple)}.lesson-list small{display:block;color:var(--muted);font-weight:650}
+.lesson-main{min-width:0}.lesson-main h2{margin:.35rem 0}
+.easybox{display:grid;grid-template-columns:155px minmax(0,1fr);gap:13px;align-items:center;border:1px solid #e5dffa;background:#fcfbff;border-radius:17px;padding:13px;margin:13px 0}
+.visual{min-height:115px;border:1px solid #ece8fb;border-radius:14px;background:#fff;display:grid;place-items:center;font-size:3.4rem}
+.wordchips{display:flex;flex-wrap:wrap;gap:7px}.chip{font-size:.78rem;font-weight:850;background:#f5f1ff;color:#5e40bc;border-radius:999px;padding:5px 8px}
+.steps{display:grid;gap:8px}.step{display:flex;gap:9px}.stepno{flex:0 0 27px;width:27px;height:27px;border-radius:50%;background:var(--purple);color:#fff;display:grid;place-items:center;font-weight:950}
+.example{border:1px dashed #e4cc7b;background:#fffdf6;border-radius:15px;padding:13px;margin:13px 0}
+.quiz-shell{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:14px}.qtext{font-size:1.18rem;font-weight:900;margin:11px 0}
+.options{display:grid;gap:8px}.option{border:1px solid var(--line);background:#fff;border-radius:13px;padding:11px;text-align:left;font-weight:800}
+.option.selected{background:#f1edff;border-color:var(--purple);color:var(--purple)}
+.qnav{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.qnav button{aspect-ratio:1;border:1px solid var(--line);background:#fff;border-radius:9px}.qnav button.done{background:var(--lav);color:var(--purple)}
+.study-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.timer{font-size:3rem;font-weight:950;letter-spacing:-.05em;text-align:center}
+.reminderbox{border:2px solid #e3d9ff;background:#fcfaff;border-radius:18px;padding:15px}
+.switchline{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.switchline input[type=time]{border:1px solid var(--line);border-radius:12px;padding:9px}
+.status{padding:10px;border-radius:12px;background:#f7f5ff;margin-top:10px;font-size:.88rem}
+.todo{display:grid;gap:8px}.todo-item{display:flex;gap:9px;padding:9px;border:1px solid var(--line);border-radius:11px;background:#fcfbff}
+.hwrow{display:grid;grid-template-columns:minmax(0,1fr) 150px 100px;gap:7px}.hwlist{display:grid;gap:7px;margin-top:10px}.hw{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:8px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:9px}
+.source-list{display:grid;gap:8px}.source{border:1px solid var(--line);background:#fcfbff;border-radius:13px;padding:11px}
+.mimi-dock{position:fixed;right:14px;bottom:14px;z-index:140;display:flex;align-items:end;gap:8px}.mimi-bubble{max-width:235px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:16px 16px 4px 16px;padding:10px 12px;font-size:.9rem}
+.mimi{width:75px;height:75px;border-radius:50%;border:4px solid #fff;box-shadow:0 11px 26px rgba(70,50,145,.23);background:linear-gradient(145deg,#7649ee,#a17fff);position:relative}
+.mimi:before,.mimi:after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:#fff;top:24px}.mimi:before{left:19px}.mimi:after{right:19px}.mimi i{position:absolute;left:50%;top:41px;transform:translateX(-50%);width:22px;height:11px;border:3px solid #fff;border-top:0;border-left:0;border-right:0;border-radius:0 0 14px 14px}.mimi button{position:absolute;inset:0;border:0;background:transparent;border-radius:50%}
+.help-panel{position:fixed;right:14px;bottom:102px;width:min(430px,calc(100vw - 24px));max-height:78vh;overflow:auto;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:22px;padding:15px;z-index:150;display:none}.help-panel.show{display:block}
+.help-head{display:flex;justify-content:space-between;align-items:center}.tabs{display:flex;gap:5px;margin:10px 0}.tabs button{flex:1;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px;font-weight:850}.tabs button.active{background:var(--lav);color:var(--purple)}
+.pane{display:none}.pane.active{display:block}.photo{border:2px dashed #d8cff5;border-radius:15px;padding:11px;background:#fcfbff;text-align:center}.photo img{display:none;max-height:170px;margin:8px auto 0;border-radius:10px}.result{border:1px solid #e4def7;background:#fbfaff;border-radius:14px;padding:12px;margin-top:10px}.note{font-size:.85rem;color:var(--muted);background:#f8f7fc;border-radius:10px;padding:8px}
+.modal{position:fixed;inset:0;z-index:190;background:rgba(27,26,47,.6);display:none;align-items:center;justify-content:center;padding:14px}.modal.show{display:flex}.modal-card{width:min(760px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:22px;padding:20px}.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.toggles{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.toggle{display:flex;gap:7px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px}
+.toast{position:fixed;right:16px;bottom:16px;z-index:230;background:#24223b;color:#fff;padding:11px 14px;border-radius:11px;opacity:0;transform:translateY(10px);transition:.2s}.toast.show{opacity:1;transform:none}
+.footer{padding:20px 0 50px;text-align:center;color:var(--muted);font-size:.83rem}
+.good{color:var(--good)}.bad{color:var(--bad)}.feedback{font-weight:850;margin-top:8px}
+body.large{font-size:18px}body.highcontrast{--bg:#fff;--card:#fff;--ink:#000;--muted:#222;--line:#000;--lav:#eee}
+
+/* Device mode — deliberately no sideways scrolling */
+body[data-device="phone"] .wrap{width:min(480px,calc(100% - 20px))}
+body[data-device="phone"] .hero-grid,
+body[data-device="phone"] .grid,
+body[data-device="phone"] .grid.two,
+body[data-device="phone"] .subject-grid,
+body[data-device="phone"] .coverage-terms,
+body[data-device="phone"] .lesson-layout,
+body[data-device="phone"] .quiz-shell,
+body[data-device="phone"] .study-grid,
+body[data-device="phone"] .settings-grid,
+body[data-device="phone"] .toggles{grid-template-columns:1fr}
+body[data-device="phone"] .nav{grid-template-columns:repeat(4,minmax(0,1fr))}
+body[data-device="phone"] .lesson-list{position:static;max-height:none;display:grid;grid-template-columns:1fr}
+body[data-device="phone"] .easybox{grid-template-columns:1fr}
+body[data-device="phone"] .hwrow{grid-template-columns:1fr}
+body[data-device="phone"] .brand .txt{display:none}
+
+body[data-device="tablet"] .wrap{width:min(820px,calc(100% - 24px))}
+body[data-device="tablet"] .subject-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+body[data-device="tablet"] .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+body[data-device="tablet"] .lesson-layout{grid-template-columns:240px minmax(0,1fr)}
+body[data-device="tablet"] .nav{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+body[data-device="laptop"] .wrap{width:min(1220px,calc(100% - 30px))}
+
+@media(max-width:900px){
+ body[data-device="auto"] .hero-grid,body[data-device="auto"] .quiz-shell,body[data-device="auto"] .study-grid{grid-template-columns:1fr}
+ body[data-device="auto"] .subject-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body[data-device="auto"] .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ body[data-device="auto"] .lesson-layout{grid-template-columns:1fr}
+ body[data-device="auto"] .lesson-list{position:static;max-height:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ body[data-device="auto"] .nav{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
-.badge.gold{background:#fff4c7;color:#785c00}.badge.green{background:#e3f7ef;color:#0f7050}
-.badge.purple{background:#f0ecff;color:#5a45b0}.badge.gray{background:#f1f3f7;color:#576174}
-.subject-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
-.subject-card{
-  border:1px solid var(--line);background:white;border-radius:20px;padding:17px;box-shadow:0 6px 18px rgba(41,62,99,.045);
-  transition:.18s transform,.18s box-shadow,.18s border-color;position:relative;overflow:hidden
-}
-.subject-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#bccbe2}
-.subject-icon{font-size:1.8rem}
-.subject-card h3{margin:6px 0 5px}.subject-card p{font-size:.88rem;margin:0 0 12px;color:var(--muted)}
-.subject-card .termline{font-size:.78rem;color:#718096}
-.subject-card.hiddenSubject{opacity:.5;filter:grayscale(.5)}
-.searchbar{display:flex;gap:8px}
-.searchbar input{flex:1;border:1px solid var(--line);border-radius:14px;padding:11px 13px;background:white}
-.lesson-layout{display:grid;grid-template-columns:285px 1fr;gap:17px}
-.lesson-list{position:sticky;top:87px;align-self:start;max-height:calc(100vh - 110px);overflow:auto}
-.lesson-list button{width:100%;text-align:left;border:0;background:transparent;padding:11px;border-radius:13px;margin:2px 0;font-weight:820;color:#48566e}
-.lesson-list button:hover,.lesson-list button.active{background:var(--soft);color:var(--blue)}
-.lesson-list small{display:block;font-weight:600;color:var(--muted)}
-.lesson-main{min-height:620px}
-.lesson-main h2{margin:.45rem 0}
-.objectives{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:14px 0}
-.objective{background:#f8fbff;border:1px solid #e1eaf6;border-radius:13px;padding:11px}
-.teachbox{background:#f6f9ff;border-left:5px solid var(--blue);border-radius:14px;padding:15px;margin:15px 0}
-.example{background:#fffdf4;border:1px dashed #e4c56b;border-radius:16px;padding:15px;margin:14px 0}
-.steps{display:grid;gap:9px;margin-top:10px}
-.step{display:flex;gap:10px}
-.stepno{flex:0 0 28px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:white;font-weight:950}
-.recall{border:2px solid #dce7f7;border-radius:17px;padding:15px;margin-top:15px}
-.recall input,.recall textarea,.assist-input,.setting-input,.homework-input{
-  width:100%;border:1px solid #cbd6e8;border-radius:13px;padding:11px 12px;background:white
-}
-.feedback{font-weight:850;margin-top:9px}.good{color:var(--green)}.bad{color:var(--red)}
-.quiz-shell{display:grid;grid-template-columns:1fr 300px;gap:16px}
-.qtext{font-size:1.17rem;font-weight:900;margin:12px 0 14px}
-.options{display:grid;gap:8px}
-.option{border:1px solid var(--line);background:white;border-radius:13px;padding:11px;text-align:left;font-weight:800}
-.option:hover{background:#f8fbff;border-color:#a8bedc}.option.selected{background:#edf4ff;border-color:var(--blue);color:var(--blue)}
-.qnav{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
-.qnav button{aspect-ratio:1;border:1px solid var(--line);background:white;border-radius:10px;font-weight:850}
-.qnav button.done{background:#edf4ff;color:var(--blue)}
-.question-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.term-map{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
-.term{background:#f9fbff;border:1px solid #e1e9f5;border-radius:14px;padding:12px}
-.term b{display:block;color:var(--blue)}
-.focusbox{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.timer-face{font-size:3rem;font-weight:950;letter-spacing:-.05em;text-align:center;margin:12px 0}
-.todo{display:grid;gap:8px}
-.todo-item{display:flex;gap:9px;align-items:flex-start;padding:10px;border:1px solid var(--line);border-radius:12px;background:#fbfcff}
-.todo-item input{margin-top:5px}
-.homework-row{display:grid;grid-template-columns:1fr 150px 120px;gap:8px;margin-top:9px}
-.homework-table{display:grid;gap:8px;margin-top:12px}
-.hw{display:grid;grid-template-columns:100px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:13px;padding:10px}
-.hw .subject-pill{font-size:.75rem;font-weight:900;background:var(--soft);color:var(--blue);padding:5px 8px;border-radius:999px;text-align:center}
-.source-list{display:grid;gap:9px}
-.source-item{border:1px solid var(--line);border-radius:14px;padding:12px;background:#fbfcff}
-.source-item a{font-weight:850}
-.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(20,29,50,.58);z-index:180}
-.modal.show{display:flex}
-.modal-card{max-width:760px;width:100%;max-height:88vh;overflow:auto;background:white;border-radius:23px;padding:22px}
-.modal-card h2{margin-top:0}
-.setting-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.subject-toggles{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:10px}
-.subject-toggle{display:flex;gap:8px;align-items:center;border:1px solid var(--line);padding:9px;border-radius:11px}
-.toast{position:fixed;right:18px;bottom:18px;background:#182846;color:white;padding:12px 15px;border-radius:12px;z-index:230;opacity:0;transform:translateY(10px);transition:.2s}
-.toast.show{opacity:1;transform:none}
-/* Mimi */
-.mimi-dock{position:fixed;right:17px;bottom:17px;z-index:160;display:flex;gap:9px;align-items:end}
-.mimi-speech{max-width:245px;background:white;border:1px solid var(--line);border-radius:17px 17px 4px 17px;padding:10px 12px;box-shadow:var(--shadow);font-size:.9rem}
-.mimi-char{
-  width:78px;height:78px;border-radius:50%;position:relative;border:4px solid white;box-shadow:0 12px 28px rgba(34,67,130,.25);
-  background:linear-gradient(145deg,#2d6eb5,#174a8b 58%,#f4c542 59% 68%,#235d9d);
-  animation:floaty 3.4s ease-in-out infinite
-}
-.mimi-char:before,.mimi-char:after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:white;top:25px}
-.mimi-char:before{left:20px}.mimi-char:after{right:20px}
-.mimi-mouth{position:absolute;left:50%;top:42px;transform:translateX(-50%);width:25px;height:12px;border:3px solid white;border-top:0;border-left:0;border-right:0;border-radius:0 0 18px 18px}
-.mimi-open{position:absolute;inset:0;border:0;background:transparent;border-radius:50%}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-.assistant-panel{
-  position:fixed;right:17px;bottom:108px;width:min(430px,calc(100vw - 24px));max-height:78vh;overflow:auto;
-  background:white;border:1px solid var(--line);border-radius:23px;padding:17px;box-shadow:var(--shadow);z-index:170;display:none
-}
-.assistant-panel.show{display:block}
-.assistant-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.assistant-head h3{margin:4px 0 0}
-.photo-box{border:2px dashed #cbd9ee;background:#fbfdff;border-radius:15px;padding:12px;text-align:center}
-.photo-preview{display:none;max-height:190px;margin:10px auto 0;border-radius:12px}
-.ocr-status{font-size:.84rem;color:var(--muted);margin-top:7px}
-.breakdown{background:#f8fbff;border:1px solid #dce7f5;border-radius:15px;padding:13px;margin-top:11px}
-.breakdown ol{padding-left:19px}
-.helper-tabs{display:flex;gap:6px;margin:10px 0}
-.helper-tabs button{flex:1;border:1px solid var(--line);background:white;border-radius:11px;padding:8px;font-weight:850}
-.helper-tabs button.active{background:var(--soft);color:var(--blue);border-color:#b8cde8}
-.helper-pane{display:none}.helper-pane.active{display:block}
-.math{font-family:"Cambria Math","Times New Roman",serif}
-.info-note{font-size:.84rem;color:var(--muted);background:#f7f8fb;padding:9px;border-radius:11px}
-body.large{font-size:18px}
-body.highcontrast{--bg:#fff;--card:#fff;--ink:#000;--muted:#222;--line:#000;--soft:#f0f0f0}
-body.focus .topbar,body.focus .hero,body.focus .mimi-dock,body.focus .assistant-panel{display:none!important}
-@media(max-width:970px){
-  .hero-grid,.quiz-shell,.focusbox{grid-template-columns:1fr}
-  .subject-grid{grid-template-columns:repeat(3,1fr)}
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .lesson-layout{grid-template-columns:1fr}
-  .lesson-list{position:static;max-height:none;display:flex;overflow:auto}
-  .lesson-list button{min-width:180px}
-}
-@media(max-width:680px){
-  .wrap{padding:0 12px}.top-inner{min-height:64px}.brand span.text{display:none}
-  .nav button{padding:8px 9px;font-size:.82rem}
-  .hero{padding-top:18px}.hero-card,.panel{border-radius:21px;padding:20px}
-  .subject-grid,.grid,.grid.two,.term-map,.objectives{grid-template-columns:1fr}
-  .stats{grid-template-columns:repeat(3,1fr)}
-  .setting-grid,.subject-toggles{grid-template-columns:1fr}
-  .homework-row{grid-template-columns:1fr}.hw{grid-template-columns:1fr auto}.hw .subject-pill{grid-column:1/3;width:max-content}
-  .section-head{align-items:start;flex-direction:column}
-  .qnav{grid-template-columns:repeat(10,1fr)}
-  .mimi-dock{right:10px;bottom:10px}.assistant-panel{right:10px;bottom:100px}
-  .mimi-speech{display:none}
-}
-@media print{
-  .topbar,.hero,.mimi-dock,.assistant-panel,.no-print,.footer{display:none!important}
-  .section{display:none!important}.section.printable{display:block!important}
-  body{background:white}.card,.panel{box-shadow:none}
+@media(max-width:600px){
+ body[data-device="auto"] .wrap{width:min(100% - 20px,480px)}
+ body[data-device="auto"] .hero-grid,body[data-device="auto"] .grid,body[data-device="auto"] .grid.two,body[data-device="auto"] .subject-grid,body[data-device="auto"] .coverage-terms,body[data-device="auto"] .study-grid,body[data-device="auto"] .settings-grid,body[data-device="auto"] .toggles{grid-template-columns:1fr}
+ body[data-device="auto"] .nav{grid-template-columns:repeat(4,minmax(0,1fr))}
+ body[data-device="auto"] .brand .txt{display:none}
+ body[data-device="auto"] .lesson-list{grid-template-columns:1fr}
+ body[data-device="auto"] .easybox{grid-template-columns:1fr}
+ body[data-device="auto"] .hwrow{grid-template-columns:1fr}
+ .mimi-bubble{display:none}
 }
 </style>
 </head>
-<body>
+<body data-device="auto">
 <header class="topbar">
-  <div class="wrap top-inner">
-    <div class="brand">
-      <div class="logo">A8</div>
-      <span class="text">Ariana's Study Buddy<small>Grade 8 • Jamaica • school-inspired</small></span>
-    </div>
-    <nav class="nav" aria-label="Main navigation">
-      <button data-go="home" class="active">Home</button>
-      <button data-go="subjects">Subjects</button>
-      <button data-go="lessons">Lessons</button>
-      <button data-go="quiz">Quiz</button>
-      <button data-go="study">Study</button>
-      <button data-go="sources">Sources</button>
-    </nav>
-    <button class="iconbtn" id="settingsBtn" title="Settings">⚙️</button>
-    <button class="iconbtn" id="accessBtn" title="Accessibility">Aa</button>
+ <div class="wrap topin">
+  <div class="brand"><img src="icons/icon-192.png" alt=""><span class="txt">Ariana's Purple Study Buddy<small>Grade 8 • Jamaica • complete curriculum map</small></span></div>
+  <div class="header-actions">
+   <select class="device-select" id="deviceMode" aria-label="Device layout">
+    <option value="auto">Auto layout</option><option value="phone">Phone</option><option value="tablet">Tablet</option><option value="laptop">Laptop</option>
+   </select>
+   <button class="iconbtn" id="installBtn" hidden>⬇ Install</button>
+   <button class="iconbtn" id="settingsBtn">⚙️</button>
+   <button class="iconbtn" id="accessBtn">Aa</button>
   </div>
+  <nav class="nav">
+   <button data-go="home" class="active">Home</button>
+   <button data-go="subjects">Subjects</button>
+   <button data-go="coverage">Curriculum</button>
+   <button data-go="learn">Learn</button>
+   <button data-go="quiz">Quiz</button>
+   <button data-go="study">Study</button>
+   <button data-go="sources">Sources</button>
+  </nav>
+ </div>
 </header>
 
 <div class="wrap hero">
-  <div class="hero-grid">
-    <section class="hero-card">
-      <div class="eyebrow">💙 Made for Ariana • Grade 8</div>
-      <h1>Learn it.<br>Understand it.<br>Believe you can.</h1>
-      <p>This is Ariana’s friendly study space for Grade 8. It follows Jamaican lower-secondary curriculum areas, teaches concepts in small steps, mixes practice with recall, and gives her a simple way to ask for help when a question gets tricky.</p>
-      <div class="actions">
-        <button class="btn primary" id="todayBtn">Start today's study</button>
-        <button class="btn white" data-go="subjects">Choose a subject</button>
-        <button class="btn white" id="openMimiTop">Ask Mimi</button>
-      </div>
-    </section>
-    <aside class="panel">
-      <div class="progress-top">
-        <div class="progress-ring" id="ring"><span id="progressPct">0%</span></div>
-        <div>
-          <span class="badge gold">Ariana's progress</span>
-          <h3 style="margin:.55rem 0 .25rem">Small wins add up.</h3>
-          <p style="margin:0">Lessons, quizzes and study tasks all count toward progress.</p>
-        </div>
-      </div>
-      <div class="stats">
-        <div class="stat"><b id="lessonStat">0</b><small>lessons</small></div>
-        <div class="stat"><b id="quizStat">—</b><small>quiz avg.</small></div>
-        <div class="stat"><b id="taskStat">0</b><small>tasks done</small></div>
-      </div>
-    </aside>
-  </div>
+ <div class="hero-grid">
+  <section class="hero-card">
+   <div class="eyebrow">💜 Ariana • Grade 8 • PWA Edition</div>
+   <h1>Everything in one calm study app.</h1>
+   <p>Install it from Chrome, choose Phone/Tablet/Laptop layout, set a daily study reminder, see every subject’s Grade 8 curriculum map, and use Mimi when a topic still feels confusing.</p>
+   <div class="actions">
+    <button class="btn gold" id="heroInstall">Install Ariana's app</button>
+    <button class="btn white" data-go="coverage">See curriculum coverage</button>
+    <button class="btn white" id="heroReminder">Set daily reminder</button>
+   </div>
+  </section>
+  <aside class="panel">
+   <div class="progress-top"><div class="ring" id="ring"><span id="pct">0%</span></div><div><span class="badge">Ariana's progress</span><h3 style="margin:.55rem 0 .2rem">Understanding first.</h3><p style="margin:0">No pressure to race through topics.</p></div></div>
+   <div class="stats"><div class="stat"><b id="lessonStat">0</b><small>lessons</small></div><div class="stat"><b id="quizStat">—</b><small>quiz avg.</small></div><div class="stat"><b id="taskStat">0</b><small>tasks</small></div></div>
+  </aside>
+ </div>
 </div>
 
 <main class="wrap">
-
 <section id="home" class="section active">
-  <div class="section-head">
-    <div><h2>Hi Ariana 👋</h2><p>The app starts with the most important subjects, but you can turn optional subjects on or off in Settings once you know her exact Grade 8 timetable.</p></div>
-  </div>
-  <div class="grid">
-    <article class="card">
-      <span class="badge">1 • Learn</span><h3>One idea at a time</h3>
-      <p>Lessons start with a plain-language explanation, then a worked example, then a short recall question.</p>
-      <button class="btn blue" data-go="lessons">Open lessons</button>
-    </article>
-    <article class="card">
-      <span class="badge green">2 • Retrieve</span><h3>Quick quizzes</h3>
-      <p>Short quizzes bring information back from memory instead of only rereading it.</p>
-      <button class="btn ghost" data-go="quiz">Take a quiz</button>
-    </article>
-    <article class="card">
-      <span class="badge purple">3 • Get help</span><h3>Mimi + WhatsApp help</h3>
-      <p>Mimi explains supported problems, reads a photo when possible, and can send the exact stuck question to your chosen WhatsApp contact.</p>
-      <button class="btn ghost" id="openMimiHome">Open Mimi</button>
-    </article>
-  </div>
-
-  <div class="section-head" style="margin-top:28px">
-    <div><h2>Today's smart study</h2><p>A short mixed session is usually better than trying to study everything at once.</p></div>
-  </div>
-  <div class="focusbox">
-    <article class="card">
-      <span class="badge gold">Suggested session</span>
-      <div class="todo" id="todayTasks"></div>
-      <div class="actions">
-        <button class="btn blue" data-go="study">Open study centre</button>
-        <button class="btn ghost" id="shuffleToday">Mix today's plan</button>
-      </div>
-    </article>
-    <article class="card">
-      <span class="badge">Study strategy</span>
-      <h3>Why the app works this way</h3>
-      <p>It deliberately uses short spaced review, retrieval questions, worked examples before independent work, focused feedback, and a mix of topics. These approaches have better research support than simply rereading notes again and again.</p>
-      <div class="term-map">
-        <div class="term"><b>See it</b><span>Simple explanation + example</span></div>
-        <div class="term"><b>Recall it</b><span>Answer without looking</span></div>
-        <div class="term"><b>Use it</b><span>Apply it in a new question</span></div>
-      </div>
-    </article>
-  </div>
-
-  <div class="section-head" style="margin-top:28px">
-    <div><h2>Homework & things to remember</h2><p>Ariana can keep short homework reminders locally on this device.</p></div>
-  </div>
-  <div class="card">
-    <div class="homework-row">
-      <input class="homework-input" id="hwText" placeholder="e.g. Finish Science worksheet 3">
-      <select class="homework-input" id="hwSubject"></select>
-      <button class="btn blue" id="addHomework">Add</button>
-    </div>
-    <div class="homework-table" id="homeworkList"></div>
-  </div>
+ <div class="section-head"><div><h2>Hi Ariana 👋</h2><p>The app is designed so nothing should require sideways scrolling. The navigation wraps, cards shrink properly, and you can force a Phone, Tablet or Laptop layout at any time.</p></div></div>
+ <div class="grid">
+  <article class="card"><span class="badge">1 • Know the map</span><h3>Curriculum coverage</h3><p>See each subject by term and unit, with a status showing whether it was matched to an official Ministry guide or needs school sequencing confirmed.</p><button class="btn purple" data-go="coverage">Open curriculum</button></article>
+  <article class="card"><span class="badge">2 • Learn simply</span><h3>Small lessons</h3><p>Every topic is broken into easy words, small steps, examples and a quick check.</p><button class="btn ghost" data-go="learn">Open lessons</button></article>
+  <article class="card"><span class="badge">3 • Build a habit</span><h3>Daily study reminder</h3><p>Choose a study time. The app can notify while open and use Chrome background support where available; an exact calendar backup is included too.</p><button class="btn ghost" id="homeReminder">Reminder settings</button></article>
+ </div>
+ <div class="section-head" style="margin-top:26px"><div><h2>Today's short plan</h2><p>A mixed plan changes daily so Ariana keeps reviewing old material while learning new material.</p></div></div>
+ <div class="grid two">
+  <article class="card"><div id="todayTasks" class="todo"></div><div class="actions"><button class="btn purple" data-go="study">Open study centre</button><button class="btn ghost" id="shuffleToday">Change mix</button></div></article>
+  <article class="card"><h3>Why short sessions?</h3><p>One small concept + a few questions + correcting mistakes is usually more useful than rereading a long page.</p><div class="todo"><div class="todo-item"><b>3 min</b><span>Recall something from yesterday.</span></div><div class="todo-item"><b>7 min</b><span>Learn one small idea.</span></div><div class="todo-item"><b>7 min</b><span>Try a few questions.</span></div><div class="todo-item"><b>3 min</b><span>Fix mistakes.</span></div></div></article>
+ </div>
+ <div class="section-head" style="margin-top:26px"><div><h2>Homework notes</h2><p>Saved only on this device.</p></div></div>
+ <div class="card"><div class="hwrow"><input class="input" id="hwText" placeholder="e.g. Finish Science worksheet"><select class="input" id="hwSubject"></select><button class="btn purple" id="addHw">Add</button></div><div class="hwlist" id="hwList"></div></div>
 </section>
 
 <section id="subjects" class="section">
-  <div class="section-head">
-    <div><h2>All Grade 8 subjects</h2><p>The core Jamaican curriculum subjects are built in, plus common lower-secondary enrichment areas. Hide anything Ariana does not take from Settings.</p></div>
-    <div class="searchbar" style="min-width:min(420px,100%)"><input id="subjectSearch" placeholder="Search subjects or topics"></div>
-  </div>
-  <div class="subject-grid" id="subjectGrid"></div>
+ <div class="section-head"><div><h2>Subjects</h2><p>This build includes Mathematics, English, Integrated Science, Social Studies, French, Spanish, IT, Civics, Resource & Technology, Religious Education, PE, Music, Drama, Visual Arts, Career Education and HFLE.</p></div><div class="search"><input id="subjectSearch" placeholder="Search subjects"></div></div>
+ <div class="subject-grid" id="subjectGrid"></div>
 </section>
 
-<section id="lessons" class="section">
-  <div class="section-head">
-    <div><h2>Lesson library</h2><p>Choose a subject and topic. Every lesson is intentionally short and written at an accessible Grade 8 level.</p></div>
-    <div class="searchbar" style="min-width:min(400px,100%)"><input id="lessonSearch" placeholder="Search lesson titles or keywords"></div>
-  </div>
-  <div class="lesson-layout">
-    <aside class="card lesson-list" id="lessonList"></aside>
-    <article class="card lesson-main" id="lessonMain"></article>
-  </div>
+<section id="coverage" class="section">
+ <div class="section-head"><div><h2>Grade 8 curriculum coverage</h2><p>This is the master map. “Official guide matched” means the unit/strand was checked against a Jamaican Ministry curriculum source. “Confirm school sequence” means the subject is recognized but Holy Childhood may arrange the sequence differently or a current public Grade 8 guide was not located.</p></div><div class="search"><input id="coverageSearch" placeholder="Search units, e.g. binary, weather, algebra"></div></div>
+ <div id="coverageList"></div>
+</section>
+
+<section id="learn" class="section">
+ <div class="section-head"><div><h2>Simple learning library</h2><p>Detailed lessons are included for common trouble spots. Every curriculum unit also has a Quick Guide so no syllabus unit is left as an empty card.</p></div><div class="search"><input id="lessonSearch" placeholder="Search all units and lessons"></div></div>
+ <div class="lesson-layout"><aside class="card lesson-list" id="lessonList"></aside><article class="card lesson-main" id="lessonMain"></article></div>
 </section>
 
 <section id="quiz" class="section">
-  <div class="section-head">
-    <div><h2>Quick quiz</h2><p>Choose a subject. Questions are drawn from Ariana’s built-in Grade 8 question bank and shuffled each time.</p></div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <select id="quizSubject" class="setting-input" style="width:auto"></select>
-      <select id="quizLength" class="setting-input" style="width:auto">
-        <option value="5">5 questions</option>
-        <option value="10" selected>10 questions</option>
-        <option value="15">15 questions</option>
-      </select>
-      <button class="btn blue" id="startQuiz">Start / Restart</button>
-    </div>
-  </div>
-  <div id="quizStart" class="card"><h3>Ready when you are</h3><p>Select a subject above and press Start. There is no timer and Ariana can move backward and forward before finishing.</p></div>
-  <div id="quizShell" class="quiz-shell" style="display:none">
-    <article class="card">
-      <div class="badge" id="qCount"></div>
-      <div class="qtext" id="qText"></div>
-      <div class="options" id="qOptions"></div>
-      <div class="question-actions">
-        <button class="btn ghost" id="prevQ">Back</button>
-        <button class="btn blue" id="nextQ">Next</button>
-        <button class="btn soft ask-help" id="askQuizHelp">💬 Ask for help on this question</button>
-      </div>
-    </article>
-    <aside class="card">
-      <h3>Question list</h3>
-      <div class="qnav" id="qNav"></div>
-      <button class="btn primary" id="finishQuiz" style="width:100%;margin-top:12px">Finish quiz</button>
-    </aside>
-  </div>
-  <div id="quizResult" style="display:none"></div>
+ <div class="section-head"><div><h2>Quick quiz</h2><p>Choose a subject or mix subjects. Explanations appear after the quiz.</p></div><div class="search"><select id="quizSubject" class="input"></select><select id="quizLength" class="input"><option value="5">5 questions</option><option value="10" selected>10 questions</option></select><button class="btn purple" id="startQuiz">Start</button></div></div>
+ <div id="quizStart" class="card"><h3>Ready when you are</h3><p>There is no timer. This is practice, not pressure.</p></div>
+ <div id="quizShell" class="quiz-shell" style="display:none"><article class="card"><div class="badge" id="qCount"></div><div class="qtext" id="qText"></div><div class="options" id="qOptions"></div><div class="actions"><button class="btn ghost" id="prevQ">Back</button><button class="btn purple" id="nextQ">Next</button><button class="btn soft" id="helpQ">Ask Mimi</button></div></article><aside class="card"><h3>Questions</h3><div class="qnav" id="qNav"></div><button class="btn gold" id="finishQuiz" style="width:100%;margin-top:12px">Finish</button></aside></div>
+ <div id="quizResult" style="display:none"></div>
 </section>
 
-<section id="study" class="section printable">
-  <div class="section-head">
-    <div><h2>Study centre</h2><p>Ariana can use the timer, 4-week catch-up plan and homework tracker without needing an account.</p></div>
-    <button class="btn ghost no-print" onclick="window.print()">Print plan</button>
-  </div>
-  <div class="focusbox">
-    <article class="card">
-      <span class="badge gold">Focus timer</span>
-      <div class="timer-face" id="timerFace">20:00</div>
-      <div class="actions" style="justify-content:center">
-        <button class="btn blue" id="timerStart">Start</button>
-        <button class="btn ghost" id="timerPause">Pause</button>
-        <button class="btn ghost" id="timerReset">Reset</button>
-      </div>
-      <p style="text-align:center" class="info-note">The goal is focused study, not endurance. Ariana can stop sooner if she has finished the task or needs a break.</p>
-    </article>
-    <article class="card">
-      <span class="badge">How to use 20 minutes</span>
-      <div class="todo">
-        <div class="todo-item"><b>3 min</b><span>Recall yesterday’s idea without looking.</span></div>
-        <div class="todo-item"><b>7 min</b><span>Learn one small concept.</span></div>
-        <div class="todo-item"><b>7 min</b><span>Answer a few questions.</span></div>
-        <div class="todo-item"><b>3 min</b><span>Correct mistakes and say what changed in your understanding.</span></div>
-      </div>
-    </article>
-  </div>
-  <div class="card" style="margin-top:15px">
-    <h3>4-week Grade 8 confidence plan</h3>
-    <div id="studyPlan"></div>
-  </div>
+<section id="study" class="section">
+ <div class="section-head"><div><h2>Study centre</h2><p>Set the daily reminder, use a 20-minute timer and follow the catch-up plan.</p></div></div>
+ <div class="study-grid">
+  <article class="card"><h3>20-minute focus timer</h3><div class="timer" id="timerFace">20:00</div><div class="actions" style="justify-content:center"><button class="btn purple" id="timerStart">Start</button><button class="btn ghost" id="timerPause">Pause</button><button class="btn ghost" id="timerReset">Reset</button></div><p class="note">Stop sooner if the task is complete or Ariana needs a break.</p></article>
+  <article class="reminderbox">
+   <span class="badge">🔔 Daily study reminder</span>
+   <h3>Choose Ariana's study time</h3>
+   <div class="switchline"><label><input type="checkbox" id="reminderEnabled"> Enable reminder</label><input type="time" id="reminderTime" value="18:00"></div>
+   <div class="actions"><button class="btn purple" id="saveReminder">Save & allow notifications</button><button class="btn ghost" id="testReminder">Test notification</button><button class="btn ghost" id="calendarBackup">Download exact calendar backup</button></div>
+   <div class="status" id="reminderStatus"></div>
+  </article>
+ </div>
+ <div class="card" style="margin-top:14px"><h3>4-week confidence plan</h3><div id="planBox"></div></div>
 </section>
 
 <section id="sources" class="section">
-  <div class="section-head"><div><h2>Curriculum & learning sources</h2><p>The app paraphrases official Jamaican curriculum themes and uses evidence-informed study design. It is not an official Holy Childhood High School product.</p></div></div>
-  <div class="source-list" id="sourceList"></div>
+ <div class="section-head"><div><h2>Curriculum & technical sources</h2><p>The app is an independent study aid, not an official Holy Childhood app. Curriculum areas are based mainly on Jamaican Ministry materials; the install/reminder behavior follows current web-platform capabilities.</p></div></div>
+ <div class="source-list" id="sourceList"></div>
 </section>
-
 </main>
 
-<div class="mimi-dock">
-  <div class="mimi-speech" id="mimiSpeech">Hi Ariana! I’m <b>Mimi</b>. Tap me to type or snap a question. 💙</div>
-  <div class="mimi-char" aria-hidden="true">
-    <span class="mimi-mouth"></span>
-    <button class="mimi-open" id="mimiToggle" aria-label="Open Mimi helper"></button>
-  </div>
+<div class="mimi-dock"><div class="mimi-bubble">Hi Ariana! I can explain a question in smaller steps. 💜</div><div class="mimi"><i></i><button id="mimiOpen" aria-label="Open Mimi"></button></div></div>
+<div class="help-panel" id="helpPanel">
+ <div class="help-head"><div><span class="badge">💜 Mimi</span><h3 style="margin:.4rem 0 0">What are you stuck on?</h3></div><button class="iconbtn" id="mimiClose">✕</button></div>
+ <div class="tabs"><button class="active" data-pane="typePane">Type</button><button data-pane="photoPane">Photo</button><button data-pane="waPane">WhatsApp</button></div>
+ <div id="typePane" class="pane active"><select id="assistSubject" class="input" style="width:100%"></select><textarea id="assistQuestion" rows="4" style="width:100%;margin-top:7px" placeholder="Type the question exactly..."></textarea><div class="actions"><button class="btn purple" id="assistExplain">Explain simply</button><button class="btn ghost" id="useQuizQuestion">Use current quiz question</button></div></div>
+ <div id="photoPane" class="pane"><div class="photo"><b>📷 Snap or choose a question</b><p class="note">Clear printed text works best.</p><input type="file" id="photoInput" accept="image/*" capture="environment"><img id="photoPreview" alt="Question photo"><div class="actions" style="justify-content:center"><button class="btn purple" id="readPhoto">Read text</button><button class="btn ghost" id="sharePhoto">Share photo for help</button></div><div class="note" id="ocrStatus">Photo reading uses an online OCR library when needed.</div></div><textarea id="ocrText" rows="4" style="width:100%;margin-top:7px" placeholder="Recognized text appears here. Fix any symbols before asking Mimi."></textarea><button class="btn purple" id="explainOcr" style="margin-top:7px">Explain this text</button></div>
+ <div id="waPane" class="pane"><p>Set a trusted WhatsApp contact in Settings. Mimi will prepare a message with the subject and exact question.</p><div class="actions"><button class="btn purple" id="sendWA">Open WhatsApp</button><button class="btn ghost" id="openSettingsHelp">Settings</button></div></div>
+ <div class="result" id="assistResult"><b>Mimi says:</b><p>I will explain what I can. If I am not confident, I will say so instead of guessing.</p></div>
 </div>
 
-<div class="assistant-panel" id="assistantPanel">
-  <div class="assistant-head">
-    <div><span class="badge gold">💙 Mimi the Study Buddy</span><h3>What are you stuck on?</h3></div>
-    <button class="iconbtn" id="closeMimi">✕</button>
-  </div>
-  <div class="helper-tabs">
-    <button class="active" data-helper="typePane">Type</button>
-    <button data-helper="photoPane">Photo</button>
-    <button data-helper="helpPane">WhatsApp</button>
-  </div>
-
-  <div id="typePane" class="helper-pane active">
-    <select id="assistSubject" class="assist-input"></select>
-    <textarea id="assistQuestion" class="assist-input" style="margin-top:8px;min-height:95px" placeholder="Type the question exactly as Ariana sees it..."></textarea>
-    <div class="actions">
-      <button class="btn blue" id="assistExplain">Explain it step by step</button>
-      <button class="btn ghost" id="assistUseQuestion">Use current quiz question</button>
-    </div>
-  </div>
-
-  <div id="photoPane" class="helper-pane">
-    <div class="photo-box">
-      <b>📷 Snap or choose a problem</b>
-      <p class="info-note">Photo reading works best with clear printed text, good lighting and the page held straight. Handwritten equations can be harder to read.</p>
-      <input type="file" id="photoInput" accept="image/*" capture="environment">
-      <img id="photoPreview" class="photo-preview" alt="Problem photo preview">
-      <div class="actions" style="justify-content:center">
-        <button class="btn blue" id="readPhoto">Read text from photo</button>
-        <button class="btn ghost" id="sharePhoto">Share photo for help</button>
-      </div>
-      <div class="ocr-status" id="ocrStatus">Photo OCR needs internet the first time it loads.</div>
-    </div>
-    <textarea id="ocrText" class="assist-input" style="margin-top:9px;min-height:95px" placeholder="Recognized text appears here. Correct anything that was read wrongly."></textarea>
-    <div class="actions">
-      <button class="btn blue" id="explainPhotoText">Explain recognized text</button>
-    </div>
-  </div>
-
-  <div id="helpPane" class="helper-pane">
-    <div class="card" style="padding:13px">
-      <h3>Ask a trusted adult</h3>
-      <p>Set the WhatsApp number once in Settings. The app will create a message with the subject and exact question Ariana is having trouble with.</p>
-      <button class="btn blue" id="sendCurrentHelp">Open WhatsApp message</button>
-      <button class="btn ghost" id="openSettingsFromMimi">Set contact</button>
-    </div>
-  </div>
-
-  <div class="breakdown" id="assistResult">
-    <b>Mimi says:</b><p>Type or snap a question. I’ll explain what I can and I’ll tell you when I’m not confident instead of guessing.</p>
-  </div>
-</div>
-
-<div class="modal" id="settingsModal">
-  <div class="modal-card">
-    <h2>Settings</h2>
-    <p>These settings stay only on this device.</p>
-    <div class="setting-grid">
-      <label><b>Student name</b><input class="setting-input" id="studentName" value="Ariana"></label>
-      <label><b>Help contact label</b><input class="setting-input" id="guardianLabel" placeholder="e.g. Uncle Glenroy"></label>
-      <label style="grid-column:1/-1"><b>WhatsApp number</b><input class="setting-input" id="guardianPhone" inputmode="tel" placeholder="e.g. 1876XXXXXXX"><small>Include country code. Numbers only are safest.</small></label>
-    </div>
-    <h3 style="margin-top:18px">Subjects Ariana takes</h3>
-    <div class="subject-toggles" id="subjectToggles"></div>
-    <div class="actions">
-      <button class="btn blue" id="saveSettings">Save settings</button>
-      <button class="btn ghost" id="closeSettings">Cancel</button>
-      <button class="btn danger" id="resetData">Reset app data</button>
-    </div>
-  </div>
-</div>
-
-<div class="modal" id="accessModal">
-  <div class="modal-card">
-    <h2>Make it easier to use</h2>
-    <p>Choose the options that make reading and studying more comfortable.</p>
-    <div class="actions">
-      <button class="btn ghost" id="toggleLarge">Larger text</button>
-      <button class="btn ghost" id="toggleContrast">High contrast</button>
-      <button class="btn ghost" id="readPage">Read current page aloud</button>
-      <button class="btn blue" id="closeAccess">Done</button>
-    </div>
-  </div>
-</div>
-
+<div class="modal" id="settingsModal"><div class="modal-card"><h2>Settings</h2><div class="settings-grid"><label><b>Student name</b><input class="input" id="studentName" style="width:100%"></label><label><b>WhatsApp contact name</b><input class="input" id="contactName" style="width:100%" placeholder="e.g. Uncle Glenroy"></label><label style="grid-column:1/-1"><b>WhatsApp number</b><input class="input" id="contactPhone" style="width:100%" inputmode="tel" placeholder="1876XXXXXXX"></label></div><h3>Subjects Ariana takes</h3><div class="toggles" id="subjectToggles"></div><div class="actions"><button class="btn purple" id="saveSettings">Save</button><button class="btn ghost" id="closeSettings">Cancel</button><button class="btn ghost" id="resetApp">Reset app data</button></div></div></div>
+<div class="modal" id="accessModal"><div class="modal-card"><h2>Make it easier to use</h2><div class="actions"><button class="btn ghost" id="toggleLarge">Larger text</button><button class="btn ghost" id="toggleContrast">High contrast</button><button class="btn ghost" id="readPage">Read page aloud</button><button class="btn purple" id="closeAccess">Done</button></div></div></div>
 <div class="toast" id="toast"></div>
+<footer class="wrap footer">Ariana's Purple Study Buddy • Grade 8 Jamaica study aid • installable PWA when served over HTTPS</footer>
 
 <script>
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const STORE='ariana_grade8_studybuddy_v3';
+const STORE='ariana-study-v5';
+let state=JSON.parse(localStorage.getItem(STORE)||'{}');
 
-const subjectData = {
+const subjects={
+ math:{name:'Mathematics',icon:'➗',summary:'Numbers, algebra, geometry, data, measurement and graphs.',status:'official'},
+ english:{name:'English Language & Literature',icon:'📚',summary:'Speaking, listening, reading, writing, language structure, literature and research.',status:'official'},
+ science:{name:'Integrated Science',icon:'🔬',summary:'Scientific investigation, living systems, matter, forces, energy and space.',status:'official'},
+ social:{name:'Social Studies',icon:'🌍',summary:'Jamaica, Caribbean geography, development, hazards, institutions and consumers.',status:'official'},
+ french:{name:'French',icon:'🇫🇷',summary:'Listening, speaking, reading and writing in practical lower-secondary French.',status:'confirm'},
+ spanish:{name:'Spanish',icon:'🇪🇸',summary:'Work, health, restaurants, shopping, hobbies, travel, weather and environment.',status:'official'},
+ it:{name:'Information Technology',icon:'💻',summary:'Safety, hardware/software, networks, ethics, research, multimedia and algorithms.',status:'official'},
+ civics:{name:'Civics',icon:'🇯🇲',summary:'Identity, independence, unity, ceremony, rights, community and citizenship.',status:'official'},
+ resource:{name:'Resource & Technology',icon:'🛠️',summary:'Agriculture, business basics, family/consumer management and industrial techniques.',status:'official'},
+ religion:{name:'Religious Education',icon:'🕊️',summary:'Learning about and learning from religion, beliefs, values and practices.',status:'official'},
+ pe:{name:'Physical Education',icon:'🏃🏽‍♀️',summary:'Healthy lifestyle, movement, athletics, games, dance and sport skills.',status:'official'},
+ music:{name:'Music',icon:'🎵',summary:'Performing, listening/appraising, composing, genres, notation and musical elements.',status:'official'},
+ drama:{name:'Drama',icon:'🎭',summary:'Character, relationships, role, plot, scripts, scenes and critique.',status:'official'},
+ visual:{name:'Visual Arts',icon:'🎨',summary:'Design process, media, art elements/principles, art history, criticism and creation.',status:'official'},
+ career:{name:'Career Education',icon:'🧭',summary:'Self-awareness, career exploration, entry requirements and life/career planning.',status:'official'},
+ hfle:{name:'HFLE',icon:'❤️',summary:'Self, relationships, health, sexuality education, eating/fitness, safety and life skills.',status:'official'}
+};
+
+const curriculum={
  math:{
-  name:'Mathematics',icon:'➗',color:'blue',defaultOn:true,
-  summary:'Numbers, algebra, geometry, data, ratio, consumer arithmetic, measurement, graphs and sets.',
   terms:[
-   'T1: indices, number bases, estimation, algebra, inequalities, angles & transformations',
-   'T2: statistics, ratio, consumer arithmetic, polygons, area, volume & capacity',
-   'T3: relations, functions, straight-line graphs, constructions & sets'
+   {name:'Term 1',units:[
+    ['Indices, powers & number bases','powers and index rules • place value in other bases • converting small base numbers'],
+    ['Estimation & number sense','decimal places • significant figures • standard/scientific form • reasonableness of answers'],
+    ['Properties of numbers','closure • reflexive/symmetric/transitive ideas • trichotomy and number relationships'],
+    ['Algebra','terms and coefficients • simplifying expressions • equations • formulae • inequalities and number lines'],
+    ['Geometry & transformations','parallel lines/transversals • angle relationships • translation • reflection • rotation']
+   ]},
+   {name:'Term 2',units:[
+    ['Polygons','properties of polygons • interior angles • missing-angle reasoning'],
+    ['Statistics & probability','frequency tables • mean/median/mode • charts/graphs • introductory probability'],
+    ['Ratio & proportion','equivalent ratios • sharing in a ratio • direct proportion'],
+    ['Consumer arithmetic','percentages • discount • tax • simple/compound interest • hire purchase and everyday money'],
+    ['Measurement','area of triangles/parallelograms/trapezia • surface area • volume/capacity • unit conversions']
+   ]},
+   {name:'Term 3',units:[
+    ['Relations & functions','ordered pairs • mappings • simple functional relationships'],
+    ['Straight-line graphs','coordinates • gradient • y-intercept • y=mx+c • graphing linear relationships/inequalities'],
+    ['Geometric constructions','bisectors • common angles • triangle constructions'],
+    ['Sets','subsets • number of subsets • intersections • Venn diagrams']
+   ]}
   ]
  },
  english:{
-  name:'English Language & Literature',icon:'📚',color:'purple',defaultOn:true,
-  summary:'Reading, writing, speaking, listening, grammar, vocabulary, literature, research and persuasive communication.',
   terms:[
-   'T1: communication, reading strategies, vocabulary, grammar, narrative & expository writing',
-   'T2: communication in today’s world, inference, point of view, imagery, citation & persuasive techniques',
-   'T3: personal rights & responsibilities, research, punctuation, persuasive writing & literature response'
+   {name:'Term 1 — Health & Nutrition',units:[
+    ['Speaking & listening','active listening • clear Standard Jamaican English when appropriate • discussion and oral presentation'],
+    ['Reading','literal meaning • context clues • main ideas/details • text features • comprehension strategies'],
+    ['Writing','planning/drafting/revising • narrative and expository writing • paragraph development'],
+    ['Language structure','sentence structure • agreement • punctuation • vocabulary development'],
+    ['Literature & research','responding to literature • literary features • finding and organizing information']
+   ]},
+   {name:'Term 2 — Communicating in Today’s World',units:[
+    ['Reading & inference','deduction/inference • internal/external text features • author’s point of view'],
+    ['Vocabulary & grammar','syntactic clues • pronoun/antecedent agreement • commas • apostrophes • parentheses'],
+    ['Media & persuasion','advertising techniques • repetition • exaggeration • rhetorical questions • visual presentation'],
+    ['Research & citation','in-text citation awareness • APA emphasis • introduction to MLA/Chicago'],
+    ['Narrative/literature','imagery and humour • quality narrative writing • speaking/listening for clarity']
+   ]},
+   {name:'Term 3 — Personal Rights & Responsibilities',units:[
+    ['Speaking/listening & debate','rights/responsibilities • respectful argument • listening for meaning'],
+    ['Reading & research','gathering evidence • evaluating sources • comprehension and response'],
+    ['Writing','persuasive/expository writing • organization • editing'],
+    ['Language & punctuation','grammar review • punctuation choices • vocabulary'],
+    ['Literature & creative response','poetry/prose response • songs/games/expressive materials • SJE and Jamaican Creole awareness']
+   ]}
   ]
  },
  science:{
-  name:'Integrated Science',icon:'🔬',color:'green',defaultOn:true,
-  summary:'Scientific investigation, nutrition, matter, forces, motion, living systems, energy and the environment.',
   terms:[
-   'T1: working like a scientist, variables, data, charts, drawings & investigation skills',
-   'T2: human nutrition, physical & chemical changes, forces & motion',
-   'T3: body/energy-related systems, ecosystems and application of scientific ideas'
+   {name:'Term 1',units:[
+    ['Working Like a Scientist 2','qualitative/quantitative data • tables • pie charts • independent/dependent/control variables • patterns/anomalies • annotated drawings'],
+    ['Human nutrition & digestion','nutrients • balanced diet • mechanical/chemical digestion • enzymes • absorption • healthy choices'],
+    ['Matter and change','particle ideas • mixtures/solutions • physical vs chemical change • evidence of change']
+   ]},
+   {name:'Term 2',units:[
+    ['Forces & motion','push/pull • balanced/unbalanced forces • speed • motion graphs/measurement • friction'],
+    ['Energy & living processes','energy transfer/use • links between food, respiration and activity'],
+    ['Body systems','structure/function links • breathing/respiration and transport ideas']
+   ]},
+   {name:'Term 3',units:[
+    ['Respiration & gas exchange','aerobic/anaerobic respiration • breathing structures • gases • energy release'],
+    ['Space Science','solar system/outer space • space exploration • technologies used to study space'],
+    ['Ecology/environment links','organisms and environment • observation/data • human impact and responsible action']
+   ]}
   ]
  },
  social:{
-  name:'Social Studies',icon:'🌎',color:'gold',defaultOn:true,
-  summary:'Jamaican development, Caribbean environment, institutions, consumer issues, hazards and sustainability.',
   terms:[
-   'T1: nationalism & development, communication/media literacy, Jamaican cultural icons',
-   'T2: Caribbean landscape, hazards & disasters, environmental problems & solutions',
-   'T3: climate change, economic institutions & consumer affairs'
+   {name:'Term 1',units:[
+    ['Nationalism & Development','nation • nationalism • sovereignty • national development • Vision 2030 • citizen contribution'],
+    ['Communication & media literacy','types of communication/media • purpose • source checking • influence and responsible use'],
+    ['Culture & Jamaican identity','cultural icons • heritage • identity • contribution to development']
+   ]},
+   {name:'Term 2',units:[
+    ['Caribbean landscape & geology','landforms • rocks/geology • how landscape affects settlement, transport, tourism and economic activity'],
+    ['Hazards & disasters','hurricanes • floods • droughts • earthquakes • vulnerability • preparedness/mitigation'],
+    ['Environmental problems','pollution • land degradation • resource use • conservation and solutions']
+   ]},
+   {name:'Term 3',units:[
+    ['Climate & biodiversity','climate change • ecosystems/biodiversity • effects on Caribbean people and places'],
+    ['Economic institutions','banks • credit unions • insurance/other institutions • services and personal/economic decisions'],
+    ['Consumer affairs','rights/responsibilities of consumers • advertising • informed buying • consumer protection'],
+    ['Government/governance links','democracy • branches/functions of government • civic participation and accountability']
+   ]}
+  ]
+ },
+ french:{
+  terms:[
+   {name:'Foundation & Term 1 — confirm school sequence',units:[
+    ['Greetings & introductions','bonjour/salut/au revoir • name • age • nationality • simple questions'],
+    ['Numbers, dates & time','numbers • birthdays • days/months • telling time • schedules'],
+    ['School & classroom','classroom objects • subjects • simple instructions • likes/dislikes'],
+    ['Core grammar','être • avoir • regular -er verbs • articles/gender • adjective agreement • simple negatives/questions']
+   ]},
+   {name:'Term 2 — confirm school sequence',units:[
+    ['Family & descriptions','family words • physical/personality description • possessives'],
+    ['Food & everyday needs','food/drinks • simple ordering • preferences • quantities'],
+    ['Home, town & directions','places • prepositions • asking/giving simple directions'],
+    ['Activities & hobbies','sports • hobbies • frequency • likes/dislikes • present tense']
+   ]},
+   {name:'Term 3 — confirm school sequence',units:[
+    ['Weather & clothing','weather phrases • seasons • clothing • suitable choices'],
+    ['Plans & near future','aller + infinitive • simple plans and invitations'],
+    ['Shopping & prices','asking price • clothing/items • numbers and quantities'],
+    ['Listening/speaking/reading/writing','short dialogues • short messages • simple paragraphs • pronunciation and comprehension practice']
+   ]}
   ]
  },
  spanish:{
-  name:'Spanish',icon:'🇪🇸',color:'gold',defaultOn:true,
-  summary:'Practical listening, speaking, reading and writing for everyday situations.',
   terms:[
-   'Core: food, meals, restaurants, shopping, prices, clothing and quantities',
-   'Core: hobbies, sports, preferences, comparison and everyday conversation',
-   'Grammar: stem-changing verbs, demonstratives, comparatives, immediate future & present continuous'
+   {name:'Term 1 — El mundo de trabajo y la salud',units:[
+    ['Profesiones, oficios y habilidades','professions • trades • skills • places/schedules of work • future plans'],
+    ['Salud, servicios y sanitarios','body/ailments • doctor/dentist • health services • healthy lifestyle • advice/suggestions']
+   ]},
+   {name:'Term 2 — Andanzas y diversiones',units:[
+    ['En el restaurante','food • meals • menu parts • ordering • place settings • polite expressions'],
+    ['De compras','shops/stores • buying/selling • prices • clothing • demonstratives • comparison/quantities'],
+    ['Los pasatiempos','hobbies • sports • personalities • ability/can-can’t • preferences • activities']
+   ]},
+   {name:'Term 3 — El medio ambiente',units:[
+    ['Los lugares de interés','tourist attractions • travel plans • directions • brochures • Jamaica/Hispanic culture'],
+    ['¿Qué tiempo hace?','weather • forecasts • seasons • clothing • seasonal activities • comparisons'],
+    ['El medio físico','plants/animals/landforms • environmental issues • protection/preservation • natural disasters • opinions/predictions']
+   ]}
   ]
  },
  it:{
-  name:'Information Technology',icon:'💻',color:'blue',defaultOn:true,
-  summary:'Computer systems, digital citizenship, productivity tools, multimedia, binary, networks and algorithms.',
   terms:[
-   'T1: hardware/software, internet resources, safety, ethics & digital citizenship',
-   'T2: productivity tools, spreadsheets/word processing integration & binary representation',
-   'T3: multimedia authoring, problem solving, IPO charts, flowcharts & algorithms'
+   {name:'Term 1',units:[
+    ['Health & Safety','computer cables/ports • correct connection/disconnection • maintenance • safe use • environmental impact/e-waste'],
+    ['Foundations of hardware & software','system specifications • peripherals • operating system/application software • compatibility']
+   ]},
+   {name:'Term 2',units:[
+    ['Data Communication, Networking & Internet','simplex/half/full duplex • analogue/digital • wired/wireless media • bandwidth/latency • protocols/URLs/IP'],
+    ['Computer Ethics & Research','netiquette • Jamaican legal/ethical issues • advanced searching • source credibility • APA/MLA citation'],
+    ['Productivity integration','word processing + spreadsheet data/charts • solving practical tasks • binary bit/byte/place value']
+   ]},
+   {name:'Term 3',units:[
+    ['Multimedia Authoring','text/audio/video/graphics/animation • capture/edit tools • file formats • copyright and reuse'],
+    ['Problem solving & algorithms','input-process-output • sequencing • flowcharts • simple algorithms • testing solutions']
+   ]}
   ]
  },
  civics:{
-  name:'Civics',icon:'🇯🇲',color:'green',defaultOn:true,
-  summary:'Identity, independence, responsibility, patriotism, teamwork, national symbols and active citizenship.',
   terms:[
-   'T1: personal/national independence, responsibility, identity and national symbols',
-   'T1–2: diversity, cohesion, teamwork, patriotism and Vision 2030',
-   'Across year: civic values, participation, respect, service and responsible citizenship'
+   {name:'Term 1',units:[
+    ['Growing Up Jamaican Under the Black, Green and Gold','personal independence • responsibility • citizenship • budgeting/fiscal responsibility • deportment'],
+    ['Unity and Prosperity','ethnic diversity • cultural heritage • group cohesion • teamwork • patriotism • Vision 2030'],
+    ['Caribbean identity & role models','regional identity • uniqueness • talents/skills • positive attributes and cultural identity']
+   ]},
+   {name:'Term 2',units:[
+    ['Rituals & celebrations','meaning/significance of rituals • national/community celebrations • respect'],
+    ['Standing on Ceremony','protocol • titles • national honours • flag/anthem/Coat of Arms • correct ceremonial behaviour']
+   ]},
+   {name:'Term 3',units:[
+    ['One Han’ Caan Clap','rights/responsibilities • neighbour/community rights • moral responsibility'],
+    ['United We Stand, Divided We Fall','unity • justice • vulnerable groups • responsibility • stewardship'],
+    ['Unity in the Community','community participation • national/regional responsibility • service and cooperation']
+   ]}
   ]
  },
  resource:{
-  name:'Resource & Technology',icon:'🛠️',color:'gold',defaultOn:true,
-  summary:'Design thinking, practical problem solving, agriculture/environment and technology-related life skills.',
   terms:[
-   'Design: identify a problem, plan, make, test and improve solutions',
-   'Agriculture/environment: projects, resources, safety, sustainability and enterprise',
-   'Technology: practical processes, tools, materials, careers and responsible production'
+   {name:'Agriculture / practical technology strands',units:[
+    ['Agriculture projects','planning • inputs/resources • production • safety • record keeping • evaluating results'],
+    ['Environment & sustainability','responsible resource use • conservation • waste • environmental impact'],
+    ['Design process','identify problem • research • sketch/plan • make/model • test • evaluate • improve']
+   ]},
+   {name:'Business Basics',units:[
+    ['Money & business basics','needs/wants • resources • simple enterprise decisions • records'],
+    ['Banking Services','accounts • banking forms • cheques • ATMs/online banking • safe/appropriate use'],
+    ['Consumer awareness','advertising • money management • consumer protection • informed decisions']
+   ]},
+   {name:'Family/Consumer & Industrial Techniques',units:[
+    ['Family & Consumer Management','planning/organizing • work simplification • household/resource decisions • consumer responsibilities'],
+    ['Industrial Techniques','tools/materials/processes • measurement • safe workshop practice • making and evaluating practical products'],
+    ['Careers & enterprise links','technical/vocational roles • quality • teamwork • production and entrepreneurship']
+   ]}
   ]
  },
  religion:{
-  name:'Religious Education',icon:'🕊️',color:'purple',defaultOn:true,
-  summary:'Beliefs, values, religious traditions, moral reasoning, respect and community life.',
   terms:[
-   'Beliefs & traditions: understand religious ideas in context',
-   'Values: respect, compassion, responsibility and ethical decision-making',
-   'Community: how beliefs influence worship, identity and service'
+   {name:'Across Grade 8',units:[
+    ['Learning about religion','religious beliefs • practices • worship • symbols • stories • traditions'],
+    ['Learning from religion','values • meaning • identity • choices • consequences • personal reflection'],
+    ['Religions in Jamaica & the Caribbean','Christian traditions and other belief systems • culture/community influence • respectful comparison'],
+    ['Moral reasoning','honesty • compassion • justice • responsibility • dignity • peaceful conflict resolution'],
+    ['Respect & dialogue','accurate language • avoiding stereotypes • listening • comparing similarities/differences respectfully']
+   ]},
+   {name:'Skills',units:[
+    ['Interpretation','understand religious ideas and texts in context'],
+    ['Evaluation','give reasons • consider different viewpoints • support a conclusion'],
+    ['Reflection','connect values to real-life situations without disrespecting different beliefs']
+   ]},
+   {name:'School sequence',units:[['Sequence note','The Ministry provides Grades 7–9 Religious Education guidance; Holy Childhood may arrange Grade 8 themes in a different term order.']]}
   ]
  },
  pe:{
-  name:'Physical Education',icon:'🏃🏽‍♀️',color:'green',defaultOn:true,
-  summary:'Fitness, movement skills, sport tactics, health, safety, teamwork and careers in sport.',
   terms:[
-   'Fitness & health: components of fitness, body responses and personal wellbeing',
-   'Skills & tactics: safe performance, teamwork and competitive strategies',
-   'Sport awareness: technology, careers, anti-doping concepts and dance/movement'
+   {name:'Term 1',units:[
+    ['Healthy lifestyle & fitness','components of fitness • safe exercise • body response • healthy choices'],
+    ['Movement education','sequences • transitions • control • leadership/followership • creativity'],
+    ['Track & field / games skills','running/jumping/throwing fundamentals • rules • technique • safety']
+   ]},
+   {name:'Term 2',units:[
+    ['Intermediate movement','combine skills smoothly • strategies • teamwork'],
+    ['Track & Field','skill refinement • fitness application • safe performance'],
+    ['Basketball','dribble • chest/bounce pass • shooting • movement/tactics • rules']
+   ]},
+   {name:'Term 3',units:[
+    ['Games/sport development','skill combinations • tactics • rules • teamwork • officiating awareness'],
+    ['Dance/movement','rhythm • sequences • expression • performance'],
+    ['Sport, health & careers','technology in sport • careers • anti-doping/fair play • lifelong activity']
+   ]}
   ]
  },
  music:{
-  name:'Music',icon:'🎵',color:'purple',defaultOn:false,
-  summary:'Performing, listening, appraising, genres, styles, notation and musical creativity.',
   terms:[
-   'T1: vocal/instrumental development and attentive listening',
-   'T2: musical genres/styles, performance and appraisal',
-   'T3: signs, symbols, notation, sight-sound relationships and performance'
+   {name:'Term 1',units:[
+    ['Performing development','voice/instrument control • solo/group performance • pitch/duration/dynamics'],
+    ['Listening & appraising','identify musical elements • compare sound • describe what is heard'],
+    ['Composing','short rhythmic/melodic ideas • organize/record musical ideas']
+   ]},
+   {name:'Term 2',units:[
+    ['Genres & styles','Jamaican/Caribbean and wider genres • similarities/differences • cultural context'],
+    ['Rhythm, harmony & accompaniment','rhythmic patterns • chordal accompaniment • syncopation • ensemble skills'],
+    ['Signs/symbols/notation','reading and using conventional/non-conventional notation']
+   ]},
+   {name:'Term 3',units:[
+    ['Applying musical elements I/II','perform/listen/appraise/compose using pitch, duration, dynamics and structure'],
+    ['Major/minor tonality','identify and use major/minor sound ideas'],
+    ['Recording/composition','communicate musical ideas with notation and digital tools']
+   ]}
   ]
  },
  drama:{
-  name:'Drama',icon:'🎭',color:'purple',defaultOn:false,
-  summary:'Character, relationships, role-play, scripts, plots, expression and critique.',
   terms:[
-   'T1: characters, relationships, feelings, physical qualities and attributes',
-   'T2: plots, scenes, character development and shared performance',
-   'T3: interpersonal relationships, scripts, sequencing and critique'
+   {name:'Term 1',units:[
+    ['Character & relationships','physical/vocal qualities • feelings • motivation • relationships • role'],
+    ['Improvisation','accepting offers • staying in role • spontaneous scene building • group work']
+   ]},
+   {name:'Term 2',units:[
+    ['Plot & scene development','beginning/problem/change • cause/effect • conflict • scene purpose'],
+    ['Character development','choices over time • interaction • voice/movement/gesture • objectives']
+   ]},
+   {name:'Term 3',units:[
+    ['Scripts & sequencing','script conventions • scene order • dialogue • stage directions'],
+    ['Interpersonal relationships','status • cooperation/conflict • believable responses'],
+    ['Performance & critique','rehearsal • audience awareness • giving/using feedback']
+   ]}
+  ]
+ },
+ visual:{
+  terms:[
+   {name:'Term 1',units:[
+    ['Learning from master works','20th-century works/art movements • reproduce/study style • identify elements/principles • aesthetic response'],
+    ['Design process','develop ideas • thematic approach • choose media/materials • plan and refine'],
+    ['Art criticism & interpretation','visual vocabulary • personal interpretation • cultural heritage • value of art']
+   ]},
+   {name:'Term 2',units:[
+    ['Elements & principles in practice','line • shape/form • colour • texture • space • balance • contrast • emphasis • rhythm/pattern • proportion'],
+    ['2D/3D creation','drawing/painting/mixed media • construction/sculptural thinking • safe material use'],
+    ['Art history & culture','connect art to time/place/world cultures • analyse purpose and meaning']
+   ]},
+   {name:'Term 3',units:[
+    ['Original composition','develop a theme • select references/media • create/refine a finished work'],
+    ['Evaluation & presentation','critique own/others’ work • explain choices • display/present work'],
+    ['Careers & creative industries','fine art • restoration • graphic design • creative problem solving']
+   ]}
   ]
  },
  career:{
-  name:'Career Education',icon:'🧭',color:'blue',defaultOn:false,
-  summary:'Self-awareness, work habits, career exploration, decision-making and planning for future pathways.',
   terms:[
-   'Know yourself: strengths, interests, values and work habits',
-   'Explore: careers, education routes and the changing world of work',
-   'Plan: goals, decisions, communication, teamwork and responsibility'
+   {name:'Grade 8 Career Exploration',units:[
+    ['Self & relationships','abilities • interests • values • strengths/areas to improve • relationships with others'],
+    ['Career entry requirements','subjects/qualifications/training needed for careers of interest'],
+    ['Day-to-day career reality','tasks • working conditions • rewards • advantages/disadvantages'],
+    ['Career research','use trustworthy information • compare roles • ask useful questions'],
+    ['Career + life goals','match career planning to other goals • revise plans as interests/skills change']
+   ]},
+   {name:'Skills',units:[
+    ['Decision making','compare options • evidence • consequences'],
+    ['Goal setting','short/medium/long-term goals • realistic next steps'],
+    ['Communication & teamwork','self-presentation • collaboration • responsibility']
+   ]},
+   {name:'Portfolio',units:[['Personal career file','interests/skills • researched careers • requirements • reflections • action plan']]}
+  ]
+ },
+ hfle:{
+  terms:[
+   {name:'Self & Interpersonal Relationships',units:[
+    ['Self-awareness & emotions','identify feelings • self-management • communication • coping • help-seeking'],
+    ['Relationships','respect • boundaries • empathy • conflict resolution • peer/family relationships']
+   ]},
+   {name:'Sexuality & Sexual Health / Appropriate Life Skills',units:[
+    ['Puberty & development','age-appropriate body changes • hygiene • respect • reliable information'],
+    ['Healthy decision-making','values • peer pressure • consent/boundaries concepts • getting help from trusted adults']
+   ]},
+   {name:'Eating & Fitness / Safety & Security',units:[
+    ['Nutrition & activity','balanced choices • body needs • healthy activity • avoiding unhealthy extremes'],
+    ['Safety & security','personal safety • online/offline risks • violence prevention • emergency/help-seeking skills'],
+    ['Substance-use prevention','health risks • refusal/decision skills • trusted-adult support and safe choices']
+   ]}
   ]
  }
 };
 
-const lessons = [
- {id:'m_fractions',s:'math',title:'Fractions: add and subtract',keys:'fraction denominator numerator common denominator',
-  goals:['Find a common denominator','Add or subtract numerators','Simplify the final fraction'],
-  simple:'Fractions can only be added or subtracted easily when the pieces are the same size. The denominator tells the size of the pieces, so make the denominators match first.',
-  example:'2/3 + 1/6 = 4/6 + 1/6 = 5/6',
-  steps:['Find a common denominator. For 3 and 6, use 6.','Rewrite 2/3 as 4/6.','Add 4/6 + 1/6 = 5/6.','Check whether the answer can be simplified.'],
-  recall:'What is 1/4 + 3/8? Type as a fraction.',answer:'5/8'},
- {id:'m_algebra',s:'math',title:'Solving simple equations',keys:'algebra equation x variable solve',
-  goals:['Undo operations in reverse order','Keep both sides balanced','Check the answer by substitution'],
-  simple:'An equation is like a balanced scale. To keep it balanced, whatever you do to one side must also be done to the other.',
-  example:'3x + 5 = 20 → 3x = 15 → x = 5',
-  steps:['Remove the +5 by subtracting 5 from both sides.','Now 3x = 15.','Divide both sides by 3.','Check: 3(5)+5 = 20.'],
-  recall:'Solve 2x + 4 = 18. What is x?',answer:'7'},
- {id:'m_indices',s:'math',title:'Indices and powers',keys:'indices powers exponent base',
-  goals:['Identify base and index','Expand a power','Use simple index rules'],
-  simple:'An index tells how many times the base is multiplied by itself. In 2⁴, the base is 2 and the index is 4.',
-  example:'3⁴ = 3 × 3 × 3 × 3 = 81',
-  steps:['Identify the base.','Use it as a factor as many times as the index says.','Multiply carefully.'],
-  recall:'What is 2⁵?',answer:'32'},
- {id:'m_ratio',s:'math',title:'Sharing in a ratio',keys:'ratio proportion share',
-  goals:['Add ratio parts','Find the value of one part','Calculate each share'],
-  simple:'A ratio such as 2:3 means a total of 5 equal parts. First find the value of one part, then build each share.',
-  example:'Share 40 in 3:5 → 8 parts → 40÷8=5 → 15 and 25',
-  steps:['Add 3+5=8 parts.','Find one part: 40÷8=5.','Multiply 3×5 and 5×5.'],
-  recall:'Share 36 in the ratio 1:2. What is the larger share?',answer:'24'},
- {id:'m_graphs',s:'math',title:'Straight-line graphs',keys:'graph gradient slope intercept y mx c coordinates',
-  goals:['Recognize y=mx+c','Identify gradient','Identify y-intercept'],
-  simple:'A straight line can be described by how steep it is and where it crosses the y-axis. In y=mx+c, m is the gradient and c is the y-intercept.',
-  example:'y = 3x + 2 has gradient 3 and y-intercept 2.',
-  steps:['Look at the number multiplying x: that is m.','Look at the constant number: that is c.','Use points to check the line if needed.'],
-  recall:'For y = 4x - 2, what is the gradient?',answer:'4'},
-
- {id:'e_inference',s:'english',title:'Reading: inference vs evidence',keys:'reading inference evidence comprehension',
-  goals:['Separate what the text says from what you infer','Use evidence to support an inference','Explain your reasoning'],
-  simple:'An inference is a sensible conclusion you make from clues in a text. Good readers do not guess randomly—they point to evidence.',
-  example:'Text: “Leah pulled her jacket tight and hurried under the shop awning.” Inference: it may be cold or raining. Evidence: jacket + awning.',
-  steps:['Read the exact words.','Ask what those details suggest.','State the inference.','Quote or describe the clue that supports it.'],
-  recall:'If a character repeatedly checks the clock and taps her foot, what feeling is most likely?',answer:'impatient|anxious|nervous'},
- {id:'e_pointview',s:'english',title:'Author’s point of view',keys:'author point of view bias purpose tone',
-  goals:['Identify the writer’s position','Notice word choice and tone','Support your answer with evidence'],
-  simple:'Point of view is the writer’s position or perspective. Look at what information is included, the words chosen and the tone.',
-  example:'“This wonderful project finally gives students the safe space they deserve.” The positive words suggest the writer supports the project.',
-  steps:['Identify the topic.','Underline strongly positive or negative words.','Ask what the writer wants the reader to think.','Support your answer with one detail.'],
-  recall:'A writer calls a policy “a wasteful mistake.” Is the tone supportive or critical?',answer:'critical'},
- {id:'e_persuasion',s:'english',title:'Persuasive techniques',keys:'persuasive advertisement rhetorical question repetition exaggeration',
-  goals:['Recognize persuasive techniques','Explain their effect','Use them responsibly in writing'],
-  simple:'Persuasive writing tries to influence the reader. Common techniques include repetition, rhetorical questions, strong word choice, evidence and direct appeals.',
-  example:'“Why settle for less?” is a rhetorical question because it is asked for effect, not because the writer expects an answer.',
-  steps:['Spot the technique.','Name it.','Explain how it affects the reader.','Decide whether the claim is supported by evidence.'],
-  recall:'“Everyone deserves a fair chance. A fair chance at school. A fair chance at work.” Which technique is repeated?',answer:'repetition'},
- {id:'e_research',s:'english',title:'Research without plagiarism',keys:'research plagiarism citation source paraphrase',
-  goals:['Paraphrase in your own words','Give credit to sources','Keep track of where information came from'],
-  simple:'Research means learning from sources, but the final writing should clearly separate your own ideas from information that came from someone else.',
-  example:'Instead of copying a paragraph, read it, close it, explain the idea in your own words, then cite the source.',
-  steps:['Record the source.','Read for meaning.','Paraphrase without looking at the wording.','Compare for accuracy.','Add a citation where needed.'],
-  recall:'What is the safest first step when using information from a website in an assignment?',answer:'record the source|cite the source|write down the source'},
-
- {id:'s_variables',s:'science',title:'Scientific variables',keys:'science experiment independent dependent control variable',
-  goals:['Identify independent variable','Identify dependent variable','Recognize control variables'],
-  simple:'In a fair test, the independent variable is what you change, the dependent variable is what you measure, and control variables are the things you keep the same.',
-  example:'Testing whether light affects plant growth: change light exposure; measure plant growth; keep plant type, soil and water the same.',
-  steps:['Ask: what is being deliberately changed?','Ask: what result is measured?','List what must stay the same for a fair test.'],
-  recall:'In an experiment changing water temperature and measuring how fast sugar dissolves, what is the independent variable?',answer:'water temperature|temperature'},
- {id:'s_nutrition',s:'science',title:'Digestion and nutrition',keys:'digestion nutrition enzyme teeth absorption small intestine',
-  goals:['Distinguish digestion from absorption','Explain mechanical vs chemical digestion','Link nutrients to body use'],
-  simple:'Digestion breaks large food molecules into smaller ones that the body can absorb. Teeth do mechanical breakdown; enzymes do chemical breakdown.',
-  example:'Chewing breaks food into smaller pieces. Enzymes then break certain large molecules into smaller molecules that can be absorbed.',
-  steps:['Food enters the digestive system.','Mechanical and chemical digestion break it down.','Small molecules are absorbed, mainly through the small intestine.','The body uses nutrients for energy, growth and repair.'],
-  recall:'What is the name of the process where digested nutrients move into the body?',answer:'absorption'},
- {id:'s_changes',s:'science',title:'Physical vs chemical changes',keys:'physical chemical change mixture compound matter',
-  goals:['Identify physical changes','Identify chemical changes','Distinguish mixtures and compounds'],
-  simple:'A physical change does not create a new substance. A chemical change creates one or more new substances with different properties.',
-  example:'Melting ice is physical. Burning paper is chemical because new substances form.',
-  steps:['Ask whether a new substance formed.','Check whether the change is usually reversible.','Use evidence such as gas formation, colour change or heat change carefully.'],
-  recall:'Is melting candle wax mainly a physical or chemical change?',answer:'physical'},
- {id:'s_forces',s:'science',title:'Forces and motion',keys:'force motion speed velocity acceleration friction balanced unbalanced',
-  goals:['Distinguish scalar and vector ideas','Recognize balanced/unbalanced forces','Calculate simple speed'],
-  simple:'A force is a push or pull. Balanced forces do not change an object’s motion; unbalanced forces cause a change in speed or direction.',
-  example:'If a cyclist travels 120 m in 20 s, speed = distance ÷ time = 6 m/s.',
-  steps:['Identify the forces.','Decide whether they are balanced.','For speed, divide distance by time.','Always include the correct unit.'],
-  recall:'A car travels 150 m in 30 s. What is its speed in m/s?',answer:'5|5 m/s'},
-
- {id:'ss_nationalism',s:'social',title:'Nationalism and development',keys:'jamaica nationalism development sovereignty vision 2030 citizen',
-  goals:['Define nationalism and development','Explain how citizens contribute','Connect choices to national development'],
-  simple:'Nationalism involves identification with and commitment to one’s nation. Development is improvement in people’s quality of life and the systems that support it.',
-  example:'Students contribute to development through responsible learning, community participation, respect for public resources and future productive work.',
-  steps:['Define the key term.','Identify an example from Jamaica.','Explain how the action affects people or the country.'],
-  recall:'Name one way a student can contribute to Jamaica’s development.',answer:'study|education|volunteer|community service|protect resources|responsible citizenship'},
- {id:'ss_media',s:'social',title:'Media literacy',keys:'media literacy communication bias source misinformation',
-  goals:['Identify media purpose','Check source reliability','Separate evidence from opinion'],
-  simple:'Media literacy means understanding, checking and using media messages responsibly instead of accepting every message as true.',
-  example:'Before sharing a dramatic post, check who published it, the date, the evidence and whether trustworthy sources agree.',
-  steps:['Identify the source.','Check the date and evidence.','Look for loaded language or missing context.','Compare with another reliable source.'],
-  recall:'What should you check before sharing a surprising online claim?',answer:'source|evidence|date|reliable source'},
- {id:'ss_landscape',s:'social',title:'Caribbean landscape and human activity',keys:'caribbean landscape rock limestone bauxite settlement farming transport',
-  goals:['Recognize major landscape features','Link topography to human activity','Explain environmental impacts'],
-  simple:'The shape and geology of Caribbean landscapes influence where people settle, farm, mine, build roads and develop tourism.',
-  example:'Steep mountainous land may make road building and large settlements more difficult than flatter areas.',
-  steps:['Describe the physical feature.','Identify a human activity.','Explain how the feature helps or limits that activity.'],
-  recall:'Why are flatter areas often easier for large settlements?',answer:'building|roads|transport|easier construction|flat land'},
- {id:'ss_hazards',s:'social',title:'Hazards and disasters',keys:'hazard disaster hurricane earthquake flood drought mitigation',
-  goals:['Distinguish hazard from disaster','Identify Caribbean hazards','Explain mitigation'],
-  simple:'A hazard is a possible source of harm. It becomes a disaster when it seriously disrupts a community and causes major losses.',
-  example:'A hurricane is a hazard. Strong building codes, warnings and evacuation plans can reduce its impact.',
-  steps:['Name the hazard.','Identify who or what is exposed.','Explain how damage can be reduced before, during or after the event.'],
-  recall:'Give one way communities can reduce hurricane risk.',answer:'evacuation|warning|building code|shelter|prepare|drainage'},
-
- {id:'sp_food',s:'spanish',title:'Food and ordering',keys:'spanish comida restaurante food order meal restaurant',
-  goals:['Name common foods','Order politely','Express preferences'],
-  simple:'Use simple patterns first. “Quisiera…” means “I would like…”. “Me gusta…” means “I like…”.',
-  example:'Quisiera arroz con pollo, por favor. = I would like rice with chicken, please.',
-  steps:['Start with a polite phrase.','Add the food or drink.','Use por favor.','Listen for price or follow-up questions.'],
-  recall:'How do you say “I would like” in Spanish?',answer:'quisiera'},
- {id:'sp_shopping',s:'spanish',title:'Shopping and prices',keys:'spanish shopping price tienda cuesta cuánto ropa',
-  goals:['Ask a price','Understand basic quantities','Use demonstratives'],
-  simple:'“¿Cuánto cuesta?” asks “How much does it cost?” Demonstratives help point to items: este/esta = this; ese/esa = that.',
-  example:'¿Cuánto cuesta esta camisa? = How much does this shirt cost?',
-  steps:['Use cuánto cuesta for one item.','Use cuánto cuestan for multiple items.','Match este/esta to the noun’s gender.'],
-  recall:'Complete: ¿_____ cuesta esta falda?',answer:'cuánto|cuanto'},
- {id:'sp_future',s:'spanish',title:'Talking about plans',keys:'spanish immediate future ir a infinitive future plans',
-  goals:['Use ir + a + infinitive','Talk about near-future plans','Recognize the verb form'],
-  simple:'The immediate future uses a form of ir + a + infinitive. Example: “Voy a estudiar” = “I am going to study.”',
-  example:'Mañana voy a jugar al tenis. = Tomorrow I am going to play tennis.',
-  steps:['Choose the correct form of ir.','Add a.','Add the infinitive verb.'],
-  recall:'Translate the pattern “I am going to study.”',answer:'voy a estudiar'},
-
- {id:'it_hardware',s:'it',title:'Hardware, software and peripherals',keys:'computer hardware software peripheral input output storage',
-  goals:['Distinguish hardware and software','Classify input/output/storage devices','Choose suitable devices'],
-  simple:'Hardware is the physical equipment you can touch. Software is the set of programs and instructions that tell hardware what to do.',
-  example:'Keyboard = input hardware. Monitor = output hardware. Word processor = application software.',
-  steps:['Ask if it is physical.','If hardware, decide input/output/storage/processing.','If software, decide system or application.'],
-  recall:'Is a spreadsheet program hardware or software?',answer:'software'},
- {id:'it_binary',s:'it',title:'Binary numbers',keys:'binary bit byte base 2 decimal computer data',
-  goals:['Understand base 2','Convert small binary numbers','Explain why computers use binary'],
-  simple:'Binary uses only 0 and 1. Each place has a value that is a power of 2: 1, 2, 4, 8, 16 and so on.',
-  example:'1011₂ = 8 + 0 + 2 + 1 = 11₁₀',
-  steps:['Write the place values.','Multiply each digit by its place value.','Add the results.'],
-  recall:'What is 101₂ in base 10?',answer:'5'},
- {id:'it_algo',s:'it',title:'Algorithms and flowcharts',keys:'algorithm flowchart ipo input process output computational thinking',
-  goals:['Identify input/process/output','Write simple ordered steps','Recognize flowchart purpose'],
-  simple:'An algorithm is a clear sequence of steps for solving a problem. An IPO chart separates what goes in, what happens and what comes out.',
-  example:'Area of rectangle: input length/width → process multiply → output area.',
-  steps:['State the goal.','Identify required input.','Write the process in order.','State the output.'],
-  recall:'In an IPO chart, where does the final answer belong?',answer:'output'},
-
- {id:'cv_independence',s:'civics',title:'Independence and responsibility',keys:'civics independence responsibility jamaica flag anthem coat of arms',
-  goals:['Connect personal and national independence','Explain responsibility','Recognize national symbols'],
-  simple:'Independence is not the same as doing anything you want. It comes with responsibility for choices, learning, safety, money and behaviour.',
-  example:'A student shows growing independence by planning study time and accepting the consequences of choices.',
-  steps:['Name the freedom or responsibility.','Explain the choice involved.','Explain how the choice affects self, family, school or country.'],
-  recall:'Name one Jamaican national symbol.',answer:'flag|anthem|coat of arms|national bird|national flower'},
- {id:'cv_teamwork',s:'civics',title:'Diversity, teamwork and patriotism',keys:'civics diversity teamwork patriotism unity group cohesion',
-  goals:['Respect diversity','Explain group cohesion','Connect teamwork to national development'],
-  simple:'Diversity means people can differ while still belonging to the same society. Group cohesion grows when people cooperate around shared goals.',
-  example:'A class project works better when roles are clear, ideas are respected and everyone contributes.',
-  steps:['Identify the shared goal.','Recognize different strengths.','Agree roles and respectful rules.','Reflect on what the group achieved.'],
-  recall:'What does patriotism mean in simple terms?',answer:'love of country|commitment to country|care for country'},
-
- {id:'rt_design',s:'resource',title:'Design process: problem to solution',keys:'resource technology design problem solution test improve',
-  goals:['Identify a real problem','Plan a solution','Test and improve'],
-  simple:'Technology is not only computers. It also means using knowledge, tools and processes to solve practical problems.',
-  example:'Problem: books fall off a small shelf. Design: measure space, sketch a bookend, choose material, make, test, improve.',
-  steps:['Define the problem clearly.','List requirements and limits.','Sketch or plan.','Make safely.','Test against the requirements.','Improve the design.'],
-  recall:'What should happen after a design is tested?',answer:'improve|evaluate|refine|modify'},
- {id:'rt_agri',s:'resource',title:'Agriculture, resources and sustainability',keys:'agriculture environment project sustainability safety enterprise',
-  goals:['See agriculture as a system','Use resources responsibly','Connect projects to enterprise'],
-  simple:'Agriculture combines science, technology, planning and care for the environment. Good projects consider safety, resources, cost and sustainability.',
-  example:'A small herb project needs a crop choice, location, water plan, record keeping, pest management and a way to evaluate results.',
-  steps:['Choose a clear project goal.','Identify resources.','Plan safe steps.','Record progress.','Evaluate yield, cost and environmental impact.'],
-  recall:'Why is record keeping useful in an agriculture project?',answer:'track progress|cost|growth|results|evaluate'},
-
- {id:'re_values',s:'religion',title:'Values and moral choices',keys:'religion values moral ethical compassion respect responsibility',
-  goals:['Identify values in a situation','Consider consequences','Respect differing beliefs'],
-  simple:'Religious Education often asks how beliefs and values influence choices. A strong answer explains the value, the action and its effect on others.',
-  example:'If honesty is the value, returning a lost item shows the value through action.',
-  steps:['Identify the decision.','Name the value involved.','Consider who may be affected.','Explain why a choice is consistent with the value.'],
-  recall:'Which value is shown by telling the truth even when it is difficult?',answer:'honesty'},
- {id:'re_traditions',s:'religion',title:'Beliefs, traditions and respect',keys:'religion belief tradition worship community respect',
-  goals:['Describe a belief or practice accurately','Avoid stereotypes','Compare respectfully'],
-  simple:'When studying religion, describe what a tradition teaches or practises without mocking, exaggerating or assuming every member behaves the same way.',
-  example:'A respectful comparison names similarities and differences while recognizing that practices can vary within a tradition.',
-  steps:['Use accurate terms.','Describe before judging.','Compare one feature at a time.','Acknowledge variation where appropriate.'],
-  recall:'What is one rule for comparing religions respectfully?',answer:'respect|avoid stereotypes|accurate terms|do not mock'},
-
- {id:'pe_fitness',s:'pe',title:'Components of fitness',keys:'physical education fitness endurance strength flexibility speed',
-  goals:['Name fitness components','Match activities to components','Connect fitness to health/performance'],
-  simple:'Fitness is made of different components. Examples include cardiovascular endurance, muscular strength, muscular endurance, flexibility, speed, balance and coordination.',
-  example:'A long-distance run relies strongly on cardiovascular endurance; stretching mainly develops flexibility.',
-  steps:['Name the activity.','Ask what the body must do well.','Match it to the fitness component.'],
-  recall:'Which fitness component is most directly related to moving a joint through a wide range?',answer:'flexibility'},
- {id:'pe_safety',s:'pe',title:'Safe participation and teamwork',keys:'physical education safety warm up rules teamwork sports',
-  goals:['Recognize safety practices','Use rules appropriately','Work respectfully with teammates'],
-  simple:'Safe sport means preparing the body, following rules, using equipment correctly, respecting others and stopping when something is unsafe.',
-  example:'A warm-up gradually increases movement and prepares muscles and joints for activity.',
-  steps:['Check the space and equipment.','Warm up appropriately.','Follow the activity rules.','Communicate with teammates.','Cool down and reflect.'],
-  recall:'Give one reason for warming up before sport.',answer:'prepare muscles|prepare body|reduce injury risk|increase blood flow'},
-
- {id:'mu_listen',s:'music',title:'Listening and appraising music',keys:'music listening appraise texture mood dynamics instrumentation',
-  goals:['Use musical vocabulary','Notice patterns and texture','Support an opinion with what you hear'],
-  simple:'To appraise music, describe what you hear instead of only saying whether you like it. Listen for tempo, dynamics, instrumentation, texture and mood.',
-  example:'“The quiet opening uses a thin texture, then more instruments enter and the dynamics become stronger.”',
-  steps:['Listen once for the whole impression.','Listen again for one element.','Use a musical term.','Explain how that element affects the music.'],
-  recall:'What musical word describes how loud or soft music is?',answer:'dynamics'},
- {id:'mu_notation',s:'music',title:'Signs, symbols and notation',keys:'music notation score rhythm dynamics articulation',
-  goals:['Read common notation','Connect symbol to sound','Follow a simple score'],
-  simple:'Musical notation is a system for recording sound ideas. Symbols can show pitch, rhythm, dynamics, articulation and structure.',
-  example:'A crescendo tells performers to gradually become louder.',
-  steps:['Identify the symbol.','Recall what it changes.','Listen or perform to connect the sign to sound.'],
-  recall:'What does a crescendo tell a performer to do?',answer:'get louder|gradually louder|increase volume'},
-
- {id:'dr_character',s:'drama',title:'Building a character',keys:'drama character feelings voice movement gesture role',
-  goals:['Use body and voice','Show inner feelings through action','Keep character choices consistent'],
-  simple:'A convincing character is built from choices: posture, movement, voice, pace, gesture, motivation and relationships.',
-  example:'A nervous character might speak quickly, avoid eye contact and fidget—but the actor should choose details that fit the scene, not rely on stereotypes.',
-  steps:['Ask what the character wants.','Choose one physical quality.','Choose one vocal quality.','React to the other character.','Stay consistent unless the scene changes the character.'],
-  recall:'Name one tool an actor can change to show character.',answer:'voice|movement|gesture|posture|pace|facial expression'},
- {id:'dr_plot',s:'drama',title:'Plot, scenes and relationships',keys:'drama plot scene conflict relationship script',
-  goals:['Identify beginning/problem/change','Link scenes logically','Use relationships to drive action'],
-  simple:'Plot is the sequence of important events. Drama becomes clearer when each scene changes something: a character learns, decides, loses, gains or faces a new problem.',
-  example:'Scene 1 introduces a disagreement; Scene 2 makes the conflict worse; Scene 3 forces a decision.',
-  steps:['State the main problem.','Decide what changes in each scene.','Keep cause and effect clear.','End the scene with a reason to continue.'],
-  recall:'What should a strong scene usually do to the story?',answer:'change something|move plot|develop character|advance story'},
-
- {id:'ce_self',s:'career',title:'Strengths, interests and goals',keys:'career strengths interests values goals skills',
-  goals:['Identify personal strengths','Distinguish interest from skill','Set a realistic short-term goal'],
-  simple:'Career planning starts with self-knowledge. Interests are things you enjoy; skills are things you can do; values are things that matter to you.',
-  example:'If you enjoy solving problems and are good at explaining ideas, careers using analysis and communication may be worth exploring.',
-  steps:['List interests.','List skills and evidence for each skill.','List values.','Explore careers that use more than one of these.','Set a small next-step goal.'],
-  recall:'What is the difference between an interest and a skill?',answer:'interest is what you enjoy|skill is what you can do|enjoy vs ability'},
- {id:'ce_pathways',s:'career',title:'Exploring education and career pathways',keys:'career pathway education training decision work',
-  goals:['Research rather than guess','Compare requirements','Recognize that pathways can change'],
-  simple:'A career pathway is the route of learning, training and experience that can lead toward a type of work. Good planning uses current information and keeps options open.',
-  example:'A student interested in health careers can compare subjects needed, training length, daily work and different roles before deciding.',
-  steps:['Choose a field to explore.','Find trustworthy information about roles.','Compare required subjects/training.','Ask what the work is actually like.','Review the plan as interests change.'],
-  recall:'Why should career information be checked from trustworthy, current sources?',answer:'requirements change|accurate information|avoid wrong information|current information'}
+const detailedLessons=[
+ {id:'math-fractions',s:'math',unit:'Fractions: add and subtract',icon:'🍕',easy:'Fractions are pieces of a whole. Before you add or subtract them, make sure the pieces are the same size. The bottom number tells the piece size.',words:['numerator = top number','denominator = bottom number','common denominator = same bottom number'],steps:['Look at the bottom numbers.','Find a bottom number both fractions can use.','Rewrite the fractions with that same bottom number.','Add or subtract only the top numbers.','Simplify if you can.'],example:'2/3 + 1/6 → 4/6 + 1/6 → 5/6',check:'What is 1/4 + 3/8?',answer:'5/8'},
+ {id:'math-equations',s:'math',unit:'Simple equations',icon:'⚖️',easy:'An equation is like a balanced scale. Your job is to get the letter by itself while keeping both sides balanced.',words:['equation = two equal sides','variable = letter standing for a number','inverse = opposite operation'],steps:['Find what is happening to x.','Undo addition/subtraction first.','Undo multiplication/division next.','Write the value of x.','Put it back into the original question to check.'],example:'3x + 5 = 20 → 3x = 15 → x = 5',check:'Solve 2x + 4 = 18.',answer:'7'},
+ {id:'english-inference',s:'english',unit:'Reading clues & inference',icon:'🔎',easy:'An inference is a smart guess that comes from clues in the text. It is not a random guess.',words:['clue = detail in the text','inference = what the clue suggests','evidence = clue that supports your answer'],steps:['Read slowly.','Underline a clue.','Ask: what does this clue suggest?','Write the inference.','Point to the clue that supports it.'],example:'She checks the clock every minute and taps her foot → she may be impatient or anxious.',check:'A character shivers and pulls a jacket tight. What can you infer?',answer:'cold'},
+ {id:'science-variables',s:'science',unit:'Scientific variables',icon:'🧪',easy:'In a fair test, you change one thing on purpose, measure one result, and keep other important things the same.',words:['independent = what you change','dependent = what you measure','control = what stays the same'],steps:['Ask what is changed on purpose.','Ask what is measured.','List what must stay the same for a fair test.'],example:'Change water temperature; measure dissolving time; keep amount of sugar and water the same.',check:'If water temperature is changed, what is the independent variable?',answer:'temperature'},
+ {id:'social-hazard',s:'social',unit:'Hazard vs disaster',icon:'🌀',easy:'A hazard is something that could cause harm. A disaster is when serious harm actually happens and badly disrupts people or places.',words:['hazard = possible danger','disaster = serious harmful event','mitigation = reducing the harm'],steps:['Name the hazard.','Say who or what could be harmed.','Think about how people can prepare.','Give one way to reduce the harm.'],example:'A hurricane is a hazard. Strong buildings, warnings and evacuation can reduce risk.',check:'Name one way to reduce hurricane risk.',answer:'prepare'},
+ {id:'french-intro',s:'french',unit:'Greetings & introductions',icon:'🇫🇷',easy:'Start French with useful sentences you can actually say. Learn a tiny group, say it aloud, then reuse it.',words:['Bonjour = hello','Je m’appelle… = my name is…','Au revoir = goodbye'],steps:['Say Bonjour.','Say Je m’appelle Ariana.','Ask or answer a simple question.','Finish with Au revoir.'],example:'Bonjour. Je m’appelle Ariana. Au revoir.',check:'How do you say “My name is Ariana”?',answer:'je m’appelle ariana'},
+ {id:'spanish-shopping',s:'spanish',unit:'Shopping & prices',icon:'🛍️',easy:'Use one short question pattern for price, then add the item you are talking about.',words:['¿Cuánto cuesta? = how much does it cost?','esta = this (feminine)','este = this (masculine)'],steps:['Start with ¿Cuánto cuesta…?','Add the item.','Listen for the price.','Compare or choose the item.'],example:'¿Cuánto cuesta esta camisa?',check:'What does ¿Cuánto cuesta? mean?',answer:'how much does it cost'},
+ {id:'it-binary',s:'it',unit:'Binary numbers',icon:'0️⃣1️⃣',easy:'Binary is a number system that uses only 0 and 1. Each position is worth 1, 2, 4, 8, 16… instead of 1, 10, 100…',words:['bit = one binary digit','binary = base 2','place value = value of a position'],steps:['Write the place values from right to left: 1, 2, 4, 8…','Match each 0 or 1 to its place value.','Add the place values where the digit is 1.'],example:'101₂ = 4 + 0 + 1 = 5',check:'What is 101₂ in base 10?',answer:'5'},
+ {id:'civics-responsibility',s:'civics',unit:'Freedom & responsibility',icon:'🇯🇲',easy:'Freedom is having choices. Responsibility is handling those choices in a way that respects yourself and other people.',words:['freedom = ability to choose','responsibility = duty linked to choices','consequence = what happens because of a choice'],steps:['Name the choice.','Ask who could be affected.','Think about the possible result.','Choose the responsible action.'],example:'Choosing when to study also means accepting the result if you do not prepare.',check:'What should go together with freedom?',answer:'responsibility'},
+ {id:'visual-elements',s:'visual',unit:'Elements & principles of art',icon:'🎨',easy:'Art elements are the building blocks you can see. Design principles are ways artists arrange those building blocks.',words:['line/shape/colour/texture = elements','balance/contrast/emphasis = principles','composition = how parts are arranged'],steps:['Look carefully at the artwork.','Name one element you can see.','Name one principle the artist used.','Explain what effect it creates.'],example:'A bright red object in a mostly grey picture creates contrast and emphasis.',check:'Is colour an element of art or a design principle?',answer:'element'},
+ {id:'hfle-emotions',s:'hfle',unit:'Feelings & healthy choices',icon:'💜',easy:'Feelings give you information. Naming the feeling can make it easier to choose what to do next.',words:['feeling = emotional state','coping = healthy way of handling a feeling','trusted adult = safe person to ask for help'],steps:['Notice the feeling.','Name it.','Pause before reacting.','Choose a safe response.','Ask for help if you need it.'],example:'If you are angry, pause before sending a message you may regret.',check:'Name one healthy first step when very upset.',answer:'pause'}
 ];
 
-const questions = [
- // math
- {s:'math',q:'What is 2/3 + 1/6?',o:['1/2','5/6','3/9','1'],a:1,why:'Use denominator 6: 2/3 = 4/6, so 4/6 + 1/6 = 5/6.'},
- {s:'math',q:'Solve 3x + 5 = 20.',o:['x=3','x=5','x=8','x=15'],a:1,why:'Subtract 5 to get 3x=15, then divide by 3.'},
- {s:'math',q:'What is 3⁴?',o:['12','27','64','81'],a:3,why:'3⁴ = 3×3×3×3 = 81.'},
- {s:'math',q:'Share 40 in the ratio 3:5. What is the larger share?',o:['15','20','25','30'],a:2,why:'There are 8 parts; each is 5; the larger share is 5×5=25.'},
- {s:'math',q:'For y = 4x - 2, what is the gradient?',o:['-2','2','4','6'],a:2,why:'In y=mx+c, m is the gradient.'},
- {s:'math',q:'Round 7.486 to 2 decimal places.',o:['7.48','7.49','7.50','7.4'],a:1,why:'The third decimal is 6, so the hundredths digit rounds up.'},
- {s:'math',q:'A triangle has base 10 cm and height 6 cm. Its area is:',o:['16 cm²','30 cm²','60 cm²','120 cm²'],a:1,why:'Area = 1/2 × 10 × 6 = 30 cm².'},
- {s:'math',q:'The mean of 4, 6, 8 and 10 is:',o:['6','7','8','28'],a:1,why:'Total 28 divided by 4 values gives 7.'},
- {s:'math',q:'101₂ equals what in base 10?',o:['3','4','5','6'],a:2,why:'101₂ = 4 + 0 + 1 = 5.'},
- {s:'math',q:'Two co-interior angles between parallel lines add to:',o:['90°','180°','270°','360°'],a:1,why:'Co-interior angles are supplementary, so they total 180°.'},
-
- // English
- {s:'english',q:'An inference should be supported by:',o:['a guess','text evidence','the longest sentence','a dictionary only'],a:1,why:'An inference is a conclusion drawn from clues in the text.'},
- {s:'english',q:'“Why settle for less?” is mainly a:',o:['rhetorical question','simile','definition','citation'],a:0,why:'It is asked for persuasive effect rather than to receive an answer.'},
- {s:'english',q:'Which is the best way to avoid plagiarism?',o:['Copy and change two words','Do not use sources','Paraphrase and cite the source','Use only the first paragraph'],a:2,why:'Paraphrasing plus proper credit clearly separates your work from source material.'},
- {s:'english',q:'Words such as “wonderful” and “disastrous” can help reveal an author’s:',o:['page number','point of view','font size','paragraph length'],a:1,why:'Evaluative word choice often signals attitude or perspective.'},
- {s:'english',q:'Repetition in persuasive writing is often used to:',o:['hide the topic','emphasize an idea','remove evidence','shorten every sentence'],a:1,why:'Repeated words or phrases draw attention to a key message.'},
- {s:'english',q:'The middle value in a story is called:',o:['median','plot','citation','pronoun'],a:1,why:'Plot is the sequence of events in a narrative.'},
-
- // Science
- {s:'science',q:'In a fair test, the variable deliberately changed is the:',o:['dependent variable','control variable','independent variable','conclusion'],a:2,why:'The independent variable is manipulated by the investigator.'},
- {s:'science',q:'The variable measured in an experiment is the:',o:['dependent variable','independent variable','control variable','hypothesis'],a:0,why:'The dependent variable responds to what was changed.'},
- {s:'science',q:'Melting ice is mainly a:',o:['chemical change','physical change','nuclear change','biological change'],a:1,why:'No new substance forms; water remains water.'},
- {s:'science',q:'Digestion is the breakdown of food into:',o:['larger molecules','simpler substances for absorption','only water','oxygen'],a:1,why:'Large molecules are broken down so useful products can be absorbed.'},
- {s:'science',q:'Speed is calculated as:',o:['time ÷ distance','distance ÷ time','distance × time','force ÷ mass'],a:1,why:'Speed = distance divided by time.'},
- {s:'science',q:'Balanced forces cause an object to:',o:['always speed up','always stop','have no acceleration','always turn'],a:2,why:'If forces are balanced, there is no change in velocity.'},
-
- // Social
- {s:'social',q:'National development is best described as:',o:['only building roads','improving people’s quality of life and national systems','winning sports only','increasing population only'],a:1,why:'Development includes social, economic and environmental improvement.'},
- {s:'social',q:'Media literacy includes:',o:['sharing every message quickly','checking source and evidence','believing popular posts','ignoring dates'],a:1,why:'Reliable media use requires checking source, date, evidence and context.'},
- {s:'social',q:'Which is a Caribbean natural hazard?',o:['hurricane','library','credit union','textbook'],a:0,why:'Hurricanes are major hazards affecting Caribbean states.'},
- {s:'social',q:'A credit union is mainly a type of:',o:['economic institution','rock type','hazard','cultural icon'],a:0,why:'Credit unions provide financial services to members.'},
- {s:'social',q:'Biodiversity means:',o:['only forest trees','variety of living things','amount of rainfall','population size'],a:1,why:'Biodiversity refers to variety within living organisms and ecosystems.'},
- {s:'social',q:'One responsible consumer action is to:',o:['ignore receipts','compare information before buying','believe every advertisement','share passwords'],a:1,why:'Consumers should make informed decisions and keep useful purchase information.'},
-
- // Spanish
- {s:'spanish',q:'“Quisiera…” means:',o:['I would like','I forgot','I am tired','Where is it?'],a:0,why:'Quisiera is a polite way to say “I would like”.'},
- {s:'spanish',q:'“¿Cuánto cuesta?” asks:',o:['What time is it?','How much does it cost?','Where do you live?','What is your name?'],a:1,why:'Cuánto cuesta is used to ask the price of one item.'},
- {s:'spanish',q:'“Voy a estudiar” means:',o:['I studied','I am going to study','I do not study','Study now'],a:1,why:'Voy a + infinitive forms the immediate future.'},
- {s:'spanish',q:'“Me gusta” means:',o:['I like','I buy','I see','I need'],a:0,why:'Me gusta is used to express liking.'},
- {s:'spanish',q:'Which word means “please”?',o:['gracias','mañana','por favor','tienda'],a:2,why:'Por favor means please.'},
-
- // IT
- {s:'it',q:'A keyboard is mainly an:',o:['input device','output device','program','network'],a:0,why:'A keyboard sends data into a computer.'},
- {s:'it',q:'A word processor is:',o:['hardware','application software','an input device','a cable'],a:1,why:'It is a program used to create and edit documents.'},
+const questions=[
+ {s:'math',q:'What is 2/3 + 1/6?',o:['1/2','5/6','3/9','1'],a:1,why:'Make the bottoms match: 2/3 becomes 4/6, then 4/6 + 1/6 = 5/6.'},
+ {s:'math',q:'Solve 3x + 5 = 20.',o:['3','5','15','25'],a:1,why:'Subtract 5 first: 3x=15. Then divide by 3.'},
+ {s:'english',q:'An inference is:',o:['a random guess','a smart guess from clues','the title','a punctuation mark'],a:1,why:'An inference is a conclusion supported by clues in the text.'},
+ {s:'english',q:'A rhetorical question is usually asked to:',o:['persuade or make the reader think','get an address','give a citation','count words'],a:0,why:'It is often used for effect rather than because the writer expects an answer.'},
+ {s:'science',q:'The variable changed on purpose is the:',o:['dependent variable','independent variable','control variable','conclusion'],a:1,why:'The independent variable is deliberately changed.'},
+ {s:'science',q:'Speed is:',o:['distance ÷ time','distance × time','time ÷ distance','force × time'],a:0,why:'Speed = distance divided by time.'},
+ {s:'social',q:'A hurricane is a:',o:['hazard','bank','national symbol','consumer right'],a:0,why:'A hurricane is a hazard that may cause a disaster.'},
+ {s:'social',q:'Before sharing a surprising online claim, first check the:',o:['source and evidence','colour','font size','number of emojis'],a:0,why:'Source, date, evidence and other reliable reports help you judge credibility.'},
+ {s:'french',q:'“Bonjour” means:',o:['goodbye','hello','thank you','please'],a:1,why:'Bonjour is a common polite greeting.'},
+ {s:'french',q:'“Je m’appelle Ariana” means:',o:['I like Ariana','My name is Ariana','I am leaving','I am hungry'],a:1,why:'Je m’appelle means “my name is”.'},
+ {s:'spanish',q:'“¿Cuánto cuesta?” means:',o:['How much does it cost?','Where is it?','What time is it?','How old are you?'],a:0,why:'It is a price question.'},
+ {s:'spanish',q:'“Quisiera…” is used for:',o:['I would like…','goodbye','I forgot','the weather'],a:0,why:'Quisiera is a polite way to say “I would like”.'},
  {s:'it',q:'Binary uses which digits?',o:['0 and 1','1 and 2','0 to 9','A and B'],a:0,why:'Base 2 uses only 0 and 1.'},
- {s:'it',q:'In an IPO chart, “P” stands for:',o:['program','process','print','peripheral'],a:1,why:'IPO means Input, Process, Output.'},
- {s:'it',q:'A flowchart is used to:',o:['draw landscapes','represent steps in an algorithm','store photos only','measure speed'],a:1,why:'Flowcharts use symbols to show ordered logic and decisions.'},
-
- // Civics
- {s:'civics',q:'Responsible independence means:',o:['doing anything you want','making choices and accepting responsibilities','ignoring rules','never asking for help'],a:1,why:'Freedom and responsibility should grow together.'},
- {s:'civics',q:'Which is a Jamaican national symbol?',o:['the national flag','a bank card','a school notebook','a bus ticket'],a:0,why:'The national flag is an official symbol of Jamaica.'},
- {s:'civics',q:'Group cohesion is strengthened by:',o:['cooperation','mocking differences','refusing roles','hiding information'],a:0,why:'Shared goals and cooperation help a group work together.'},
- {s:'civics',q:'Patriotism can include:',o:['caring for the country and contributing responsibly','never questioning anything','ignoring community problems','damaging public property'],a:0,why:'Patriotism involves commitment and responsible contribution.'},
-
- // Resource Tech
- {s:'resource',q:'After testing a design, the next useful step is to:',o:['hide the result','evaluate and improve it','start over without looking','ignore the requirements'],a:1,why:'Testing gives evidence for refinement.'},
- {s:'resource',q:'Good project record keeping helps you:',o:['track progress and results','avoid planning','use more materials','remove safety rules'],a:0,why:'Records help compare plans, costs, growth and outcomes.'},
- {s:'resource',q:'Sustainability means using resources in a way that:',o:['wastes them quickly','considers future needs and environmental impact','ignores costs','uses the most material possible'],a:1,why:'Sustainable choices consider long-term resource and environmental effects.'},
-
- // RE
- {s:'religion',q:'Returning a lost item most clearly demonstrates:',o:['honesty','jealousy','carelessness','confusion'],a:0,why:'Honesty includes doing what is truthful and trustworthy.'},
- {s:'religion',q:'A respectful comparison of religions should:',o:['use stereotypes','describe accurately and avoid mocking','assume everyone practices identically','rank people by belief'],a:1,why:'Accuracy and respect are essential when studying belief systems.'},
-
- // PE
- {s:'pe',q:'Flexibility is the ability to:',o:['move a joint through a useful range','run only fast','lift the heaviest weight','remember rules'],a:0,why:'Flexibility relates to range of motion around joints.'},
- {s:'pe',q:'A warm-up helps to:',o:['prepare the body for activity','replace sleep','guarantee no injury','make rules unnecessary'],a:0,why:'Warm-ups gradually prepare body systems and movement patterns.'},
- {s:'pe',q:'Sports safety includes:',o:['checking equipment and following rules','ignoring pain','using damaged gear','pushing others'],a:0,why:'Safe participation includes equipment, rules, space and communication.'},
-
- // Music
- {s:'music',q:'Dynamics describe:',o:['loudness and softness','only pitch','only instrument size','song title'],a:0,why:'Dynamics refer to volume levels and changes.'},
- {s:'music',q:'A crescendo means:',o:['gradually get louder','gradually get slower','stop immediately','repeat forever'],a:0,why:'Crescendo indicates increasing loudness.'},
- {s:'music',q:'Texture in music refers to:',o:['how musical parts are layered','paper quality','instrument colour','concert ticket price'],a:0,why:'Texture describes relationships among musical lines or layers.'},
-
- // Drama
- {s:'drama',q:'An actor can show character through:',o:['voice and movement','only costume price','only stage size','only the title'],a:0,why:'Voice, movement, gesture, posture and reaction are key character tools.'},
- {s:'drama',q:'Plot is:',o:['the sequence of important events','only the setting','a costume list','the audience size'],a:0,why:'Plot organizes what happens and how events connect.'},
- {s:'drama',q:'A scene should usually:',o:['change or develop something in the story','repeat without purpose','avoid characters','ignore conflict'],a:0,why:'Effective scenes advance plot, character or relationships.'},
-
- // Career
- {s:'career',q:'An interest is best described as:',o:['something you enjoy or want to explore','a guaranteed job','a school rule','a salary'],a:0,why:'Interests help guide exploration but are different from skills or qualifications.'},
- {s:'career',q:'A good career plan should:',o:['use current trustworthy information','be based only on one person’s opinion','never change','ignore education requirements'],a:0,why:'Pathways and requirements can change, so good plans use current information.'},
- {s:'career',q:'A skill is:',o:['something you can do with some level of ability','only something you like','a career title','a school subject only'],a:0,why:'Skills are abilities developed through learning and practice.'}
+ {s:'it',q:'A keyboard is mainly a(n):',o:['input device','output device','application','network protocol'],a:0,why:'A keyboard sends data into the computer.'},
+ {s:'civics',q:'Freedom should go with:',o:['responsibility','carelessness','silence','confusion'],a:0,why:'Responsible citizenship links freedom with duties and consequences.'},
+ {s:'resource',q:'After testing a design, a useful next step is to:',o:['evaluate and improve it','hide it','ignore the result','skip the requirements'],a:0,why:'Testing gives information for improvement.'},
+ {s:'religion',q:'A respectful comparison of beliefs should:',o:['avoid stereotypes','mock differences','assume everyone is identical','force agreement'],a:0,why:'Respectful study uses accurate language and avoids stereotypes.'},
+ {s:'pe',q:'Stretching mainly helps:',o:['flexibility','binary','plot','citation'],a:0,why:'Stretching develops range of motion/flexibility.'},
+ {s:'music',q:'A crescendo means:',o:['gradually louder','gradually slower','stop','repeat forever'],a:0,why:'Crescendo means the sound grows louder.'},
+ {s:'drama',q:'An actor can show character using:',o:['voice and movement','only costume cost','only the title','only stage size'],a:0,why:'Voice, movement, gesture and reaction communicate character.'},
+ {s:'visual',q:'Which is an element of art?',o:['colour','homework','salary','weather'],a:0,why:'Colour is one of the visual elements artists use.'},
+ {s:'career',q:'A career pathway is:',o:['the route/steps toward a career','a test score','a school desk','a single hobby'],a:0,why:'A pathway may include subjects, training and experience.'},
+ {s:'hfle',q:'If something feels unsafe, a good step is to:',o:['tell a trusted adult','keep harmful secrets','ignore it forever','blame yourself'],a:0,why:'Getting help from a trusted adult is an important safety skill.'}
 ];
 
-const sources = [
- ['Jamaica Ministry — National Standards Curriculum portal','https://moey.gov.jm/curriculum/','Official Ministry curriculum entry point for Jamaican schools.'],
- ['Jamaica Ministry — Curricula downloads','https://moey.gov.jm/curricula/','Lower-secondary curriculum downloads, including core and enrichment subject areas.'],
- ['NSC English Language/Literature Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/NSC_English-Language-Version-2-Jan2020.pdf','Grade 8 language strands, research, comprehension, grammar and writing themes.'],
- ['NSC Mathematics Grades 7–9','https://moey.gov.jm/wp-content/uploads/2020/08/Mathematics-FINAL.pdf','Grade 8 mathematics units and attainment targets.'],
- ['NSC Integrated Science Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/MOE-_NSC_INTEGRATED-SCIENCE_Grades-7-9-Jan-2020.pdf','Grade 8 scientific inquiry, nutrition, matter, forces and related units.'],
- ['NSC Social Studies Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/NSC_Social-Studies_Grades-7-9_Jan-2020.pdf','Grade 8 Jamaican development, Caribbean environment, institutions, hazards and consumer affairs.'],
- ['NSC Spanish Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/NSC_Spanish-Grade-7-9-Jan2020.pdf','Grade 8 food, shopping, hobbies, sports and grammar targets.'],
- ['NSC Information Technology Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/MOE-_NSC_INFORMATION-TECHNOLOGY_Grades-7-9-Jan-2020.pdf','Grade 8 computer systems, productivity tools, multimedia and algorithms.'],
- ['NSC Civics Grades 7–9','https://moey.gov.jm/wp-content/uploads/2022/12/PRINT-READY-Grade-7-9-Civics-National-Standards-Curriculum-Units-August-2022-V.9-1.pdf','Grade 8 independence, cultural identity, patriotism, responsibility and civic participation.'],
- ['NSC Resource & Technology Grade 8','https://moey.gov.jm/wp-content/uploads/2023/07/Resource-Technology_NSC-Grades-8_Final-2.pdf','Grade 8 resource, technology, design and practical project areas.'],
- ['NSC Physical Education Grade 7–9','https://pep.moey.gov.jm/wp-content/uploads/2018/09/Physical-Education-FINAL.pdf','Grade 8 fitness, health, sport skills, tactics and safety.'],
- ['NSC Music Grade 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/NSC_Music-FINAL.pdf','Grade 8 performance, listening, genres/styles and notation.'],
- ['NSC Drama Grade 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/NSC_DRAMA-October-29th.pdf','Grade 8 characters, relationships, plots, scripts and critique.'],
- ['IES What Works Clearinghouse — Organizing Instruction and Study','https://ies.ed.gov/ncee/wwc/practiceguide/1','Evidence-informed recommendations on spacing, worked examples, quizzing, graphics and active retrieval.'],
- ['Holy Childhood High School public school profile','https://www.findyello.com/Jamaica-Kingston/Holy-Childhood-High-School/profile','Used only for school context; this app is independent and unofficial.']
+const sources=[
+ ['Jamaica Ministry — National Standards Curriculum','https://moey.gov.jm/curriculum/','Main Grade 7–9 curriculum portal.'],
+ ['Jamaica Ministry — Core Curriculum Unit','https://moey.gov.jm/core-curriculum-unit/','Lists major curriculum subject areas, including French.'],
+ ['Jamaica Ministry — Curricula downloads','https://moey.gov.jm/curricula/','Grades 7–9 and lower-secondary curriculum guides.'],
+ ['NSC English Language/Literature Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/NSC_English-Language-Version-2-Jan2020.pdf','Grade 8 themes and six Language Arts strands.'],
+ ['NSC Mathematics Grades 7–9','https://moey.gov.jm/wp-content/uploads/2020/08/Mathematics-FINAL.pdf','Grade 8 math units and objectives.'],
+ ['NSC Integrated Science Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/MOE-_NSC_INTEGRATED-SCIENCE_Grades-7-9-Jan-2020.pdf','Grade 8 scientific investigation and science units.'],
+ ['NSC Social Studies Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/NSC_Social-Studies_Grades-7-9_Jan-2020.pdf','Grade 8 Jamaica/Caribbean Social Studies.'],
+ ['NSC Spanish Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/NSC_Spanish-Grade-7-9-Jan2020.pdf','Grade 8 themes: work/health, adventures/pastimes and environment.'],
+ ['NSC Information Technology Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/MOE-_NSC_INFORMATION-TECHNOLOGY_Grades-7-9-Jan-2020.pdf','Grade 8 IT safety, networks, ethics/research and multimedia.'],
+ ['NSC Civics Grades 7–9','https://moey.gov.jm/wp-content/uploads/2022/12/PRINT-READY-Grade-7-9-Civics-National-Standards-Curriculum-Units-August-2022-V.9-1.pdf','Grade 8 cultural identity, ceremony, rights and community.'],
+ ['NSC Resource & Technology Grade 8','https://moey.gov.jm/wp-content/uploads/2023/07/Resource-Technology_NSC-Grades-8_Final-2.pdf','Agriculture, business, family/consumer and industrial strands.'],
+ ['NSC Physical Education Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2018/09/Physical-Education-FINAL.pdf','Grade 8 movement, fitness, track & field, basketball and sport.'],
+ ['NSC Music Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/NSC_Music-FINAL.pdf','Grade 8 performing, listening/appraising and composing.'],
+ ['NSC Drama Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/NSC_DRAMA-October-29th.pdf','Grade 8 character, relationships, plot, scripts and critique.'],
+ ['NSC Visual Arts Grades 7–9','https://pep.moey.gov.jm/wp-content/uploads/2020/09/NSC_Visual-Arts-FINAL.pdf','Grade 8 design, media, art elements/principles, art history and criticism.'],
+ ['Career Education Grades 7–9','https://moey.gov.jm/wp-content/uploads/2015/04/GuideGrade7-9_CareerEd.pdf','Grade 8 career exploration and planning objectives.'],
+ ['HFLE Curriculum Grades 7–8','https://pep.moey.gov.jm/wp-content/uploads/2023/08/HFLE-Curricula-Grades-7-and-8-FINAL_2022.pdf','Grade 8 health and life-skills themes, including safety/security.'],
+ ['Chrome PWA installability guidance','https://developer.chrome.com/docs/lighthouse/pwa/installable-manifest','Manifest/icon/install requirements.'],
+ ['Chrome Periodic Background Sync','https://developer.chrome.com/docs/capabilities/periodic-background-sync','Best-effort background support; browser controls timing.']
 ];
 
-let state = JSON.parse(localStorage.getItem(STORE)||'{}');
 state.name=state.name||'Ariana';
-state.guardianLabel=state.guardianLabel||'';
-state.guardianPhone=state.guardianPhone||'';
-state.enabled=state.enabled||Object.fromEntries(Object.entries(subjectData).map(([k,v])=>[k,v.defaultOn]));
-state.completed=state.completed||{};
-state.quizHistory=state.quizHistory||[];
+state.contactName=state.contactName||'';
+state.contactPhone=state.contactPhone||'';
+state.device=state.device||'auto';
+state.enabled=state.enabled||Object.fromEntries(Object.keys(subjects).map(k=>[k,true]));
+state.done=state.done||{};
 state.tasks=state.tasks||{};
+state.quizHistory=state.quizHistory||[];
 state.homework=state.homework||[];
-state.todaySeed=state.todaySeed||0;
+state.seed=state.seed||0;
+state.reminder=state.reminder||{enabled:false,time:'18:00',lastLocal:''};
+
 function save(){localStorage.setItem(STORE,JSON.stringify(state));renderStats()}
 function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1900)}
-function go(id){
- $$('.section').forEach(x=>x.classList.toggle('active',x.id===id));
- $$('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.go===id));
- window.scrollTo({top:0,behavior:'smooth'})
-}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+function go(id){$$('.section').forEach(s=>s.classList.toggle('active',s.id===id));$$('[data-go]').forEach(b=>b.classList.toggle('active',b.dataset.go===id));history.replaceState(null,'','#'+id);window.scrollTo({top:0,behavior:'smooth'})}
 $$('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
 
-function enabledSubjects(){return Object.keys(subjectData).filter(k=>state.enabled[k])}
+function enabled(){return Object.keys(subjects).filter(k=>state.enabled[k])}
+function opts(mixed=false){return (mixed?'<option value="all">Mixed subjects</option>':'')+enabled().map(k=>`<option value="${k}">${subjects[k].name}</option>`).join('')}
 function renderStats(){
- const completed=Object.values(state.completed).filter(Boolean).length;
- const enabledLessonCount=lessons.filter(l=>state.enabled[l.s]).length||1;
- const pct=Math.round(completed/enabledLessonCount*100);
- $('#lessonStat').textContent=completed;
- $('#progressPct').textContent=pct+'%';
- $('#ring').style.background=`conic-gradient(var(--blue) ${pct*3.6}deg,#e6ebf3 0deg)`;
- const qh=state.quizHistory.slice(-8);
- $('#quizStat').textContent=qh.length?Math.round(qh.reduce((a,b)=>a+b.pct,0)/qh.length)+'%':'—';
+ const d=Object.values(state.done).filter(Boolean).length;
+ const total=detailedLessons.filter(l=>state.enabled[l.s]).length||1;
+ const pct=Math.min(100,Math.round(d/total*100));
+ $('#lessonStat').textContent=d;$('#pct').textContent=pct+'%';$('#ring').style.background=`conic-gradient(var(--purple) ${pct*3.6}deg,#ece8f8 0deg)`;
+ const q=state.quizHistory.slice(-10);$('#quizStat').textContent=q.length?Math.round(q.reduce((a,b)=>a+b,0)/q.length)+'%':'—';
  $('#taskStat').textContent=Object.values(state.tasks).filter(Boolean).length;
 }
-function subjectOptions(includeAll=false){
- let arr=enabledSubjects().map(k=>`<option value="${k}">${subjectData[k].name}</option>`);
- return (includeAll?'<option value="all">Mixed subjects</option>':'')+arr.join('');
+
+function renderSubjects(filter=''){
+ const f=filter.toLowerCase().trim();
+ $('#subjectGrid').innerHTML=Object.entries(subjects).filter(([k,v])=>!f||(v.name+' '+v.summary).toLowerCase().includes(f)).map(([k,v])=>`
+ <article class="subject-card ${state.enabled[k]?'':'hidden'}" data-sub="${k}">
+  <div class="subject-icon">${v.icon}</div><span class="badge">${state.enabled[k]?'Included':'Hidden'}</span>
+  <h3>${v.name}</h3><p>${v.summary}</p>
+ </article>`).join('');
+ $$('[data-sub]').forEach(c=>c.onclick=()=>{const s=c.dataset.sub;if(!state.enabled[s]){openSettings();return}document.querySelector('#coverageSearch').value=subjects[s].name;renderCoverage(subjects[s].name);go('coverage')});
 }
-function renderSubjectGrid(filter=''){
- const f=filter.trim().toLowerCase();
- $('#subjectGrid').innerHTML=Object.entries(subjectData).filter(([k,v])=>{
-   let blob=(v.name+' '+v.summary+' '+v.terms.join(' ')).toLowerCase();
-   return !f||blob.includes(f)
+$('#subjectSearch').oninput=e=>renderSubjects(e.target.value);
+
+function renderCoverage(filter=''){
+ const f=filter.toLowerCase().trim();
+ $('#coverageList').innerHTML=Object.entries(curriculum).filter(([k,v])=>{
+   const blob=subjects[k].name+' '+v.terms.map(t=>t.name+' '+t.units.flat().join(' ')).join(' ');
+   return state.enabled[k] && (!f||blob.toLowerCase().includes(f));
  }).map(([k,v])=>`
-  <article class="subject-card ${state.enabled[k]?'':'hiddenSubject'}" data-open-subject="${k}">
-    <div class="subject-icon">${v.icon}</div>
-    <span class="badge ${v.color==='gold'?'gold':v.color==='green'?'green':v.color==='purple'?'purple':''}">${state.enabled[k]?'Included':'Hidden in Settings'}</span>
-    <h3>${v.name}</h3><p>${v.summary}</p>
-    <div class="termline">${v.terms[0]}</div>
-  </article>`).join('');
- $$('[data-open-subject]').forEach(c=>c.onclick=()=>{
-   const s=c.dataset.openSubject;
-   if(!state.enabled[s]){openSettings();toast('Turn this subject on in Settings first.');return}
-   currentSubject=s; currentLessonId=(lessons.find(l=>l.s===s)||lessons[0]).id; renderLessons(); go('lessons');
- });
-}
-$('#subjectSearch').oninput=e=>renderSubjectGrid(e.target.value);
-
-let currentSubject=enabledSubjects()[0]||'math';
-let currentLessonId=(lessons.find(l=>l.s===currentSubject)||lessons[0]).id;
-function filteredLessons(){
- const q=($('#lessonSearch').value||'').trim().toLowerCase();
- return lessons.filter(l=>state.enabled[l.s] && (!q||(l.title+' '+l.keys+' '+subjectData[l.s].name).toLowerCase().includes(q)));
-}
-function renderLessons(){
- const list=filteredLessons();
- if(!list.find(l=>l.id===currentLessonId)) currentLessonId=(list[0]||lessons.find(l=>state.enabled[l.s])||lessons[0]).id;
- $('#lessonList').innerHTML=list.length?list.map(l=>`
-   <button data-lid="${l.id}" class="${l.id===currentLessonId?'active':''}">
-    ${state.completed[l.id]?'✓ ':''}${l.title}
-    <small>${subjectData[l.s].icon} ${subjectData[l.s].name}</small>
-   </button>`).join(''):'<p>No lessons match that search.</p>';
- $$('#lessonList [data-lid]').forEach(b=>b.onclick=()=>{currentLessonId=b.dataset.lid;currentSubject=lessons.find(l=>l.id===currentLessonId).s;renderLessons()});
- const l=lessons.find(x=>x.id===currentLessonId);
- if(!l){$('#lessonMain').innerHTML='<p>No lesson selected.</p>';return}
- $('#lessonMain').innerHTML=`
-  <div style="display:flex;justify-content:space-between;gap:12px;align-items:start;flex-wrap:wrap">
-   <div><span class="badge">${subjectData[l.s].icon} ${subjectData[l.s].name}</span><h2>${l.title}</h2></div>
-   <div class="actions" style="margin-top:0">
-    <button class="btn ghost" id="lessonHelp">💬 Ask for help</button>
-    <button class="btn ${state.completed[l.id]?'soft':'blue'}" id="completeLesson">${state.completed[l.id]?'✓ Completed':'Mark complete'}</button>
-   </div>
+ <article class="coverage-card">
+  <div class="coverage-top">
+   <div><span style="font-size:1.55rem">${subjects[k].icon}</span> <b style="font-size:1.15rem">${subjects[k].name}</b><p style="margin:.3rem 0;color:var(--muted)">${subjects[k].summary}</p></div>
+   <span class="badge ${subjects[k].status==='official'?'status-official':'status-confirm'}">${subjects[k].status==='official'?'✓ Official guide matched':'⚠ Confirm school sequence'}</span>
   </div>
-  <div class="objectives">${l.goals.map(g=>`<div class="objective">✓ ${g}</div>`).join('')}</div>
-  <div class="teachbox"><b>Explain it simply</b><p>${l.simple}</p></div>
-  <div class="example"><b>Worked example / model</b><p class="${l.s==='math'?'math':''}">${l.example}</p><div class="steps">${l.steps.map((s,i)=>`<div class="step"><span class="stepno">${i+1}</span><span>${s}</span></div>`).join('')}</div></div>
-  <div class="recall">
-    <b>Close the notes and recall</b>
-    <p>${l.recall}</p>
-    <input id="recallInput" placeholder="Type your answer">
-    <div class="question-actions">
-      <button class="btn blue" id="checkRecall">Check</button>
-      <button class="btn ghost" id="showRecall">Show answer</button>
-      <button class="btn soft" id="askRecall">Ask for help</button>
-    </div>
-    <div class="feedback" id="recallFeedback"></div>
-  </div>`;
- $('#completeLesson').onclick=()=>{state.completed[l.id]=!state.completed[l.id];save();renderLessons();toast(state.completed[l.id]?'Lesson completed ✓':'Completion removed')};
- $('#checkRecall').onclick=()=>{
-   const u=$('#recallInput').value.trim().toLowerCase();
-   const alts=String(l.answer).toLowerCase().split('|');
-   const ok=alts.some(a=>u===a||u.includes(a)||a.includes(u)&&u.length>3);
-   $('#recallFeedback').className='feedback '+(ok?'good':'bad');
-   $('#recallFeedback').textContent=ok?'Nice — that matches the key idea.':'Not quite yet. Try explaining the idea in your own words, or show the answer and compare.';
- };
- $('#showRecall').onclick=()=>{$('#recallFeedback').className='feedback';$('#recallFeedback').textContent='A good answer includes: '+String(l.answer).split('|')[0]};
- const help=()=>openHelpFor(l.s,l.recall,$('#recallInput').value);
- $('#lessonHelp').onclick=()=>openHelpFor(l.s,'Lesson: '+l.title,'');
- $('#askRecall').onclick=help;
+  <div class="coverage-terms">${v.terms.map(t=>`<div class="term"><h4>${t.name}</h4><ul>${t.units.map(u=>`<li><b>${u[0]}</b><br><span style="color:var(--muted)">${u[1]}</span></li>`).join('')}</ul></div>`).join('')}</div>
+ </article>`).join('')||'<div class="card"><p>No matching curriculum units.</p></div>';
 }
-$('#lessonSearch').oninput=renderLessons;
+$('#coverageSearch').oninput=e=>renderCoverage(e.target.value);
 
-/* quiz */
-let activeQuiz=[],quizIndex=0,quizAnswers=[];
-function buildQuiz(){
- const s=$('#quizSubject').value||currentSubject, n=+$('#quizLength').value;
+/* Build learning list: detailed lessons first + one Quick Guide per curriculum unit */
+function allLearnItems(){
+ const arr=[...detailedLessons.map(l=>({...l,type:'detail'}))];
+ Object.entries(curriculum).forEach(([s,c])=>c.terms.forEach((t,ti)=>t.units.forEach((u,ui)=>{
+  const id=`quick-${s}-${ti}-${ui}`;
+  if(!arr.find(x=>x.id===id))arr.push({id,s,type:'quick',unit:u[0],term:t.name,focus:u[1]});
+ })));
+ return arr;
+}
+let currentLearn=detailedLessons[0].id;
+function renderLearn(){
+ const f=($('#lessonSearch').value||'').toLowerCase().trim();
+ const items=allLearnItems().filter(i=>state.enabled[i.s] && (!f||(i.unit+' '+(i.focus||'')+' '+subjects[i.s].name).toLowerCase().includes(f)));
+ if(!items.find(i=>i.id===currentLearn))currentLearn=(items[0]||allLearnItems()[0]).id;
+ $('#lessonList').innerHTML=items.map(i=>`<button class="${i.id===currentLearn?'active':''}" data-learn="${i.id}">${state.done[i.id]?'✓ ':''}${i.unit}<small>${subjects[i.s].icon} ${subjects[i.s].name}${i.type==='quick'?' • Quick Guide':''}</small></button>`).join('');
+ $$('[data-learn]').forEach(b=>b.onclick=()=>{currentLearn=b.dataset.learn;renderLearn()});
+ const i=allLearnItems().find(x=>x.id===currentLearn);if(!i)return;
+ if(i.type==='detail'){
+  $('#lessonMain').innerHTML=`
+   <span class="badge">${subjects[i.s].icon} ${subjects[i.s].name}</span><h2>${i.unit}</h2>
+   <div class="wordchips">${i.words.map(w=>`<span class="chip">${w}</span>`).join('')}</div>
+   <div class="easybox"><div class="visual">${i.icon}</div><div><h3>What this means in easy words</h3><p>${i.easy}</p></div></div>
+   <h3>Do it in small steps</h3><div class="steps">${i.steps.map((s,n)=>`<div class="step"><span class="stepno">${n+1}</span><span>${s}</span></div>`).join('')}</div>
+   <div class="example"><b>One example</b><p>${i.example}</p></div>
+   <div class="card" style="background:#fcfbff"><b>Quick check</b><p>${i.check}</p><input class="input" id="learnAnswer" style="width:100%" placeholder="Type your answer"><div class="actions"><button class="btn purple" id="checkLearn">Check</button><button class="btn ghost" id="askLearn">Ask Mimi</button><button class="btn ghost" id="completeLearn">${state.done[i.id]?'✓ Completed':'Mark complete'}</button></div><div id="learnFeedback" class="feedback"></div></div>`;
+  $('#checkLearn').onclick=()=>{const u=$('#learnAnswer').value.trim().toLowerCase(),a=i.answer.toLowerCase();const ok=u===a||u.includes(a)||a.includes(u)&&u.length>2;$('#learnFeedback').className='feedback '+(ok?'good':'bad');$('#learnFeedback').textContent=ok?'Yes — that matches the key idea.':'Not yet. Try the steps again, or ask Mimi.'};
+  $('#askLearn').onclick=()=>openHelp(i.s,i.check,'');
+  $('#completeLearn').onclick=()=>{state.done[i.id]=!state.done[i.id];save();renderLearn()};
+ }else{
+  const parts=i.focus.split(' • ');
+  $('#lessonMain').innerHTML=`
+   <span class="badge">${subjects[i.s].icon} ${subjects[i.s].name} • ${i.term||''}</span><h2>${i.unit}</h2>
+   <div class="easybox"><div class="visual">${subjects[i.s].icon}</div><div><h3>Start here</h3><p>This unit is easier if you learn one small part at a time. Do not try to memorize the whole list at once.</p></div></div>
+   <h3>Learn these one by one</h3><div class="steps">${parts.map((p,n)=>`<div class="step"><span class="stepno">${n+1}</span><span><b>${p}</b><br><span style="color:var(--muted)">Ask yourself: “What does this mean? Can I give one example?”</span></span></div>`).join('')}</div>
+   <div class="example"><b>A simple study method</b><p>Choose the first item. Read a short explanation in your class notes or ask Mimi. Close the note. Explain it in your own words. Then move to the next item.</p></div>
+   <div class="actions"><button class="btn purple" id="askQuick">Ask Mimi about this unit</button><button class="btn ghost" id="completeQuick">${state.done[i.id]?'✓ Reviewed':'Mark reviewed'}</button></div>`;
+  $('#askQuick').onclick=()=>openHelp(i.s,`Please explain the Grade 8 topic "${i.unit}" in very simple steps. The unit includes: ${i.focus}`,'');
+  $('#completeQuick').onclick=()=>{state.done[i.id]=!state.done[i.id];save();renderLearn()};
+ }
+}
+$('#lessonSearch').oninput=renderLearn;
+
+/* Quiz */
+let quiz=[],qi=0,qa=[];
+function startQuiz(){
+ const s=$('#quizSubject').value,n=+$('#quizLength').value;
  let pool=questions.filter(q=>s==='all'?state.enabled[q.s]:q.s===s);
- pool=[...pool].sort(()=>Math.random()-.5);
- if(pool.length<n){
-   let reps=[];while(reps.length<n)reps.push(...pool.sort(()=>Math.random()-.5));pool=reps;
+ if(!pool.length)return toast('No questions available for that subject yet.');
+ pool=[...pool].sort(()=>Math.random()-.5);while(pool.length<n)pool=pool.concat([...pool].sort(()=>Math.random()-.5));
+ quiz=pool.slice(0,n);qi=0;qa=[];$('#quizStart').style.display='none';$('#quizResult').style.display='none';$('#quizShell').style.display='grid';renderQ();
+}
+function renderQ(){const q=quiz[qi];if(!q)return;$('#qCount').textContent=`${subjects[q.s].icon} ${subjects[q.s].name} • ${qi+1}/${quiz.length}`;$('#qText').textContent=q.q;$('#qOptions').innerHTML=q.o.map((x,i)=>`<button class="option ${qa[qi]===i?'selected':''}" data-o="${i}">${x}</button>`).join('');$$('[data-o]').forEach(b=>b.onclick=()=>{qa[qi]=+b.dataset.o;renderQ()});$('#qNav').innerHTML=quiz.map((_,i)=>`<button class="${qa[i]!==undefined?'done':''}" data-j="${i}">${i+1}</button>`).join('');$$('[data-j]').forEach(b=>b.onclick=()=>{qi=+b.dataset.j;renderQ()});$('#prevQ').disabled=qi===0}
+$('#startQuiz').onclick=startQuiz;$('#prevQ').onclick=()=>{if(qi>0){qi--;renderQ()}};$('#nextQ').onclick=()=>{if(qi<quiz.length-1){qi++;renderQ()}else toast('Review your answers, then finish.')};$('#helpQ').onclick=()=>{const q=quiz[qi];openHelp(q.s,q.q,qa[qi]!==undefined?q.o[qa[qi]]:'')};
+$('#finishQuiz').onclick=()=>{let c=0;quiz.forEach((q,i)=>{if(qa[i]===q.a)c++});const p=Math.round(c/quiz.length*100);state.quizHistory.push(p);save();$('#quizShell').style.display='none';$('#quizResult').style.display='block';$('#quizResult').innerHTML=`<div class="card"><h2>${c}/${quiz.length} — ${p}%</h2><p>${p>=80?'Strong work. Review anything missed.':p>=60?'Good start. Use the explanations below.':'Go back to the matching lessons, then try a shorter quiz.'}</p>${quiz.map((q,i)=>`<div class="source"><b>${i+1}. ${q.q}</b><br><span class="${qa[i]===q.a?'good':'bad'}">${qa[i]===q.a?'✓ Correct':'✗ Your answer: '+(q.o[qa[i]]||'No answer')}</span><br>Answer: ${q.o[q.a]}. ${q.why}</div>`).join('')}</div>`};
+
+/* Homework + today */
+function renderHW(){$('#hwSubject').innerHTML=opts(false);$('#hwList').innerHTML=state.homework.length?state.homework.map((h,i)=>`<div class="hw"><span class="badge">${subjects[h.s].name}</span><span>${esc(h.text)}</span><button class="iconbtn" data-dhw="${i}">✕</button></div>`).join(''):'<p class="note">No homework saved yet.</p>';$$('[data-dhw]').forEach(b=>b.onclick=()=>{state.homework.splice(+b.dataset.dhw,1);save();renderHW()})}
+$('#addHw').onclick=()=>{const t=$('#hwText').value.trim();if(!t)return toast('Type the homework first.');state.homework.push({text:t,s:$('#hwSubject').value});$('#hwText').value='';save();renderHW()};
+const todayTemplates=[['Review one lesson in {A}','Do 5 questions in {B}','Ask Mimi one question'],['Learn one new topic in {A}','Review one old mistake','Finish one homework item'],['Do a mixed 5-question quiz','Read one Quick Guide in {A}','Explain one idea in your own words']];
+function pickSub(o=0){const a=enabled();return a[(new Date().getDate()+state.seed+o)%a.length]||'math'}
+function renderToday(){const temp=todayTemplates[(new Date().getDate()+state.seed)%todayTemplates.length],a=subjects[pickSub()].name,b=subjects[pickSub(1)].name;$('#todayTasks').innerHTML=temp.map((x,i)=>{const k='today-'+new Date().toISOString().slice(0,10)+'-'+i;return `<label class="todo-item"><input type="checkbox" data-task="${k}" ${state.tasks[k]?'checked':''}><span>${x.replace('{A}',a).replace('{B}',b)}</span></label>`}).join('');$$('[data-task]').forEach(c=>c.onchange=()=>{state.tasks[c.dataset.task]=c.checked;save()})}
+$('#shuffleToday').onclick=()=>{state.seed++;save();renderToday()};
+
+/* Study plan + timer */
+function renderPlan(){const w=[['Week 1','Math foundations • English reading • Science investigation • French/Spanish basics'],['Week 2','Algebra/ratio • writing/persuasion • Social Studies • IT'],['Week 3','Geometry/data • science forces/body • Civics/R&T • arts/PE'],['Week 4','Graphs/preview • mixed quizzes • Career/HFLE • review weak areas']];$('#planBox').innerHTML=w.map((x,i)=>`<label class="todo-item"><input type="checkbox" data-plan="p${i}" ${state.tasks['p'+i]?'checked':''}><span><b>${x[0]}:</b> ${x[1]}</span></label>`).join('');$$('[data-plan]').forEach(c=>c.onchange=()=>{state.tasks[c.dataset.plan]=c.checked;save()})}
+let seconds=1200,timerId=null;function timerRender(){const m=Math.floor(seconds/60),s=seconds%60;$('#timerFace').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}
+$('#timerStart').onclick=()=>{if(timerId)return;timerId=setInterval(()=>{seconds--;timerRender();if(seconds<=0){clearInterval(timerId);timerId=null;toast('Study block complete 💜')}},1000)};$('#timerPause').onclick=()=>{clearInterval(timerId);timerId=null};$('#timerReset').onclick=()=>{clearInterval(timerId);timerId=null;seconds=1200;timerRender()};
+
+/* PWA install */
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('#installBtn').hidden=false});
+window.addEventListener('appinstalled',()=>{deferredPrompt=null;$('#installBtn').hidden=true;toast('Ariana’s Study Buddy is installed 💜')});
+function isStandalone(){return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true}
+async function installApp(){
+ if(isStandalone())return toast('The app is already installed.');
+ if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;return}
+ toast('In Chrome, use the menu and choose “Install app” or “Add to Home screen”.')
+}
+$('#installBtn').onclick=installApp;$('#heroInstall').onclick=installApp;
+
+/* Service worker + reminders */
+let swReg=null;
+async function initSW(){
+ if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+  try{swReg=await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready;syncReminderToSW()}catch(e){console.warn(e)}
  }
- activeQuiz=pool.slice(0,n);quizIndex=0;quizAnswers=[];
- $('#quizStart').style.display='none';$('#quizResult').style.display='none';$('#quizShell').style.display='grid';renderQuizQ();
+ updateReminderStatus();
 }
-function renderQuizQ(){
- const q=activeQuiz[quizIndex];if(!q)return;
- $('#qCount').textContent=`${subjectData[q.s].icon} ${subjectData[q.s].name} • Question ${quizIndex+1} of ${activeQuiz.length}`;
- $('#qText').textContent=q.q;
- $('#qOptions').innerHTML=q.o.map((x,i)=>`<button class="option ${quizAnswers[quizIndex]===i?'selected':''}" data-opt="${i}">${x}</button>`).join('');
- $$('#qOptions [data-opt]').forEach(b=>b.onclick=()=>{quizAnswers[quizIndex]=+b.dataset.opt;renderQuizQ()});
- $('#qNav').innerHTML=activeQuiz.map((_,i)=>`<button class="${quizAnswers[i]!==undefined?'done':''}" data-j="${i}">${i+1}</button>`).join('');
- $$('#qNav [data-j]').forEach(b=>b.onclick=()=>{quizIndex=+b.dataset.j;renderQuizQ()});
- $('#prevQ').disabled=quizIndex===0;$('#nextQ').textContent=quizIndex===activeQuiz.length-1?'Review':'Next';
-}
-$('#startQuiz').onclick=buildQuiz;
-$('#prevQ').onclick=()=>{if(quizIndex>0){quizIndex--;renderQuizQ()}};
-$('#nextQ').onclick=()=>{if(quizIndex<activeQuiz.length-1){quizIndex++;renderQuizQ()}else toast('Review your answers, then finish.')};
-$('#askQuizHelp').onclick=()=>{const q=activeQuiz[quizIndex];openHelpFor(q.s,q.q,quizAnswers[quizIndex]!==undefined?q.o[quizAnswers[quizIndex]]:'')};
-$('#finishQuiz').onclick=()=>{
- if(!activeQuiz.length)return;
- let correct=0;activeQuiz.forEach((q,i)=>{if(quizAnswers[i]===q.a)correct++});
- let pct=Math.round(correct/activeQuiz.length*100);
- state.quizHistory.push({pct,subject:$('#quizSubject').value,date:new Date().toISOString()});save();
- $('#quizShell').style.display='none';$('#quizResult').style.display='block';
- $('#quizResult').innerHTML=`<div class="card"><span class="badge gold">Quiz result</span><h2>${correct}/${activeQuiz.length} — ${pct}%</h2>
-  <p>${pct>=80?'Strong work. Review the explanations for anything missed, then come back to this subject on another day.':pct>=60?'You have part of it. Focus on the missed questions, then try a shorter quiz later.':'This subject needs a slower review. Go to the matching lessons first, then retry 5 questions.'}</p>
-  ${activeQuiz.map((q,i)=>`<div class="source-item"><b>${i+1}. ${q.q}</b><br><span class="${quizAnswers[i]===q.a?'good':'bad'}">${quizAnswers[i]===q.a?'✓ Correct':'✗ Your answer: '+(q.o[quizAnswers[i]]||'No answer')}</span><br><span>Answer: ${q.o[q.a]}. ${q.why}</span><div class="question-actions"><button class="btn soft miniHelp" data-i="${i}">Ask for help</button></div></div>`).join('')}
-  </div>`;
- $$('.miniHelp').forEach(b=>b.onclick=()=>{const q=activeQuiz[+b.dataset.i];openHelpFor(q.s,q.q,quizAnswers[+b.dataset.i]!==undefined?q.o[quizAnswers[+b.dataset.i]]:'')});
-};
-
-/* today plan */
-const planTemplates=[
- ['Review one lesson from {A}','Do 5 questions in {B}','Use Mimi for one confusing idea'],
- ['Learn one new topic in {A}','Recall yesterday’s idea without notes','Do a short {B} quiz'],
- ['Do 10 minutes of {A}','Review one mistake from a previous quiz','Finish one homework task'],
- ['Read one {A} lesson aloud','Explain one idea back in your own words','Do 5 mixed questions']
-];
-function pickSubject(offset=0){
- const arr=enabledSubjects(); if(!arr.length)return 'math';
- return arr[(new Date().getDate()+state.todaySeed+offset)%arr.length];
-}
-function renderToday(){
- let t=planTemplates[(new Date().getDate()+state.todaySeed)%planTemplates.length];
- const a=subjectData[pickSubject(0)].name,b=subjectData[pickSubject(1)].name;
- $('#todayTasks').innerHTML=t.map((x,i)=>{
-   const key='today_'+new Date().toISOString().slice(0,10)+'_'+i;
-   const text=x.replace('{A}',a).replace('{B}',b);
-   return `<label class="todo-item"><input type="checkbox" data-today="${key}" ${state.tasks[key]?'checked':''}><span>${text}</span></label>`
- }).join('');
- $$('[data-today]').forEach(c=>c.onchange=()=>{state.tasks[c.dataset.today]=c.checked;save()});
-}
-$('#shuffleToday').onclick=()=>{state.todaySeed++;save();renderToday()};
-$('#todayBtn').onclick=()=>go('study');
-
-/* study plan */
-const studyWeeks=[
- ['Week 1','Foundation first',['Math: fractions, integers and percentages','English: reading for evidence and sentence clarity','Science: variables and fair testing','Spanish: food and basic conversation']],
- ['Week 2','Build confidence',['Math: simple algebra and ratio','English: inference and persuasive techniques','Science: nutrition and matter','Social Studies: nationalism and media literacy']],
- ['Week 3','Apply ideas',['Math: angles, measurement and data','IT: hardware, binary and productivity tools','Social Studies: landscape, hazards and environment','Civics/RE: values, responsibility and respectful reasoning']],
- ['Week 4','Preview and mix',['Math: indices, graphs and sets','Science: forces and motion','Spanish: shopping and near-future plans','Mixed quizzes: 5–10 questions at a time']]
-];
-function renderStudyPlan(){
- $('#studyPlan').innerHTML=studyWeeks.map((w,wi)=>`<div style="padding:13px 0;border-bottom:1px solid var(--line)">
-   <div style="display:grid;grid-template-columns:90px 1fr;gap:12px"><b style="color:var(--blue)">${w[0]}</b><div><b>${w[1]}</b>
-   ${w[2].map((t,ti)=>{let k='plan_'+wi+'_'+ti;return `<label class="todo-item" style="margin-top:7px"><input type="checkbox" data-plan="${k}" ${state.tasks[k]?'checked':''}><span>${t}</span></label>`}).join('')}</div></div></div>`).join('');
- $$('[data-plan]').forEach(c=>c.onchange=()=>{state.tasks[c.dataset.plan]=c.checked;save()});
-}
-
-/* homework */
-function renderHomework(){
- $('#hwSubject').innerHTML=subjectOptions(false);
- $('#homeworkList').innerHTML=state.homework.length?state.homework.map((h,i)=>`<div class="hw">
-  <span class="subject-pill">${subjectData[h.s]?.name||'General'}</span><span>${esc(h.text)}</span><button class="iconbtn" data-delhw="${i}" title="Delete">✕</button>
- </div>`).join(''):'<p class="info-note">No homework saved yet.</p>';
- $$('[data-delhw]').forEach(b=>b.onclick=()=>{state.homework.splice(+b.dataset.delhw,1);save();renderHomework()});
-}
-$('#addHomework').onclick=()=>{let text=$('#hwText').value.trim();if(!text)return toast('Type the homework first.');state.homework.push({text,s:$('#hwSubject').value});$('#hwText').value='';save();renderHomework()};
-
-/* settings */
-function openSettings(){
- $('#studentName').value=state.name;$('#guardianLabel').value=state.guardianLabel;$('#guardianPhone').value=state.guardianPhone;
- $('#subjectToggles').innerHTML=Object.entries(subjectData).map(([k,v])=>`<label class="subject-toggle"><input type="checkbox" data-subtoggle="${k}" ${state.enabled[k]?'checked':''}><span>${v.icon} ${v.name}</span></label>`).join('');
- $('#settingsModal').classList.add('show')
-}
-$('#settingsBtn').onclick=openSettings;$('#closeSettings').onclick=()=>$('#settingsModal').classList.remove('show');
-$('#saveSettings').onclick=()=>{
- state.name=$('#studentName').value.trim()||'Ariana';state.guardianLabel=$('#guardianLabel').value.trim();state.guardianPhone=$('#guardianPhone').value.replace(/\D/g,'');
- $$('[data-subtoggle]').forEach(c=>state.enabled[c.dataset.subtoggle]=c.checked);
- save();$('#settingsModal').classList.remove('show');syncUI();toast('Settings saved');
-};
-$('#resetData').onclick=()=>{if(confirm('Reset all progress, homework and settings on this device?')){localStorage.removeItem(STORE);location.reload()}};
-
-/* accessibility */
-$('#accessBtn').onclick=()=>$('#accessModal').classList.add('show');
-$('#closeAccess').onclick=()=>$('#accessModal').classList.remove('show');
-$('#toggleLarge').onclick=()=>document.body.classList.toggle('large');
-$('#toggleContrast').onclick=()=>document.body.classList.toggle('highcontrast');
-$('#readPage').onclick=()=>{
- if(!('speechSynthesis' in window))return toast('Read-aloud is not supported by this browser.');
- speechSynthesis.cancel();let u=new SpeechSynthesisUtterance($('.section.active').innerText);u.rate=.94;speechSynthesis.speak(u);
-};
-
-/* Timer */
-let timerLeft=1200,timerId=null;
-function timerRender(){let m=Math.floor(timerLeft/60),s=timerLeft%60;$('#timerFace').textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`}
-$('#timerStart').onclick=()=>{if(timerId)return;timerId=setInterval(()=>{timerLeft--;timerRender();if(timerLeft<=0){clearInterval(timerId);timerId=null;timerLeft=0;timerRender();toast('Study block complete ✓')}},1000)};
-$('#timerPause').onclick=()=>{clearInterval(timerId);timerId=null};
-$('#timerReset').onclick=()=>{clearInterval(timerId);timerId=null;timerLeft=1200;timerRender()};
-
-/* sources */
-function renderSources(){
- $('#sourceList').innerHTML=sources.map(s=>`<div class="source-item"><a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a><div>${s[2]}</div></div>`).join('');
-}
-
-/* WhatsApp + Mimi */
-let helpContext={s:'math',q:'',answer:''};
-function guardianName(){return state.guardianLabel||'my helper'}
-function helpMessage(){
- let subj=subjectData[helpContext.s]?.name||'schoolwork';
- let msg=`Hi ${guardianName()}, Ariana is having trouble with a Grade 8 ${subj} question.\n\nQuestion: ${helpContext.q||'I need help with this topic.'}`;
- if(helpContext.answer)msg+=`\n\nWhat I tried/selected: ${helpContext.answer}`;
- msg+=`\n\nCan you please help me understand the steps when you get a chance?`;
- return msg
-}
-function openWhatsApp(){
- if(!state.guardianPhone){openSettings();toast('Add the WhatsApp number first.');return}
- const url=`https://wa.me/${state.guardianPhone}?text=${encodeURIComponent(helpMessage())}`;
- window.open(url,'_blank','noopener');
-}
-function openMimi(){
- $('#assistantPanel').classList.add('show');$('#mimiSpeech').innerHTML="I'm open! Show me the question. 💙";
-}
-function openHelpFor(s,q,answer=''){
- helpContext={s,q,answer};$('#assistSubject').value=s;$('#assistQuestion').value=q;openMimi();
-}
-$('#mimiToggle').onclick=openMimi;$('#openMimiTop').onclick=openMimi;$('#openMimiHome').onclick=openMimi;
-$('#closeMimi').onclick=()=>$('#assistantPanel').classList.remove('show');
-$('#openSettingsFromMimi').onclick=openSettings;$('#sendCurrentHelp').onclick=openWhatsApp;
-$$('[data-helper]').forEach(b=>b.onclick=()=>{$$('[data-helper]').forEach(x=>x.classList.remove('active'));b.classList.add('active');$$('.helper-pane').forEach(p=>p.classList.toggle('active',p.id===b.dataset.helper))});
-$('#assistUseQuestion').onclick=()=>{if(activeQuiz.length){const q=activeQuiz[quizIndex];openHelpFor(q.s,q.q,quizAnswers[quizIndex]!==undefined?q.o[quizAnswers[quizIndex]]:'')}else toast('Start a quiz first, or type the question.')};
-
-/* Math solving helpers */
-function gcd(a,b){while(b){[a,b]=[b,a%b]}return Math.abs(a)}
-function solveMath(raw){
- let q=raw.trim().replace(/×/g,'*').replace(/÷/g,'/');
- let m=q.match(/^\s*(-?\d+)\s*\/\s*(\d+)\s*([\+\-])\s*(-?\d+)\s*\/\s*(\d+)\s*=?\s*\??\s*$/);
- if(m){let a=+m[1],b=+m[2],op=m[3],c=+m[4],d=+m[5],l=b*d/gcd(b,d),na=a*l/b,nc=c*l/d,n=op==='+'?na+nc:na-nc,g=gcd(Math.abs(n),l);return {title:'Fractions',ans:`${n/g}/${l/g}`,steps:[`Use a common denominator of ${l}.`,`Rewrite the fractions as ${na}/${l} and ${nc}/${l}.`,`${na} ${op} ${nc} = ${n}.`,`Simplify ${n}/${l} to ${n/g}/${l/g}.`]}}
- m=q.match(/(\d+(?:\.\d+)?)\s*%\s*of\s*(\d+(?:\.\d+)?)/i);
- if(m){let p=+m[1],n=+m[2],a=p/100*n;return {title:'Percentage',ans:String(a),steps:[`${p}% = ${p/100}.`,`Multiply ${p/100} × ${n}.`,`The result is ${a}.`]}}
- let clean=q.replace(/\s+/g,'').replace(/\?$/,'');
- m=clean.match(/^(-?\d*)x([\+\-]\d+)?=(-?\d+(?:\.\d+)?)$/i);
- if(m){let a=m[1];a=(a===''?1:a==='-'?-1:+a);let c=m[2]?+m[2]:0,r=+m[3],r2=r-c,x=r2/a;return {title:'Linear equation',ans:`x = ${x}`,steps:[c?`Undo ${c>0?'+ '+c:'- '+Math.abs(c)} by doing the opposite on both sides.`:'There is no constant term to remove.',`This gives ${a}x = ${r2}.`,`Divide both sides by ${a}.`,`x = ${x}.`,`Check by putting ${x} back into the original equation.`]}}
- m=clean.match(/^(\d+)\^(\d+)$/);
- if(m){let b=+m[1],e=+m[2],a=b**e;return {title:'Indices',ans:String(a),steps:[`${b}^${e} means multiply ${b} by itself ${e} times.`,`${Array(e).fill(b).join(' × ')} = ${a}.`]}}
- m=q.match(/share\s*(\d+(?:\.\d+)?)\s*.*?ratio\s*(\d+)\s*:\s*(\d+)/i);
- if(m){let total=+m[1],a=+m[2],b=+m[3],parts=a+b,unit=total/parts;return {title:'Ratio sharing',ans:`${a*unit} and ${b*unit}`,steps:[`Add the ratio parts: ${a}+${b}=${parts}.`,`One part = ${total}÷${parts}=${unit}.`,`Shares: ${a}×${unit}=${a*unit}; ${b}×${unit}=${b*unit}.`]}}
- m=q.match(/(?:speed).*?distance\s*(\d+(?:\.\d+)?).*?time\s*(\d+(?:\.\d+)?)/i);
- if(m){let d=+m[1],t=+m[2],a=d/t;return {title:'Speed',ans:String(a),steps:[`Use speed = distance ÷ time.`,`Substitute: ${d} ÷ ${t}.`,`Speed = ${a}. Add the correct units from the question.`]}}
- m=q.match(/(?:triangle).*?base\s*(\d+(?:\.\d+)?).*?height\s*(\d+(?:\.\d+)?)/i);
- if(m){let b=+m[1],h=+m[2],a=b*h/2;return {title:'Triangle area',ans:String(a),steps:[`Use area = ½ × base × height.`,`Substitute ½ × ${b} × ${h}.`,`Area = ${a} square units.`]}}
- m=q.match(/mean\s+(?:of\s+)?([\d\.,\s]+)/i);
- if(m){let nums=m[1].split(/[,\s]+/).map(Number).filter(x=>!isNaN(x));if(nums.length>1){let sum=nums.reduce((a,b)=>a+b,0),mean=sum/nums.length;return {title:'Mean',ans:String(mean),steps:[`Add the values: ${sum}.`,`Count them: ${nums.length}.`,`Mean = ${sum} ÷ ${nums.length} = ${mean}.`]}}}
- return null
-}
-function keywordScore(text,l){
- let t=text.toLowerCase(),score=0;
- (l.keys+' '+l.title+' '+l.simple).toLowerCase().split(/\s+/).forEach(k=>{if(k.length>3&&t.includes(k))score++});
- return score
-}
-function localExplain(s,raw){
- const text=raw.trim();
- if(!text)return {html:'<b>Mimi says:</b><p>Please type or scan a question first.</p>',conf:0};
- if(s==='math'){
-   const sol=solveMath(text);
-   if(sol)return {html:`<b>Mimi says:</b><p><b>${sol.title}</b></p><p><b>Answer:</b> ${esc(sol.ans)}</p><ol>${sol.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol><p class="info-note">Try the same steps on a similar problem without looking.</p>`,conf:1};
- }
- const exact=questions.find(q=>q.s===s && (text.toLowerCase().includes(q.q.toLowerCase().replace(/[?.]/g,'')) || q.q.toLowerCase().includes(text.toLowerCase().replace(/[?.]/g,''))));
- if(exact)return {html:`<b>Mimi says:</b><p><b>Key answer:</b> ${esc(exact.o[exact.a])}</p><p>${esc(exact.why)}</p><p class="info-note">Now say the explanation in your own words.</p>`,conf:.9};
- const candidates=lessons.filter(l=>l.s===s).map(l=>[l,keywordScore(text,l)]).sort((a,b)=>b[1]-a[1]);
- if(candidates[0]&&candidates[0][1]>0){
-   const l=candidates[0][0];
-   return {html:`<b>Mimi says:</b><p>This looks most related to <b>${esc(l.title)}</b>.</p><p>${esc(l.simple)}</p><ol>${l.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol><p><b>Use this checklist:</b> ${l.goals.map(esc).join(' • ')}</p><p class="info-note">I matched the question to Ariana's built-in curriculum notes. If the wording asks for something more specific, send the exact question for adult help instead of guessing.</p>`,conf:.65};
- }
- return {html:`<b>Mimi says:</b><p>I’m not confident enough to answer that from the built-in notes, and I don’t want to guess.</p><p><b>Try this:</b></p><ol><li>Read the question and circle the instruction word: define, explain, compare, calculate, describe or evaluate.</li><li>Underline the key topic words.</li><li>Open the matching lesson or send the exact question for help.</li></ol>`,conf:.2}
-}
-function runAssist(text,subject){
- helpContext={s:subject,q:text,answer:''};
- let out=localExplain(subject,text);$('#assistResult').innerHTML=out.html+`<div class="question-actions"><button class="btn soft" id="resultWhatsApp">💬 Ask ${esc(guardianName())} on WhatsApp</button></div>`;
- $('#resultWhatsApp').onclick=openWhatsApp;
-}
-$('#assistExplain').onclick=()=>runAssist($('#assistQuestion').value,$('#assistSubject').value);
-$('#explainPhotoText').onclick=()=>{let t=$('#ocrText').value;$('#assistQuestion').value=t;$('#assistSubject').value=currentSubject;runAssist(t,currentSubject)};
-
-/* photo OCR */
-let selectedPhoto=null,tesseractLoaded=false;
-$('#photoInput').onchange=e=>{
- selectedPhoto=e.target.files?.[0]||null;if(!selectedPhoto)return;
- const r=new FileReader();r.onload=ev=>{$('#photoPreview').src=ev.target.result;$('#photoPreview').style.display='block'};r.readAsDataURL(selectedPhoto);
- $('#ocrStatus').textContent='Photo ready. Press “Read text from photo”.';
-};
-function loadTesseract(){
- return new Promise((resolve,reject)=>{
-   if(window.Tesseract){tesseractLoaded=true;resolve();return}
-   const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
-   s.onload=()=>{tesseractLoaded=true;resolve()};s.onerror=()=>reject(new Error('OCR library could not load'));document.head.appendChild(s);
- })
-}
-$('#readPhoto').onclick=async()=>{
- if(!selectedPhoto)return toast('Choose or take a photo first.');
- $('#ocrStatus').textContent='Loading photo reader…';
+function dateKey(d=new Date()){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function syncReminderToSW(){if(navigator.serviceWorker?.controller)navigator.serviceWorker.controller.postMessage({type:'SAVE_REMINDER',payload:{...state.reminder}});else if(swReg?.active)swReg.active.postMessage({type:'SAVE_REMINDER',payload:{...state.reminder}})}
+async function registerPeriodic(){
+ if(!swReg)return false;
  try{
-   await loadTesseract();
-   $('#ocrStatus').textContent='Reading the image… this can take a little while.';
-   const worker=await Tesseract.createWorker('eng',1,{logger:m=>{if(m.status==='recognizing text')$('#ocrStatus').textContent=`Reading text… ${Math.round((m.progress||0)*100)}%`}});
-   const result=await worker.recognize(selectedPhoto);
-   await worker.terminate();
-   $('#ocrText').value=(result.data.text||'').trim();
-   $('#ocrStatus').textContent=$('#ocrText').value?'Text recognized. Please correct any symbols or words before asking Mimi to explain it.':'I could not read useful text. Try a clearer photo or type the question.';
- }catch(e){$('#ocrStatus').textContent='Photo reading could not load. Check internet, or type the question manually.'}
-};
-$('#sharePhoto').onclick=async()=>{
- if(!selectedPhoto)return toast('Choose a photo first.');
- helpContext={s:currentSubject,q:$('#ocrText').value||'I need help with the problem in this photo.',answer:''};
- if(navigator.share && (!navigator.canShare || navigator.canShare({files:[selectedPhoto]}))){
-   try{await navigator.share({title:'Ariana needs help',text:helpMessage(),files:[selectedPhoto]});return}catch(e){}
- }
- openWhatsApp();toast('Your browser cannot attach the photo directly; the WhatsApp message was opened instead.')
-};
-
-/* sources and sync */
-function syncUI(){
- $('#quizSubject').innerHTML=subjectOptions(true);
- $('#assistSubject').innerHTML=subjectOptions(false);
- if(!state.enabled[currentSubject])currentSubject=enabledSubjects()[0]||'math';
- renderSubjectGrid($('#subjectSearch').value||'');renderLessons();renderToday();renderStudyPlan();renderHomework();renderStats();renderSources();
+  if('periodicSync' in swReg){
+   const perm=await navigator.permissions.query({name:'periodic-background-sync'});
+   if(perm.state==='granted'){await swReg.periodicSync.register('ariana-daily-study',{minInterval:24*60*60*1000});return true}
+  }
+ }catch(e){}
+ return false
 }
-$('#openMimiTop').onclick=openMimi;
+function updateReminderStatus(){
+ const parts=[];
+ if(location.protocol==='file:')parts.push('Preview mode: install/service-worker reminders need HTTPS hosting.');
+ else parts.push(isStandalone()?'Installed as app.':'Not installed yet.');
+ if(!('Notification' in window))parts.push('This browser does not support web notifications.');
+ else parts.push(`Notification permission: ${Notification.permission}.`);
+ if(swReg && 'periodicSync' in swReg)parts.push('Best-effort background reminder support detected.');
+ else parts.push('Closed-app background reminders may not be available on this browser.');
+ parts.push('The calendar backup is the best option when you need a specific exact time every day.');
+ $('#reminderStatus').textContent=parts.join(' ');
+}
+async function saveReminder(){
+ state.reminder.enabled=$('#reminderEnabled').checked;state.reminder.time=$('#reminderTime').value||'18:00';save();
+ if(state.reminder.enabled && 'Notification' in window && Notification.permission!=='granted'){
+  const p=await Notification.requestPermission();if(p!=='granted')toast('Notifications were not allowed.');
+ }
+ syncReminderToSW();await registerPeriodic();scheduleForeground();updateReminderStatus();toast('Daily study reminder saved.');
+}
+$('#saveReminder').onclick=saveReminder;
+$('#testReminder').onclick=async()=>{
+ if(!('Notification' in window))return toast('Notifications are not supported here.');
+ if(Notification.permission!=='granted'){const p=await Notification.requestPermission();if(p!=='granted')return toast('Allow notifications first.')}
+ if(swReg)swReg.showNotification('Ariana’s Study Buddy 💜',{body:'This is a test study reminder.',icon:'./icons/icon-192.png',badge:'./icons/icon-192.png'});
+ else new Notification('Ariana’s Study Buddy 💜',{body:'This is a test study reminder.',icon:'icons/icon-192.png'});
+};
+let reminderInterval=null;
+function scheduleForeground(){
+ clearInterval(reminderInterval);
+ reminderInterval=setInterval(checkForegroundReminder,30000);
+ checkForegroundReminder();
+}
+async function checkForegroundReminder(){
+ if(!state.reminder.enabled || Notification.permission!=='granted')return;
+ const now=new Date(),today=dateKey(now),[h,m]=state.reminder.time.split(':').map(Number),target=h*60+m,cur=now.getHours()*60+now.getMinutes();
+ if(cur>=target && state.reminder.lastLocal!==today){
+  if(swReg)await swReg.showNotification('Ariana, it’s study time 💜',{body:'A short 20-minute session is enough.',icon:'./icons/icon-192.png',badge:'./icons/icon-192.png',tag:'ariana-daily-study'});
+  else new Notification('Ariana, it’s study time 💜',{body:'A short 20-minute session is enough.'});
+  state.reminder.lastLocal=today;save();
+ }
+}
+function downloadICS(){
+ const [hh,mm]=(state.reminder.time||'18:00').split(':');
+ const now=new Date();now.setDate(now.getDate()+1);
+ const y=now.getFullYear(),mo=String(now.getMonth()+1).padStart(2,'0'),d=String(now.getDate()).padStart(2,'0');
+ const dt=`${y}${mo}${d}T${hh}${mm}00`;
+ const uid=`ariana-study-${Date.now()}@studybuddy`;
+ const ics=`BEGIN:VCALENDAR\r
+VERSION:2.0\r
+PRODID:-//Ariana Study Buddy//EN\r
+CALSCALE:GREGORIAN\r
+BEGIN:VEVENT\r
+UID:${uid}\r
+DTSTART;TZID=America/Jamaica:${dt}\r
+RRULE:FREQ=DAILY\r
+SUMMARY:Ariana's Daily Study Time 💜\r
+DESCRIPTION:Open Ariana's Purple Study Buddy for a short study session.\r
+BEGIN:VALARM\r
+TRIGGER:PT0M\r
+ACTION:DISPLAY\r
+DESCRIPTION:Time for Ariana's daily study session.\r
+END:VALARM\r
+END:VEVENT\r
+END:VCALENDAR\r
+`;
+ const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Ariana_Daily_Study_Reminder.ics';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+$('#calendarBackup').onclick=downloadICS;
+function openReminder(){go('study');setTimeout(()=>$('#reminderTime').focus(),350)}
+$('#heroReminder').onclick=openReminder;$('#homeReminder').onclick=openReminder;
 
-/* close modals on backdrop */
-['settingsModal','accessModal'].forEach(id=>$('#'+id).onclick=e=>{if(e.target.id===id)$('#'+id).classList.remove('show')});
+/* Device selector */
+$('#deviceMode').value=state.device;document.body.dataset.device=state.device;
+$('#deviceMode').onchange=e=>{state.device=e.target.value;document.body.dataset.device=state.device;save()};
 
-syncUI();timerRender();
+/* Settings & accessibility */
+function openSettings(){$('#studentName').value=state.name;$('#contactName').value=state.contactName;$('#contactPhone').value=state.contactPhone;$('#subjectToggles').innerHTML=Object.entries(subjects).map(([k,v])=>`<label class="toggle"><input type="checkbox" data-tog="${k}" ${state.enabled[k]?'checked':''}><span>${v.icon} ${v.name}</span></label>`).join('');$('#settingsModal').classList.add('show')}
+$('#settingsBtn').onclick=openSettings;$('#openSettingsHelp').onclick=openSettings;$('#closeSettings').onclick=()=>$('#settingsModal').classList.remove('show');
+$('#saveSettings').onclick=()=>{state.name=$('#studentName').value.trim()||'Ariana';state.contactName=$('#contactName').value.trim();state.contactPhone=$('#contactPhone').value.replace(/\D/g,'');$$('[data-tog]').forEach(c=>state.enabled[c.dataset.tog]=c.checked);save();$('#settingsModal').classList.remove('show');syncUI();toast('Settings saved')};
+$('#resetApp').onclick=()=>{if(confirm('Reset all saved progress and settings?')){localStorage.removeItem(STORE);location.reload()}};
+$('#settingsModal').onclick=e=>{if(e.target.id==='settingsModal')$('#settingsModal').classList.remove('show')};
+$('#accessBtn').onclick=()=>$('#accessModal').classList.add('show');$('#closeAccess').onclick=()=>$('#accessModal').classList.remove('show');$('#toggleLarge').onclick=()=>document.body.classList.toggle('large');$('#toggleContrast').onclick=()=>document.body.classList.toggle('highcontrast');$('#readPage').onclick=()=>{if(!('speechSynthesis' in window))return toast('Read aloud is not supported here.');speechSynthesis.cancel();const u=new SpeechSynthesisUtterance($('.section.active').innerText);u.rate=.94;speechSynthesis.speak(u)};
+
+/* Mimi */
+let help={s:'math',q:'',ans:''};
+function openMimi(){$('#helpPanel').classList.add('show')}function openHelp(s,q,ans=''){help={s,q,ans};$('#assistSubject').value=s;$('#assistQuestion').value=q;openMimi()}
+$('#mimiOpen').onclick=openMimi;$('#mimiClose').onclick=()=>$('#helpPanel').classList.remove('show');$$('[data-pane]').forEach(b=>b.onclick=()=>{$$('[data-pane]').forEach(x=>x.classList.remove('active'));b.classList.add('active');$$('.pane').forEach(p=>p.classList.toggle('active',p.id===b.dataset.pane))});
+$('#useQuizQuestion').onclick=()=>{if(quiz.length){const q=quiz[qi];openHelp(q.s,q.q,qa[qi]!==undefined?q.o[qa[qi]]:'')}else toast('Start a quiz first or type the question.')};
+function simpleExplain(s,text){
+ const hit=detailedLessons.find(l=>l.s===s && (text.toLowerCase().includes(l.unit.toLowerCase().split(' ')[0])||l.words.some(w=>text.toLowerCase().includes(w.split('=')[0].trim().toLowerCase()))));
+ const qh=questions.find(q=>q.s===s && (text.toLowerCase().includes(q.q.toLowerCase().replace(/[?.]/g,''))||q.q.toLowerCase().includes(text.toLowerCase().replace(/[?.]/g,''))));
+ if(qh)return `<b>Mimi says:</b><p><b>Answer:</b> ${qh.o[qh.a]}</p><p>${qh.why}</p><p class="note">Now say the reason in your own words.</p>`;
+ if(hit)return `<b>Mimi says:</b><p><b>Easy meaning:</b> ${hit.easy}</p><p><b>Small steps:</b></p><ol>${hit.steps.map(x=>`<li>${x}</li>`).join('')}</ol><p><b>Example:</b> ${hit.example}</p>`;
+ const c=curriculum[s];if(c){const all=c.terms.flatMap(t=>t.units);let best=all.map(u=>[u,(u[0]+' '+u[1]).toLowerCase().split(/\W+/).filter(w=>w.length>3&&text.toLowerCase().includes(w)).length]).sort((a,b)=>b[1]-a[1])[0];if(best&&best[1]>0)return `<b>Mimi says:</b><p>This looks related to <b>${best[0][0]}</b>.</p><p>Learn it one small part at a time:</p><ol>${best[0][1].split(' • ').map(x=>`<li>${x}</li>`).join('')}</ol><p class="note">If the question asks for something more specific, send the exact wording for adult help instead of guessing.</p>`}
+ return `<b>Mimi says:</b><p>I am not confident enough to answer that from the built-in notes, so I will not guess.</p><ol><li>Underline the instruction word: define, explain, compare, calculate or describe.</li><li>Circle the topic words.</li><li>Open the matching curriculum unit or ask a trusted adult.</li></ol>`;
+}
+$('#assistExplain').onclick=()=>{help={s:$('#assistSubject').value,q:$('#assistQuestion').value,ans:''};$('#assistResult').innerHTML=simpleExplain(help.s,help.q)+`<div class="actions"><button class="btn ghost" id="waResult">WhatsApp this question</button></div>`;$('#waResult').onclick=openWA};
+function waText(){let m=`Hi ${state.contactName||'there'}, Ariana is having trouble with a Grade 8 ${subjects[help.s]?.name||'school'} question.\n\nQuestion: ${help.q||'I need help.'}`;if(help.ans)m+=`\n\nWhat I tried: ${help.ans}`;m+=`\n\nCan you help me understand it when you get a chance?`;return m}
+function openWA(){if(!state.contactPhone){openSettings();return toast('Add the WhatsApp number first.')}window.open(`https://wa.me/${state.contactPhone}?text=${encodeURIComponent(waText())}`,'_blank','noopener')}
+$('#sendWA').onclick=openWA;
+let photo=null;$('#photoInput').onchange=e=>{photo=e.target.files?.[0]||null;if(!photo)return;const r=new FileReader();r.onload=x=>{$('#photoPreview').src=x.target.result;$('#photoPreview').style.display='block'};r.readAsDataURL(photo);$('#ocrStatus').textContent='Photo ready. Press Read text.'};
+function loadOCR(){return new Promise((res,rej)=>{if(window.Tesseract)return res();const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
+$('#readPhoto').onclick=async()=>{if(!photo)return toast('Choose a photo first.');try{$('#ocrStatus').textContent='Loading photo reader…';await loadOCR();const r=await Tesseract.recognize(photo,'eng',{logger:m=>{if(m.status==='recognizing text')$('#ocrStatus').textContent=`Reading… ${Math.round((m.progress||0)*100)}%`}});$('#ocrText').value=(r.data.text||'').trim();$('#ocrStatus').textContent='Check the recognized text before asking Mimi.'}catch(e){$('#ocrStatus').textContent='OCR could not load. Check internet or type the question.'}};
+$('#explainOcr').onclick=()=>{const t=$('#ocrText').value;help={s:$('#assistSubject').value,q:t,ans:''};$('#assistQuestion').value=t;$('#assistResult').innerHTML=simpleExplain(help.s,t)+`<div class="actions"><button class="btn ghost" id="waResult">WhatsApp this question</button></div>`;$('#waResult').onclick=openWA};
+$('#sharePhoto').onclick=async()=>{if(!photo)return toast('Choose a photo first.');help={s:$('#assistSubject').value,q:$('#ocrText').value||'I need help with the problem in this photo.',ans:''};if(navigator.share&&(!navigator.canShare||navigator.canShare({files:[photo]}))){try{await navigator.share({title:'Ariana needs help',text:waText(),files:[photo]});return}catch(e){}}openWA()};
+
+/* Sources + init */
+function renderSources(){$('#sourceList').innerHTML=sources.map(s=>`<div class="source"><a href="${s[1]}" target="_blank" rel="noopener"><b>${s[0]}</b></a><div>${s[2]}</div></div>`).join('')}
+function syncUI(){
+ $('#quizSubject').innerHTML=opts(true);$('#assistSubject').innerHTML=opts(false);$('#reminderEnabled').checked=state.reminder.enabled;$('#reminderTime').value=state.reminder.time;
+ renderSubjects($('#subjectSearch').value||'');renderCoverage($('#coverageSearch').value||'');renderLearn();renderHW();renderToday();renderPlan();renderSources();renderStats();updateReminderStatus()
+}
+timerRender();syncUI();scheduleForeground();initSW();
+const initial=(location.hash||'').replace('#','');if(['home','subjects','coverage','learn','quiz','study','sources'].includes(initial))go(initial);
 </script>
-<footer class="wrap footer" style="padding:20px 0 50px;text-align:center;color:var(--muted);font-size:.84rem">
-Independent study aid for Ariana • Jamaica Grade 8 curriculum-aligned • Holy Childhood-inspired colours only • Progress stays on this device
-</footer>
 </body>
 </html>
