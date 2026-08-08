@@ -1,4 +1,4 @@
-const CACHE = 'ariana-study-v7-20260808';
+const CACHE = 'ariana-study-hub-v8-20260808';
 const APP_SHELL = [
   './',
   './index.html',
@@ -90,7 +90,7 @@ async function maybeNotify(force=false){
   if(s.lastNotified===today) return;
 
   await self.registration.showNotification(`Ariana, it’s study time 💜`,{
-    body:'A short 20-minute study session is enough. Open your Study Buddy when you’re ready.',
+    body:'A short 20-minute study session is enough. Open your Study Hub when you’re ready.',
     icon:'./icons/icon-192.png',
     badge:'./icons/icon-192.png',
     tag:'ariana-daily-study',

@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Ariana's Purple Study Buddy",
-  "short_name": "Ariana Study",
-  "description": "Smart Grade 8 Jamaica study tutor for Ariana with subject-specific Mimi help, simple navigation, PWA install, reminders and curriculum maps.",
+  "name": "Ariana's Purple Study Hub",
+  "short_name": "Ariana Hub",
+  "description": "Smart Grade 8 Jamaica Study Hub for Ariana with subject-specific Mimi help, simple navigation, PWA install, reminders and curriculum maps.",
   "start_url": "./index.html?source=pwa",
   "scope": "./",
   "display": "standalone",

@@ -1,14 +1,48 @@
-# v7 checks
+# Ariana's Purple Study Hub v8 — validation
 
-Manual/logic checks expected:
-- Top-level navigation has only Home / Subjects / Study / Mimi.
-- Phone and tablet modes use four-button bottom navigation; no horizontal nav scrolling.
-- Clicking a subject keeps curriculum, teaching, practice and Mimi inside one subject page.
-- Mimi auto-detects likely subject from typed/OCR text.
-- `3n + 2 = 17` routes to Mathematics and solves n=5 with substitution check.
-- English uses instruction-word/evidence framework.
-- Science uses variables/data/cause-effect framework.
-- Social Studies/History/Geography/Civics use Point-Explain-Example-Link.
-- French/Spanish use language-specific framework.
-- Smart Mimi Prompt API system prompt is subject-specific.
-- PWA manifest, icons and service worker retained.
+## Root cause fixed
+Version 7 stopped during startup because the saved app `state` object was referenced before it was created. That prevented click handlers from attaching.
+
+Version 8 now:
+- initializes state before any UI logic
+- safely handles browsers/previews where `localStorage` is blocked by falling back to temporary in-memory storage
+- uses the name **Ariana's Purple Study Hub** throughout
+
+## Automated Chromium click-through
+Tested in headless Chromium after the final fix.
+
+### Phone layout
+PASS:
+- Home loads
+- Subjects opens
+- Mathematics opens
+- Teach Me opens
+- Mimi opens
+- `3n + 2 = 17` returns `n = 5` with a substitution check
+- Settings opens/closes
+- Study opens
+- Home reopens
+- no horizontal overflow
+- no runtime JavaScript errors
+
+### Tablet layout
+PASS:
+- Subjects opens
+- French opens
+- subject tabs work
+- Ask Mimi opens Mimi
+- no horizontal overflow
+- no runtime JavaScript errors
+
+### Laptop layout
+PASS:
+- Subjects opens
+- French opens
+- subject tabs work
+- Ask Mimi opens Mimi
+- no horizontal overflow
+- no runtime JavaScript errors
+
+## Static checks
+- JavaScript syntax: PASS
+- no remaining user-facing “Buddy” naming: PASS
