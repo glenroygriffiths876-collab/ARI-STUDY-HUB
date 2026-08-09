@@ -5,6 +5,7 @@ TESTS.md
 css/app.css
 data/concepts.js
 data/curriculum.js
+data/lesson-content.js
 data/meta.js
 data/questions.js
 data/sources.js

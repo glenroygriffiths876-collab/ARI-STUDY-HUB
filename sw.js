@@ -1,8 +1,8 @@
-const CACHE='ariana-study-hub-v2-prod-20260808';
+const CACHE='ariana-study-hub-v2-1-content-20260808';
 const CORE=[
   './','./index.html','./css/app.css','./manifest.webmanifest',
   './icons/icon-192.png','./icons/icon-512.png','./icons/icon-maskable-512.png',
-  './data/meta.js','./data/subjects.js','./data/curriculum.js','./data/concepts.js','./data/questions.js','./data/sources.js',
+  './data/meta.js','./data/subjects.js','./data/curriculum.js','./data/concepts.js','./data/lesson-content.js','./data/questions.js','./data/sources.js',
   './js/app.js','./js/router.js','./js/store.js','./js/data-contracts.js','./js/utils.js','./js/diagnostic.js','./js/mastery.js','./js/scheduler.js','./js/answer-checker.js','./js/math-engine.js','./js/mimi.js','./js/content.js','./js/lesson-player.js','./js/progress.js','./js/search.js'
 ];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE)).then(()=>self.skipWaiting()));});

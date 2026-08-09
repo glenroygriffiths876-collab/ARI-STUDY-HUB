@@ -1,33 +1,29 @@
-# Ariana Study Hub v2 — Validation Report
+# Ariana Study Hub v2.1 — Content Migration Validation
 
-## Dataset migration audit
+## Dataset checks
+
 ```text
-subjects=18
-units=165
-concepts=639
-questions=719
-unlinked_or_mixed_questions=67
-duplicate_ids=0
-broken_prerequisite_refs=0
+subjects = 18
+units = 165
+concepts = 639
+explicit lesson records = 639
+questions = 719
+blank concept explanations = 0
+concepts without examples = 0
+concepts without vocabulary = 0
+lesson records without explanation = 0
+lesson records with fewer than 3 worked examples = 0
+lesson records without a cause/logic chain = 0
+lesson records without an offline SVG visual = 0
 ```
 
-The 67 unlinked/mixed questions are retained for review rather than silently forced onto an uncertain concept.
+## Architecture checks
 
-## Static package checks
-- Required file structure: PASS
-- Manifest JSON/required fields: PASS
-- JavaScript syntax (`node --check`): PASS
-- No `eval()` in executable app JS: PASS (the only `eval()` text is a comment stating it is not used)
-- No inline event handlers in `index.html`: PASS
+- `data/lesson-content.js` exists and is cached by the service worker.
+- `js/lesson-player.js` reads explicit lesson content first and falls back to `buildLessonContent()` only if a record is unexpectedly missing.
+- `data/concepts.js` no longer contains empty explanation fields.
+- JavaScript syntax checked with Node for the modified modules.
 
-## Functional engine checks exercised during development
-- `3x + 5 = 20` → `x = 5`
-- `2(3x + 1) = 14` → `x = 2`
-- `(x + 3)/2 = 5` → `x = 7`
-- `4x - 3 = 2x + 9` → `x = 6`
-- `25% of 800` → `200`
-- `share 600 in ratio 2:3` → `240` and `360`
-- Idea-based short-answer checking accepts a correct paraphrase for an inference/evidence response.
+## Important limitation
 
-## Validation boundary
-This report does not substitute for teacher review of every lesson, confirmation of Holy Childhood High School’s exact sequence, full cross-browser/device testing, or outcome validation with real learners.
+This confirms that the lessons are populated and renderable from the data model. It does **not** claim every teaching paragraph has been independently reviewed by a Jamaican Grade 8 teacher or that Holy Childhood High School’s exact sequence has been confirmed.
