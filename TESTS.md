@@ -1,12 +1,15 @@
-# v16 test checklist
+# v17 Clarity First checks
 
-- JavaScript syntax check
-- Load under HTTP in headless Chromium
-- Home -> Subjects -> Mathematics -> Algebra -> lesson
-- Flexible checker accepts paraphrase and minor spelling variation
-- Two failed step attempts unlock with model answer
-- Mimi solves 3n + 2 = 17 and checks n = 5
-- Progress, Settings and Curriculum Map open
-- Floating Mimi opens chat
-- Phone viewport has no horizontal overflow
-- Service worker and manifest paths are present
+- JavaScript syntax (`node --check`): PASS
+- Upload package contains index.html, manifest, service worker, .nojekyll and three icons: PASS
+- Lesson player code includes one-stage-at-a-time rendering: PASS
+- Lesson stages include Start at zero, Words first, Why, Visual, five guided steps, Worked examples, Jamaica connection, Watch out, Practice, Teach-back and Finish: PASS
+- Flexible answer checker from v16 retained: PASS
+- Contextual Mimi button retained on every lesson stage: PASS
+- Read-this-card control present: PASS
+- “Make this simpler” control present: PASS
+- Resume-learning strip present: PASS
+- Universal topic search present: PASS
+- CSS retains `html,body { max-width:100%; overflow-x:hidden; }`: PASS
+
+Browser automation note: this environment blocked local HTTP/file navigation with `ERR_BLOCKED_BY_ADMINISTRATOR`, so I am not claiming a completed headless click-through for v17. The JavaScript syntax and package structure were validated statically.

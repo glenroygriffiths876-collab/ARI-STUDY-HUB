@@ -1,16 +1,25 @@
-# Ariana's Purple Study Hub — v16 Adaptive Master Tutor
+# Ariana’s Purple Study Hub — v17 Clarity First
 
-This build keeps the complete-beginner teaching model and adds:
+This build keeps the large Grade 8 curriculum/tutoring knowledge base but changes the lesson experience to one idea at a time.
 
-- flexible answer checking (numbers, keyword meaning, equivalent wording, fuzzy spelling)
-- after two misses, Mimi reveals a model answer and unlocks the next step
-- floating Mimi button on every screen
-- lesson progress meter
-- stronger Local Mimi retrieval from the curriculum and practice bank
-- expanded safe math engine
-- current Chrome Prompt API feature detection with Local Mimi fallback
-- complete curriculum map in Settings
-- verified videos only; no invented video IDs
-- same-origin PWA caching for reliable offline core content
+## Teaching changes
+- One lesson stage on screen at a time
+- Basic vocabulary before school terminology
+- Explicit cause/effect reasoning
+- Offline SVG visual stage
+- Guided worked examples and immediate feedback
+- Jamaica/Caribbean applications where accurate
+- Common mistakes with fixes
+- Practice + teach-back
+- “Make this simpler”, read-aloud, and contextual Mimi help on every stage
+- No forced lockout: Ariana can move backward or forward while learning
 
-Upload **all files/folders** in this package over the previous GitHub Pages folder.
+## JASDIS-inspired UX carried across
+- Resume learning
+- Search/jump to content
+- Visible progress
+- Clear learning path
+- Read-aloud
+- Offline/PWA structure
+
+Upload all files in this folder to the same GitHub Pages directory.
