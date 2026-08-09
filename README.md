@@ -1,5 +1,16 @@
-# Ariana's Purple Study Hub — v15 Complete Beginner
+# Ariana's Purple Study Hub — v16 Adaptive Master Tutor
 
-This build changes the teaching model. Every small lesson starts at ground zero, defines prerequisite words, shows a cause/effect chain, uses specific examples, includes an explanatory offline SVG, locks five mini-steps behind typed checks, provides 10 practice questions, a teach-back task, and verified topic videos where available.
+This build keeps the complete-beginner teaching model and adds:
 
-Upload the contents of this folder directly to the same GitHub Pages folder.
+- flexible answer checking (numbers, keyword meaning, equivalent wording, fuzzy spelling)
+- after two misses, Mimi reveals a model answer and unlocks the next step
+- floating Mimi button on every screen
+- lesson progress meter
+- stronger Local Mimi retrieval from the curriculum and practice bank
+- expanded safe math engine
+- current Chrome Prompt API feature detection with Local Mimi fallback
+- complete curriculum map in Settings
+- verified videos only; no invented video IDs
+- same-origin PWA caching for reliable offline core content
+
+Upload **all files/folders** in this package over the previous GitHub Pages folder.
