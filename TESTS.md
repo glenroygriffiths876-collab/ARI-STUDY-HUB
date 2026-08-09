@@ -1,28 +1,33 @@
-# v18 MasterClass checks
+# Ariana Study Hub v2 — Validation Report
 
-## Static checks
-- Inline JavaScript extracted and validated with `node --check`: PASS
-- GitHub/PWA package contains `index.html`, `manifest.webmanifest`, `sw.js`, `.nojekyll`, and 192/512/maskable icons: PASS
-- Core lesson text is inline, so teaching content remains available offline after the app shell is cached: PASS
+## Dataset migration audit
+```text
+subjects=18
+units=165
+concepts=639
+questions=719
+unlinked_or_mixed_questions=67
+duplicate_ids=0
+broken_prerequisite_refs=0
+```
 
-## Chromium runtime checks
-The actual HTML/JavaScript was loaded in headless Chromium with `Page.setDocumentContent` because this environment blocks direct localhost/file navigation.
+The 67 unlinked/mixed questions are retained for review rather than silently forced onto an uncertain concept.
 
-- Home opens correctly: PASS
-- 18 subject cards render: PASS
-- Geography → Human activity & settlement opens: PASS
-- Geography ground-zero card defines **relief**, **settlement**, then **slope** before explaining their relationship: PASS
-- Geography examples include southern St. Catherine/Spanish Town and the Blue Mountains: PASS
-- Mathematics → Algebra opens and defines **variable**, **term**, and **coefficient** with concrete examples before using them: PASS
-- English → Reading & inference opens and defines **literal**, **evidence**, and **inference** with concrete passage examples: PASS
-- Master lesson path contains 16 stages: PASS
-- Practice stage renders exactly 10 questions: PASS
-- Phone-width horizontal overflow in tested paths: 0 px
+## Static package checks
+- Required file structure: PASS
+- Manifest JSON/required fields: PASS
+- JavaScript syntax (`node --check`): PASS
+- No `eval()` in executable app JS: PASS (the only `eval()` text is a comment stating it is not used)
+- No inline event handlers in `index.html`: PASS
 
-## Design safeguards
-- Flexible answer checking retained; reasonable wording does not require an exact string match.
-- Verified video embeds are used only when a stored topic match exists; otherwise the lesson uses an exact-topic search instead of inventing a video ID.
-- Wikimedia Commons image enrichment is optional and has an offline/error fallback.
-- Mimi receives the current subject, unit, concept and lesson stage when opened from a lesson.
-- The 5-step teaching sequence is fully interactive: 1 guided “do one with me” check + 4 independent “your turn” checks: PASS
-- Mistake Clinic renders a separate **why this happens** and **how to avoid it** explanation for each tested mistake: PASS
+## Functional engine checks exercised during development
+- `3x + 5 = 20` → `x = 5`
+- `2(3x + 1) = 14` → `x = 2`
+- `(x + 3)/2 = 5` → `x = 7`
+- `4x - 3 = 2x + 9` → `x = 6`
+- `25% of 800` → `200`
+- `share 600 in ratio 2:3` → `240` and `360`
+- Idea-based short-answer checking accepts a correct paraphrase for an inference/evidence response.
+
+## Validation boundary
+This report does not substitute for teacher review of every lesson, confirmation of Holy Childhood High School’s exact sequence, full cross-browser/device testing, or outcome validation with real learners.

@@ -1,32 +1,17 @@
 {
   "id": "./",
-  "name": "Ariana's Purple Study Hub \u2014 MasterClass",
+  "name": "Ariana Study Hub",
   "short_name": "Ariana Hub",
-  "description": "Grade 8 Jamaica study hub with zero-assumption teaching, mastery practice, Mimi tutor and offline core.",
-  "start_url": "./index.html",
+  "description": "Adaptive Grade 8 Jamaica study hub with Mimi tutor",
+  "start_url": "./index.html#home",
   "scope": "./",
   "display": "standalone",
+  "orientation": "any",
   "background_color": "#f7f5ff",
   "theme_color": "#6c3cf0",
-  "orientation": "any",
   "icons": [
-    {
-      "src": "icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "icons/icon-maskable-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
-    }
+    {"src":"icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"},
+    {"src":"icons/icon-maskable-512.png","sizes":"512x512","type":"image/png","purpose":"maskable"}
   ]
 }
