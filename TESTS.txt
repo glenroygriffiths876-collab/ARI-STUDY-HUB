@@ -1,0 +1,33 @@
+ARIANA GRADE 8 MATHEMATICS COMPLETE HUB — VALIDATION
+
+SOURCE
+- Uploaded curriculum PDF: 356 pages
+- Lessons parsed: 38
+- Term 1: 12 lessons
+- Term 2: 15 lessons
+- Term 3: 11 lessons
+
+QUESTION COVERAGE
+- Guided practice: 190 (5 per lesson)
+- Independent practice: 380 (10 per lesson)
+- Total guided + independent practice: 570
+- Exam-style questions: 190 (5 per lesson)
+- Exam-style source marking guides: 190
+
+RUNTIME CHECKS
+- JavaScript syntax: PASS (Node --check)
+- Curriculum lesson cards rendered: 38
+- T1.1 guided questions rendered: 5
+- T3.11 exam questions rendered: 5
+- T3.8 construction exam questions rendered: 5
+- T2.10 hire-purchase exam questions rendered: 5
+- Search for "gradient": results returned
+- Guided answer reveal: PASS
+- Self-mark control: PASS
+- Original embedded PDF viewer: blob PDF iframe created
+- Curriculum guide/source pages outside individual lessons: 12
+- Phone viewport horizontal overflow: 0 px
+- Chromium page errors: 0
+
+NOTE
+The app preserves the uploaded PDF as the source of truth. It does not generate substitute mathematics lessons.
